@@ -1,25 +1,38 @@
 ---
-title: "Presentation Ninja"
-subtitle: "⚔<br/>with xaringan"
-author: "Yihui Xie"
-date: "2016/12/12"
+title: "Involuntary Attentional Orienting to Counterproductive Exogenous Cues"
+subtitle: "A Bayesian analysis"
+# author: "<br /> <br /> Antonio Schettino<br /> <br /> Department of Experimental-Clinical & Health Psychology<br /> Ghent University"
+author: "Antonio Schettino<br /> <br /> Department of Experimental-Clinical & Health Psychology<br /> Ghent University"
+date: ""
 output:
   xaringan::moon_reader:
+    css: ["default", "Schettino_UGent_CSS.css"]
     lib_dir: libs
     nature:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
+      self_contained: true
 ---
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
 ```
 
-http://svmiller.com/blog/2018/02/r-markdown-xaringan-theme/
+layout: true
+  
+<div class="my-header"></div>
+
+<div class="my-footer"><span>Antonio Schettino   
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+Bayes@Lund - 04.12.2018</span></div>
 
 
 
+---
 
 
 
