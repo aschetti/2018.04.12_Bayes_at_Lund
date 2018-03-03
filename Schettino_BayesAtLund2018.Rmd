@@ -1,6 +1,5 @@
 ---
-title: "Involuntary Attentional Orienting to Counterproductive Exogenous Cues"
-subtitle: "A Bayesian analysis"
+title: "Analyzing an experiment on involuntary attention using brms"
 # author: "<br /> <br /> Antonio Schettino<br /> <br /> Department of Experimental-Clinical & Health Psychology<br /> Ghent University"
 author: "Antonio Schettino<br /> <br /> Department of Experimental-Clinical & Health Psychology<br /> Ghent University"
 date: ""
