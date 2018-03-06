@@ -1,11 +1,10 @@
 ---
-title: "Analyzing an experiment on involuntary attention using brms"
-# author: "<br /> <br /> Antonio Schettino<br /> <br /> Department of Experimental-Clinical & Health Psychology<br /> Ghent University"
+title: "Analyzing an experiment on <br /> involuntary attention using **```brms```**"
 author: "Antonio Schettino<br /> <br /> Department of Experimental-Clinical & Health Psychology<br /> Ghent University"
 date: ""
 output:
   xaringan::moon_reader:
-    css: ["default", "Schettino_UGent_CSS.css"]
+    css: ["default.css", "Schettino_UGent_CSS.css", "Schettino_UGent-fonts.css"]
     lib_dir: libs
     nature:
       highlightStyle: github
@@ -19,17 +18,143 @@ options(htmltools.dir.version = FALSE)
 ```
 
 layout: true
-  
-<div class="my-header"></div>
 
+<!-- set header and footer (from Schettino_UGent_CSS.css) -->
 <div class="my-footer"><span>Antonio Schettino   
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-Bayes@Lund - 04.12.2018</span></div>
+Bayes@Lund - 12.04.2018</span></div>
+
+<!-- set FontAwesome icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="my-header"></div>
+
+---
+name: outline
+.left[
+<br /><br /><br />
+.font200[**OUTLINE**]
+]
+
+<br />
+
+* 
+* 
+* 
+
+---
+name: attention
+
+.center[
+  .font150[
+    <br /><br /><br /><br />
+    **Attention** mechanisms direct (in time and space) <br />
+    our limited processing resources towards <br />
+    **salient** information to efficiently improve behavior <br />
+    (James, 1890; Posner, 1980; Sokolov, 1963)
+  ]
+]
 
 
+
+
+---
+name: TOJ1
+background-image: url("TOJ1.png")
+background-size: 500px
+background-position: 50% 60%
+
+.center[
+<br /><br /><br />
+.font200[**Counterproductive subliminal TOJ**]
+]
+
+.center[
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+.font150[*2000 ms*]
+]
+
+---
+name: TOJ2
+background-image: url("TOJ2.png")
+background-size: 500px
+background-position: 50% 60%
+
+.center[
+<br /><br /><br />
+.font200[**Counterproductive subliminal TOJ**]
+]
+
+.center[
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+.font150[*17 ms*]
+]
+
+---
+name: TOJ3
+background-image: url("TOJ3.png")
+background-size: 500px
+background-position: 50% 60%
+
+.center[
+<br /><br /><br />
+.font200[**Counterproductive subliminal TOJ**]
+]
+
+.center[
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+.font150[*34 ms*]
+]
+
+---
+name: TOJ4
+background-image: url("TOJ4.png")
+background-size: 500px
+background-position: 50% 60%
+
+.center[
+<br /><br /><br />
+.font200[**Counterproductive subliminal TOJ**]
+]
+
+.center[
+<br /><br /><br /><br /><br /><br /><br /><br /><br />
+.font150[*SOA <br /> (217, 150, 83, 17, 0 ms)*]
+]
+
+---
+name: TOJ5
+background-image: url("TOJ5.png")
+background-size: 500px
+background-position: 50% 60%
+
+.center[
+<br /><br /><br />
+.font200[**Counterproductive subliminal TOJ**]
+]
+
+.center[
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+.font150[*100 ms*]
+]
+
+---
+name: TOJ6
+background-image: url("TOJ6.png")
+background-size: 500px
+background-position: 50% 60%
+
+.center[
+<br /><br /><br />
+.font200[**Counterproductive subliminal TOJ**]
+]
+
+.center[
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+.font150[*until response*]
+]
 
 ---
 
@@ -38,5 +163,27 @@ Bayes@Lund - 04.12.2018</span></div>
 
 
 
+
+
+
+
+---
+name: bye
+
+.center[
+<br /><br /><br />
+.font300[**Thanks for your attention!**]
+]
+
+<br /><br />
+.center[
+  .font150[
+    <a href="mailto:antonio.schettino@ugent.be"> <i class="fa fa-paper-plane fa-fw" style="font-size:30px;color:#152bda;"> </i>&nbsp; antonio.schettino@ugent.be</a><br>
+    <a href="https://asch3tti.netlify.com/"><i class="fa fa-link fa-fw" style="font-size:30px;color:black;"></i>&nbsp; asch3tti.netlify.com</a><br>
+    <a href="https://twitter.com/asch3tti"><i class="fa fa-twitter fa-fw" style="font-size:35px;color:#00aced;"></i>&nbsp; @asch3tti</a><br>
+<br />
+Slides available here: https://osf.io/8yzgq/
+  ]
+]
 
 
