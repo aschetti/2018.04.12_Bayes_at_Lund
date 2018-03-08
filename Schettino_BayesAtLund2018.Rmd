@@ -76,7 +76,7 @@ name: outline
 --
 
 .font120[
-  * pilot
+  * pilot experiment
 ]
 
 --
@@ -100,7 +100,7 @@ name: outline
 ]
 
 <!-- ################################### -->
-<!-- ############# EXAMPLE ############# -->
+<!-- ############ BACKGROUND ########### -->
 <!-- ################################### -->
 
 ---
@@ -139,7 +139,7 @@ name: clarify_example1
 --
 
 .font120[
-  * the guy in **<span style="color:blue">blue</blue></span>** was attracted to the phone...
+  * The guy in the background was attracted to the phone...
 ]
 
 --
@@ -160,7 +160,7 @@ name: clarify_example2
 <Div style="margin-top:100px" /> <!-- start below university header -->
 
 .center[
-  .font200[**Why is this important?**
+  .font200[**Why study this phenomenon?**
   ]
 ]
 
@@ -183,7 +183,7 @@ name: clarify_example2
 ]
 
 <!-- ################################### -->
-<!-- ########### EXAMPLE TOJ ########### -->
+<!-- ###### EXPERIMENTAL PARADIGM ###### -->
 <!-- ################################### -->
 ---
 name: TOJ
@@ -210,7 +210,7 @@ name: TOJ
 --
 
 .font120[
-  * Difficulty depends on the onset time between the stimuli (**SOA**)
+  * Difficulty depends on the time betwee the onset of the stimuli (**SOA**)
 ]
 
 ---
@@ -261,105 +261,150 @@ background-position: 50% 80%
 <Div style="margin-top:100px" /> <!-- start below university header -->
 
 .center[
-  .font200[**Counterproductive TOJ**]
+  .font200[**Counterproductive TOJ**
+  ]
 ]
 
 <!-- ################################### -->
-<!-- ############## PILOT ############## -->
+<!-- ######## PILOT EXPERIMENT ######### -->
 <!-- ################################### -->
 
 ---
 name: TOJ_pilot_graph
 
 background-image: url(TOJ_pilot.svg)
-background-size: 600px
-background-position: 50% 65%
+background-size: 500px
+background-position: 50% 80%
+
+<Div style="margin-top:100px" /> <!-- start below university header -->
+
+.center[
+  .font200[**Pilot experiment**
+  ]
+]
 
 <!-- incremental lists do not give me what I want (due to changes in font formatting and large spacing), -->
-<!-- that's why I'm creating new slides and duplicating the content -->
+<!-- so I create new slides and duplicate the content -->
 ---
 name: TOJ_pilot_analysis_desc1
 
-<Div style="margin-top:130px" /> 
+<Div style="margin-top:100px" /> <!-- start below university header -->
 
-## Bayesian multilevel modeling
+.center[
+  .font200[**Bayesian multilevel modeling**
+  ]
+]
 
 ---
 name: TOJ_pilot_analysis_desc2
 
-<Div style="margin-top:130px" /> 
+<Div style="margin-top:100px" /> <!-- start below university header -->
 
-## Bayesian multilevel modeling
+.center[
+  .font200[**Bayesian multilevel modeling**
+  ]
+]
 
+.font120[
 * linear mixed-effects models, random intercepts and slopes
+]
 
 ---
 name: TOJ_pilot_analysis_desc3
 
-<Div style="margin-top:130px" /> 
+<Div style="margin-top:100px" /> <!-- start below university header -->
 
-## Bayesian multilevel modeling
+.center[
+  .font200[**Bayesian multilevel modeling**
+  ]
+]
 
+.font120[
 * linear mixed-effects models, random intercepts and slopes
 * participants as group-level (= *random*) effect
+]
 
 ---
 name: TOJ_pilot_analysis_desc4
 
-<Div style="margin-top:130px" /> 
+<Div style="margin-top:100px" /> <!-- start below university header -->
 
-## Bayesian multilevel modeling
+.center[
+  .font200[**Bayesian multilevel modeling**
+  ]
+]
 
+.font120[
 * linear mixed-effects models, random intercepts and slopes
 * participants as group-level (= *random*) effect
 * **default** priors (for now)
+]
 
 ---
 name: TOJ_pilot_analysis_desc5
 
-<Div style="margin-top:130px" /> 
+<Div style="margin-top:100px" /> <!-- start below university header -->
 
-## Bayesian multilevel modeling
+.center[
+  .font200[**Bayesian multilevel modeling**
+  ]
+]
 
+.font120[
 * linear mixed-effects models, random intercepts and slopes
 * participants as group-level (= *random*) effect
 * **default** priors (for now)
 * model comparison
+]
 
 ---
 name: TOJ_pilot_analysis_desc6
 
-<Div style="margin-top:130px" /> 
+<Div style="margin-top:100px" /> <!-- start below university header -->
 
-## Bayesian multilevel modeling
+.center[
+  .font200[**Bayesian multilevel modeling**
+  ]
+]
 
+.font120[
 * linear mixed-effects models, random intercepts and slopes
 * participants as group-level (= *random*) effect
 * **default** priors (for now)
 * model comparison
   1. full model (**SOA** x **cue**)
+]
 
 ---
 name: TOJ_pilot_analysis_desc7
 
-<Div style="margin-top:130px" /> 
+<Div style="margin-top:100px" /> <!-- start below university header -->
 
-## Bayesian multilevel modeling
+.center[
+  .font200[**Bayesian multilevel modeling**
+  ]
+]
 
+.font120[
 * linear mixed-effects models, random intercepts and slopes
 * participants as group-level (= *random*) effect
 * **default** priors (for now)
 * model comparison
   1. full model (**SOA** x **cue**)
   2. main effects (**SOA** + **cue**)
+]
 
 ---
 name: TOJ_pilot_analysis_desc8
 
-<Div style="margin-top:130px" /> 
+<Div style="margin-top:100px" /> <!-- start below university header -->
 
-## Bayesian multilevel modeling
+.center[
+  .font200[**Bayesian multilevel modeling**
+  ]
+]
 
+.font120[
 * linear mixed-effects models, random intercepts and slopes
 * participants as group-level (= *random*) effect
 * **default** priors (for now)
@@ -367,14 +412,19 @@ name: TOJ_pilot_analysis_desc8
   1. full model (**SOA** x **cue**)
   2. main effects (**SOA** + **cue**)
   3. main effect of **SOA**
+]
 
 ---
 name: TOJ_pilot_analysis_desc9
 
-<Div style="margin-top:130px" /> 
+<Div style="margin-top:100px" /> <!-- start below university header -->
 
-## Bayesian multilevel modeling
+.center[
+  .font200[**Bayesian multilevel modeling**
+  ]
+]
 
+.font120[
 * linear mixed-effects models, random intercepts and slopes
 * participants as group-level (= *random*) effect
 * **default** priors (for now)
@@ -383,14 +433,19 @@ name: TOJ_pilot_analysis_desc9
   2. main effects (**SOA** + **cue**)
   3. main effect of **SOA**
   4. main effect of **cue**
+]
 
 ---
 name: TOJ_pilot_analysis_desc10
 
-<Div style="margin-top:130px" /> 
+<Div style="margin-top:100px" /> <!-- start below university header -->
 
-## Bayesian multilevel modeling
+.center[
+  .font200[**Bayesian multilevel modeling**
+  ]
+]
 
+.font120[
 * linear mixed-effects models, random intercepts and slopes
 * participants as group-level (= *random*) effect
 * **default** priors (for now)
@@ -400,6 +455,7 @@ name: TOJ_pilot_analysis_desc10
   3. main effect of **SOA**
   4. main effect of **cue**
   5. null model (intercept only)
+]
 
 ---
 
@@ -502,22 +558,33 @@ grid.draw(ACC.plot)
 
 
 ---
-name: bye
+name: thanks
+
+<Div style="margin-top:100px" /> <!-- start below university header -->
 
 .center[
-<br /><br /><br />
-.font300[**Thanks for your attention!**]
+  .font300[**Thanks for your attention!**]
 ]
 
-<br /><br />
+<br />
+
 .center[
   .font150[
     <a href="mailto:antonio.schettino@ugent.be"> <i class="fa fa-paper-plane fa-fw" style="font-size:30px;color:#152bda;"> </i>&nbsp; antonio.schettino@ugent.be</a><br>
     <a href="https://asch3tti.netlify.com/"><i class="fa fa-link fa-fw" style="font-size:30px;color:black;"></i>&nbsp; asch3tti.netlify.com</a><br>
     <a href="https://twitter.com/asch3tti"><i class="fa fa-twitter fa-fw" style="font-size:35px;color:#00aced;"></i>&nbsp; @asch3tti</a><br>
-<br />
+<br /><br />
 Slides available here: https://osf.io/8yzgq/
   ]
+]
+
+---
+name: references
+
+<Div style="margin-top:100px" /> <!-- start below university header -->
+
+.center[
+  .font200[**References**]
 ]
 
 
