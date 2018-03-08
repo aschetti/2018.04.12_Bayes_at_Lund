@@ -34,7 +34,7 @@ options(htmltools.dir.version=FALSE,
 
 layout: true
 
-<!-- set header and footer (from Schettino_UGent_CSS.css) -->
+<!-- set header and footer -->
 <div class="my-footer"><span>Antonio Schettino   
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
@@ -94,23 +94,48 @@ name: outline
 ]
 
 <!-- ################################### -->
-<!-- ############ BACKGROUND ########### -->
+<!-- ############# EXAMPLE ############# -->
 <!-- ################################### -->
 
 ---
-name: TOJ_background
+name: notification_trolling
 
-<Div style="margin-top:130px" /> <!-- start below university header -->
+<Div style="margin-top:200px" /> 
 
-## Background
+.center[
+  <body>
+  <video width="320" height="240" controls="controls" vid.autoplay="false">
+  <source src="notification_troll.mp4" type="video/mp4">
+  <object data="" width="320" height="240">
+  <embed width="320" height="240" src="notification_troll.mp4">
+  </object></video></body>
+  <br /><br /><br />
+  source: https://www.youtube.com/watch?v=0M2L9XNYfLs
+]
 
---
+---
+name: clarify_example
 
-* **attention** allows us to allocate processing resources towards *salient* information 
+<Div style="margin-top:130px" />
 
---
+## Automatic attentional orienting
 
-* 
+
+
+
+
+---
+name: clarify_example
+
+<Div style="margin-top:250px" /> 
+
+![phone](phone_flashing.gif)
+
+.right[
+![phone](phone_flashing.gif)
+]
+
+
 
 
 
@@ -317,7 +342,8 @@ background-image: url(TOJ_pilot.svg)
 background-size: 600px
 background-position: 50% 65%
 
-<!-- incremental lists are problematic (i.e., changes in font formatting) -->
+<!-- incremental lists do not give me what I want (due to changes in font formatting and large spacing), -->
+<!-- that's why I'm creating new slides and duplicating the content -->
 ---
 name: TOJ_pilot_analysis_desc1
 
@@ -378,7 +404,7 @@ name: TOJ_pilot_analysis_desc6
 * participants as group-level (= *random*) effect
 * **default** priors (for now)
 * model comparison
-  1. **full** model (**SOA** x **cue**)
+  1. full model (**SOA** x **cue**)
 
 ---
 name: TOJ_pilot_analysis_desc7
@@ -391,7 +417,7 @@ name: TOJ_pilot_analysis_desc7
 * participants as group-level (= *random*) effect
 * **default** priors (for now)
 * model comparison
-  1. **full** model (**SOA** x **cue**)
+  1. full model (**SOA** x **cue**)
   2. main effects (**SOA** + **cue**)
 
 ---
@@ -405,7 +431,7 @@ name: TOJ_pilot_analysis_desc8
 * participants as group-level (= *random*) effect
 * **default** priors (for now)
 * model comparison
-  1. **full** model (**SOA** x **cue**)
+  1. full model (**SOA** x **cue**)
   2. main effects (**SOA** + **cue**)
   3. main effect of **SOA**
 
@@ -420,7 +446,7 @@ name: TOJ_pilot_analysis_desc9
 * participants as group-level (= *random*) effect
 * **default** priors (for now)
 * model comparison
-  1. **full** model (**SOA** x **cue**)
+  1. full model (**SOA** x **cue**)
   2. main effects (**SOA** + **cue**)
   3. main effect of **SOA**
   4. main effect of **cue**
@@ -436,11 +462,11 @@ name: TOJ_pilot_analysis_desc10
 * participants as group-level (= *random*) effect
 * **default** priors (for now)
 * model comparison
-  1. **full** model (**SOA** x **cue**)
+  1. full model (**SOA** x **cue**)
   2. main effects (**SOA** + **cue**)
   3. main effect of **SOA**
   4. main effect of **cue**
-  5. **null** model
+  5. null model (intercept only)
 
 ---
 
