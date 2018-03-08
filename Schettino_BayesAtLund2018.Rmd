@@ -63,7 +63,7 @@ name: outline
 
 --
 
-* research question
+* background
 
 --
 
@@ -94,20 +94,23 @@ name: outline
 ]
 
 <!-- ################################### -->
-<!-- ######## RESEARCH QUESTION ######## -->
+<!-- ############ BACKGROUND ########### -->
 <!-- ################################### -->
 
 ---
-name: TOJ_rationale
+name: TOJ_background
 
 <Div style="margin-top:130px" /> <!-- start below university header -->
 
-## Research question
+## Background
 
 --
 
+* **attention** allows us to allocate processing resources towards *salient* information 
 
+--
 
+* 
 
 
 
