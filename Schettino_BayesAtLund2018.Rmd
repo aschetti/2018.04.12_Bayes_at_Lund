@@ -63,31 +63,37 @@ name: outline
 
 --
 
-* background
+.font120[
+  * background
+]
 
 --
 
-.font100[ <!-- text wrapped in .font100 to avoid change in font size (bug?) -->
+.font120[
   * experimental paradigm
 ]
 
 --
 
-* pilot
+.font120[
+  * pilot
+]
 
 --
 
-.font100[
+.font120[
   * experiment 1
 ]
 
 --
 
-* conclusions
+.font120[
+  * conclusions
+]
 
 --
 <!-- add collaborators picture  -->
-<Div style="margin-top:-370px" /> 
+<Div style="margin-top:-420px" /> 
 
 .right[
   ![collaborators](collaborators.jpg)
@@ -100,7 +106,14 @@ name: outline
 ---
 name: notification_trolling
 
-<Div style="margin-top:200px" /> 
+<Div style="margin-top:130px" />
+
+.center[
+  .font200[**A real-life example**
+  ]
+]
+
+<br />
 
 .center[
   <body>
@@ -109,7 +122,7 @@ name: notification_trolling
   <object data="" width="320" height="240">
   <embed width="320" height="240" src="notification_troll.mp4">
   </object></video></body>
-  <br /><br /><br />
+  <br /><br />
   source: https://www.youtube.com/watch?v=0M2L9XNYfLs
 ]
 
@@ -118,102 +131,44 @@ name: clarify_example
 
 <Div style="margin-top:130px" />
 
-## Automatic attentional orienting
+## What happened?
 
+--
 
-
-
-
----
-name: clarify_example
-
-<Div style="margin-top:250px" /> 
-
-![phone](phone_flashing.gif)
-
-.right[
-![phone](phone_flashing.gif)
+.font120[
+* the guy in **<span style="color:blue">blue</blue></span>** was attracted to the phone...
 ]
 
+--
 
+.font120[
+* ... despite *knowing* that his friend was making the notification sounds
+]
 
+--
 
+.font120[
+* His attention was **automatically** attracted to the sounds, even though they were **counterproductive**
+]
+
+--
+
+.font120[
+* How to study this phenomenon in the lab?
+]
 
 ---
-<!-- 
-.center[
-  .font150[
-    <br /><br /><br /><br />
-    **Attention** mechanisms direct (in *time* and *space*) <br />
-    our limited processing resources towards <br />
-    **salient** information to efficiently improve behavior <br />
-    (James, 1890; Posner, 1980; Sokolov, 1963)
-  ]
-]
--->
+name: TOJ
+
+<Div style="margin-top:130px" />
+
+## Temporal order judgment (TOJ)
 
 
 
 
-<!-- 
-```{r data_pilot, echo=FALSE, warning=FALSE, message=FALSE, fig.height=5.5, fig.width=5.5, dev='svg'}
-data.pilot <- read_csv("TOJ_pilot.csv") %>% # load data
-  select(participant=Participant, SOA, cue=MainConds, response=Resp) %>% # select and rename variables of interest
-  mutate(participant=as.factor(participant), # convert participant as factor
-         SOA=recode(factor(SOA), # convert SOA to factor
-                    # add "+" to positive SOAs (useful for graphs)
-                    "17"="+17",
-                    "83"="+83",
-                    "150"="+150",
-                    "217"="+217"),
-         cue=recode(factor(cue), # convert cue to factor and change level names
-                    "NoCue"="no.cue", "Horiz1st"="vertical.cued", "Vert1st"="horizontal.cued")) %>%
-  group_by(participant, SOA, cue) %>% # groups
-  summarize(num.horiz1st=length(which(response==2)), # number of "horizontal first" responses
-            tot.trials=length(response==2), # total number of trials
-            prop.horizfirst=num.horiz1st/tot.trials) %>% # proportion of "horizontal first" responses
-  ungroup() %>%
-  summarySEwithin(., # summarize data
-                  measurevar="prop.horizfirst", # dependent variable
-                  withinvars=c("SOA", "cue"), # independent variables
-                  idvar="participant") %>% # ID variable
-  select(SOA, cue, prop.horizfirst, CI95.prop=ci) # select and rename variables of interest
 
-# include annotations on x-axis
-# (https://stackoverflow.com/questions/31079210/how-can-i-add-annotations-below-the-x-axis-in-ggplot2#31081162)
-text.L <- textGrob("vertical first", gp=gpar(fontsize=14))
-text.R <- textGrob("horizontal first", gp=gpar(fontsize=14))
 
-ACC.plot <- ggplot(data.pilot, aes(SOA, prop.horizfirst, group=cue, color=cue, fill=cue)) + # basic graph
-  geom_line(size=1.3) + # lines: thickness
-  geom_ribbon(aes(ymin=prop.horizfirst-CI95.prop, ymax=prop.horizfirst+CI95.prop), # ribbons (mean +/- 95% CI)
-              color="white", # ribbon: color of external line
-              alpha=.3) + # ribbon: transparency
-  geom_point(aes(shape=cue), # points at each SOA
-             fill="white", # point shape: color fill
-             size=3) + # point shape: size
-  scale_color_manual(values=c("red", "black", "blue")) + # different line colors per conditions
-  scale_fill_manual(values=c("red", "black", "blue")) + # different ribbon colors per conditions
-  scale_x_discrete("SOA", # x-axis: title
-                   limits=levels(data.pilot$SOA)) + # x-axis: SOAs (positive are on the right)
-  ylab("prop. \"horizontal first\" responses") + # y-axis: title
-  scale_y_continuous(breaks=seq(0, 1, .25)) + # x-axis: tick marks
-  geom_hline(yintercept=seq(0, 1, .25), # reference lines
-             linetype="dotted", # line: type
-             colour="#999999", # line: color
-             size=.8, # line: thickness
-             alpha=.5) + # line: transparency
-  annotation_custom(text.L, xmin=2, xmax=2, ymin=-.2, ymax=-.2) + # annotation on x-axis
-  annotation_custom(text.R, xmin=8, xmax=8, ymin=-.2, ymax=-.2) + # annotation on x-axis
-  theme_pander(base_size=15, pc="white", lp=c(.2,.85)) + # custom theme
-  theme(plot.margin=unit(c(1, 1, 2, 1), "lines")) # make room for the annotations
-
-# override clipping
-ACC.plot <- ggplot_gtable(ggplot_build(ACC.plot))
-ACC.plot$layout$clip[ACC.plot$layout$name == "panel"] <- "off"
-grid.draw(ACC.plot)
-```
- -->
 
 
 
@@ -225,6 +180,22 @@ grid.draw(ACC.plot)
 <!-- ################################### -->
 
 ---
+name: TOJ_ready
+background-image: url("TOJ_frame.jpg")
+background-size: 700px
+background-position: 50% 80%
+
+.center[
+<br /><br /><br />
+.font200[**Counterproductive TOJ**]
+]
+
+.center[
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+.font150[**ready?**]
+]
+
+---
 name: TOJ_video
 background-image: url("TOJ_video.gif")
 background-size: 700px
@@ -232,7 +203,7 @@ background-position: 50% 80%
 
 .center[
 <br /><br /><br />
-.font200[**Counterproductive subliminal TOJ**]
+.font200[**Counterproductive TOJ**]
 ]
 
 ---
@@ -243,7 +214,7 @@ background-position: 50% 60%
 
 .center[
 <br /><br /><br />
-.font200[**Counterproductive subliminal TOJ**]
+.font200[**Counterproductive TOJ**]
 ]
 
 .center[
@@ -259,7 +230,7 @@ background-position: 50% 60%
 
 .center[
 <br /><br /><br />
-.font200[**Counterproductive subliminal TOJ**]
+.font200[**Counterproductive TOJ**]
 ]
 
 .center[
@@ -275,7 +246,7 @@ background-position: 50% 60%
 
 .center[
 <br /><br /><br />
-.font200[**Counterproductive subliminal TOJ**]
+.font200[**Counterproductive TOJ**]
 ]
 
 .center[
@@ -291,7 +262,7 @@ background-position: 50% 60%
 
 .center[
 <br /><br /><br />
-.font200[**Counterproductive subliminal TOJ**]
+.font200[**Counterproductive TOJ**]
 ]
 
 .center[
@@ -307,7 +278,7 @@ background-position: 50% 60%
 
 .center[
 <br /><br /><br />
-.font200[**Counterproductive subliminal TOJ**]
+.font200[**Counterproductive TOJ**]
 ]
 
 .center[
@@ -323,7 +294,7 @@ background-position: 50% 60%
 
 .center[
 <br /><br /><br />
-.font200[**Counterproductive subliminal TOJ**]
+.font200[**Counterproductive TOJ**]
 ]
 
 .center[
@@ -483,7 +454,65 @@ name: TOJ_pilot_analysis_desc10
 
 
 
+<!-- 
+```{r data_pilot, eval=FALSE, echo=FALSE, warning=FALSE, message=FALSE, fig.height=5.5, fig.width=5.5, dev='svg'}
+data.pilot <- read_csv("TOJ_pilot.csv") %>% # load data
+  select(participant=Participant, SOA, cue=MainConds, response=Resp) %>% # select and rename variables of interest
+  mutate(participant=as.factor(participant), # convert participant as factor
+         SOA=recode(factor(SOA), # convert SOA to factor
+                    # add "+" to positive SOAs (useful for graphs)
+                    "17"="+17",
+                    "83"="+83",
+                    "150"="+150",
+                    "217"="+217"),
+         cue=recode(factor(cue), # convert cue to factor and change level names
+                    "NoCue"="no.cue", "Horiz1st"="vertical.cued", "Vert1st"="horizontal.cued")) %>%
+  group_by(participant, SOA, cue) %>% # groups
+  summarize(num.horiz1st=length(which(response==2)), # number of "horizontal first" responses
+            tot.trials=length(response==2), # total number of trials
+            prop.horizfirst=num.horiz1st/tot.trials) %>% # proportion of "horizontal first" responses
+  ungroup() %>%
+  summarySEwithin(., # summarize data
+                  measurevar="prop.horizfirst", # dependent variable
+                  withinvars=c("SOA", "cue"), # independent variables
+                  idvar="participant") %>% # ID variable
+  select(SOA, cue, prop.horizfirst, CI95.prop=ci) # select and rename variables of interest
 
+# include annotations on x-axis
+# (https://stackoverflow.com/questions/31079210/how-can-i-add-annotations-below-the-x-axis-in-ggplot2#31081162)
+text.L <- textGrob("vertical first", gp=gpar(fontsize=14))
+text.R <- textGrob("horizontal first", gp=gpar(fontsize=14))
+
+ACC.plot <- ggplot(data.pilot, aes(SOA, prop.horizfirst, group=cue, color=cue, fill=cue)) + # basic graph
+  geom_line(size=1.3) + # lines: thickness
+  geom_ribbon(aes(ymin=prop.horizfirst-CI95.prop, ymax=prop.horizfirst+CI95.prop), # ribbons (mean +/- 95% CI)
+              color="white", # ribbon: color of external line
+              alpha=.3) + # ribbon: transparency
+  geom_point(aes(shape=cue), # points at each SOA
+             fill="white", # point shape: color fill
+             size=3) + # point shape: size
+  scale_color_manual(values=c("red", "black", "blue")) + # different line colors per conditions
+  scale_fill_manual(values=c("red", "black", "blue")) + # different ribbon colors per conditions
+  scale_x_discrete("SOA", # x-axis: title
+                   limits=levels(data.pilot$SOA)) + # x-axis: SOAs (positive are on the right)
+  ylab("prop. \"horizontal first\" responses") + # y-axis: title
+  scale_y_continuous(breaks=seq(0, 1, .25)) + # x-axis: tick marks
+  geom_hline(yintercept=seq(0, 1, .25), # reference lines
+             linetype="dotted", # line: type
+             colour="#999999", # line: color
+             size=.8, # line: thickness
+             alpha=.5) + # line: transparency
+  annotation_custom(text.L, xmin=2, xmax=2, ymin=-.2, ymax=-.2) + # annotation on x-axis
+  annotation_custom(text.R, xmin=8, xmax=8, ymin=-.2, ymax=-.2) + # annotation on x-axis
+  theme_pander(base_size=15, pc="white", lp=c(.2,.85)) + # custom theme
+  theme(plot.margin=unit(c(1, 1, 2, 1), "lines")) # make room for the annotations
+
+# override clipping
+ACC.plot <- ggplot_gtable(ggplot_build(ACC.plot))
+ACC.plot$layout$clip[ACC.plot$layout$name == "panel"] <- "off"
+grid.draw(ACC.plot)
+```
+ -->
 
 
 
