@@ -4,20 +4,20 @@ author: "Antonio Schettino<br /> <br /> Department of Experimental-Clinical & He
 date: ""
 output:
   xaringan::moon_reader:
-    css: ["default.css", "Schettino_UGent_CSS.css", "Schettino_UGent-fonts.css"]
+    chakra: libs/remark-latest.min.js
+    css: ["Schettino_UGent_CSS.css", "Schettino_UGent-fonts.css"]
     lib_dir: libs
     nature:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
       self_contained: true
-editor_options: 
-  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
 # use pacman to install and load relevant packages
 pacman::p_load("knitr", # dynamic report generation
+               "here", # constructs paths to your project's files
                "Rmisc", # for advanced summary functions
                # WARNING: "Rmisc" requires "plyr", which gives problems with group_by function in "dplyr"
                # --> solution: load "dplyr" (part of "tidyverse") after "plyr"
@@ -34,17 +34,16 @@ options(htmltools.dir.version=FALSE,
 
 layout: true
 
-<!-- set header and footer -->
+<!-- set header -->
+<div class="my-header"></div>
+
+<!-- set footer -->
 <div class="my-footer"><span>Antonio Schettino   
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 Bayes@Lund - 12.04.2018</span></div>
-
-<!-- set FontAwesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div class="my-header"></div>
 
 <!-- ################################### -->
 <!-- ############# OUTLINE ############# -->
@@ -76,13 +75,7 @@ name: outline
 --
 
 .font120[
-  * pilot experiment
-]
-
---
-
-.font120[
-  * experiment 1
+  * data and results
 ]
 
 --
@@ -93,7 +86,7 @@ name: outline
 
 --
 <!-- add collaborators picture -->
-<Div style="margin-top:-400px" />
+<Div style="margin-top:-350px" />
 
 .right[
   ![collaborators](collaborators.jpg)
@@ -115,6 +108,7 @@ name: notification_trolling
 
 <br />
 
+<!-- add video -->
 .center[
   <body>
   <video width="320" height="240" controls="controls" vid.autoplay="false">
@@ -210,7 +204,7 @@ name: TOJ
 --
 
 .font120[
-  * Difficulty depends on the time betwee the onset of the stimuli (**SOA**)
+  * Difficulty depends on the time between the onset of the stimuli (**SOA**)
 ]
 
 ---
@@ -232,7 +226,7 @@ name: TOJ_cue
 <Div style="margin-top:100px" /> <!-- start below university header -->
 
 .center[
-  .font200[**Temporal Order Judgment (TOJ)**
+  .font200[**Counterproductive TOJ**
   ]
 ]
 
@@ -266,215 +260,15 @@ background-position: 50% 80%
 ]
 
 <!-- ################################### -->
-<!-- ######## PILOT EXPERIMENT ######### -->
+<!-- ########## DATA & RESULTS ######### -->
 <!-- ################################### -->
 
----
-name: TOJ_pilot_graph
-
-background-image: url(TOJ_pilot.svg)
-background-size: 500px
-background-position: 50% 80%
-
-<Div style="margin-top:100px" /> <!-- start below university header -->
-
-.center[
-  .font200[**Pilot experiment**
-  ]
-]
-
-<!-- incremental lists do not give me what I want (due to changes in font formatting and large spacing), -->
-<!-- so I create new slides and duplicate the content -->
----
-name: TOJ_pilot_analysis_desc1
-
-<Div style="margin-top:100px" /> <!-- start below university header -->
-
-.center[
-  .font200[**Bayesian multilevel modeling**
-  ]
-]
-
----
-name: TOJ_pilot_analysis_desc2
-
-<Div style="margin-top:100px" /> <!-- start below university header -->
-
-.center[
-  .font200[**Bayesian multilevel modeling**
-  ]
-]
-
-.font120[
-* linear mixed-effects models, random intercepts and slopes
-]
-
----
-name: TOJ_pilot_analysis_desc3
-
-<Div style="margin-top:100px" /> <!-- start below university header -->
-
-.center[
-  .font200[**Bayesian multilevel modeling**
-  ]
-]
-
-.font120[
-* linear mixed-effects models, random intercepts and slopes
-* participants as group-level (= *random*) effect
-]
-
----
-name: TOJ_pilot_analysis_desc4
-
-<Div style="margin-top:100px" /> <!-- start below university header -->
-
-.center[
-  .font200[**Bayesian multilevel modeling**
-  ]
-]
-
-.font120[
-* linear mixed-effects models, random intercepts and slopes
-* participants as group-level (= *random*) effect
-* **default** priors (for now)
-]
-
----
-name: TOJ_pilot_analysis_desc5
-
-<Div style="margin-top:100px" /> <!-- start below university header -->
-
-.center[
-  .font200[**Bayesian multilevel modeling**
-  ]
-]
-
-.font120[
-* linear mixed-effects models, random intercepts and slopes
-* participants as group-level (= *random*) effect
-* **default** priors (for now)
-* model comparison
-]
-
----
-name: TOJ_pilot_analysis_desc6
-
-<Div style="margin-top:100px" /> <!-- start below university header -->
-
-.center[
-  .font200[**Bayesian multilevel modeling**
-  ]
-]
-
-.font120[
-* linear mixed-effects models, random intercepts and slopes
-* participants as group-level (= *random*) effect
-* **default** priors (for now)
-* model comparison
-  1. full model (**SOA** x **cue**)
-]
-
----
-name: TOJ_pilot_analysis_desc7
-
-<Div style="margin-top:100px" /> <!-- start below university header -->
-
-.center[
-  .font200[**Bayesian multilevel modeling**
-  ]
-]
-
-.font120[
-* linear mixed-effects models, random intercepts and slopes
-* participants as group-level (= *random*) effect
-* **default** priors (for now)
-* model comparison
-  1. full model (**SOA** x **cue**)
-  2. main effects (**SOA** + **cue**)
-]
-
----
-name: TOJ_pilot_analysis_desc8
-
-<Div style="margin-top:100px" /> <!-- start below university header -->
-
-.center[
-  .font200[**Bayesian multilevel modeling**
-  ]
-]
-
-.font120[
-* linear mixed-effects models, random intercepts and slopes
-* participants as group-level (= *random*) effect
-* **default** priors (for now)
-* model comparison
-  1. full model (**SOA** x **cue**)
-  2. main effects (**SOA** + **cue**)
-  3. main effect of **SOA**
-]
-
----
-name: TOJ_pilot_analysis_desc9
-
-<Div style="margin-top:100px" /> <!-- start below university header -->
-
-.center[
-  .font200[**Bayesian multilevel modeling**
-  ]
-]
-
-.font120[
-* linear mixed-effects models, random intercepts and slopes
-* participants as group-level (= *random*) effect
-* **default** priors (for now)
-* model comparison
-  1. full model (**SOA** x **cue**)
-  2. main effects (**SOA** + **cue**)
-  3. main effect of **SOA**
-  4. main effect of **cue**
-]
-
----
-name: TOJ_pilot_analysis_desc10
-
-<Div style="margin-top:100px" /> <!-- start below university header -->
-
-.center[
-  .font200[**Bayesian multilevel modeling**
-  ]
-]
-
-.font120[
-* linear mixed-effects models, random intercepts and slopes
-* participants as group-level (= *random*) effect
-* **default** priors (for now)
-* model comparison
-  1. full model (**SOA** x **cue**)
-  2. main effects (**SOA** + **cue**)
-  3. main effect of **SOA**
-  4. main effect of **cue**
-  5. null model (intercept only)
-]
-
----
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-<!-- 
-```{r data_pilot, eval=FALSE, echo=FALSE, warning=FALSE, message=FALSE, fig.height=5.5, fig.width=5.5, dev='svg'}
-data.pilot <- read_csv("TOJ_pilot.csv") %>% # load data
+<!--
+```{r TOJ_exp1, eval=FALSE, echo=FALSE, warning=FALSE, message=FALSE, fig.height=5.5, fig.width=5.5, dev='svg'}
+data.exp1 <- read_csv("TOJ_exp1.csv") %>% # load data
   select(participant=Participant, SOA, cue=MainConds, response=Resp) %>% # select and rename variables of interest
   mutate(participant=as.factor(participant), # convert participant as factor
          SOA=recode(factor(SOA), # convert SOA to factor
@@ -501,7 +295,7 @@ data.pilot <- read_csv("TOJ_pilot.csv") %>% # load data
 text.L <- textGrob("vertical first", gp=gpar(fontsize=14))
 text.R <- textGrob("horizontal first", gp=gpar(fontsize=14))
 
-ACC.plot <- ggplot(data.pilot, aes(SOA, prop.horizfirst, group=cue, color=cue, fill=cue)) + # basic graph
+ACC.plot <- ggplot(data.exp1, aes(SOA, prop.horizfirst, group=cue, color=cue, fill=cue)) + # basic graph
   geom_line(size=1.3) + # lines: thickness
   geom_ribbon(aes(ymin=prop.horizfirst-CI95.prop, ymax=prop.horizfirst+CI95.prop), # ribbons (mean +/- 95% CI)
               color="white", # ribbon: color of external line
@@ -512,7 +306,7 @@ ACC.plot <- ggplot(data.pilot, aes(SOA, prop.horizfirst, group=cue, color=cue, f
   scale_color_manual(values=c("red", "black", "blue")) + # different line colors per conditions
   scale_fill_manual(values=c("red", "black", "blue")) + # different ribbon colors per conditions
   scale_x_discrete("SOA", # x-axis: title
-                   limits=levels(data.pilot$SOA)) + # x-axis: SOAs (positive are on the right)
+                   limits=levels(data.exp1$SOA)) + # x-axis: SOAs (positive are on the right)
   ylab("prop. \"horizontal first\" responses") + # y-axis: title
   scale_y_continuous(breaks=seq(0, 1, .25)) + # x-axis: tick marks
   geom_hline(yintercept=seq(0, 1, .25), # reference lines
@@ -530,7 +324,550 @@ ACC.plot <- ggplot_gtable(ggplot_build(ACC.plot))
 ACC.plot$layout$clip[ACC.plot$layout$name == "panel"] <- "off"
 grid.draw(ACC.plot)
 ```
- -->
+-->
+
+
+
+
+---
+name: TOJ_graph
+
+background-image: url(TOJ_graph.svg)
+background-size: 450px
+background-position: 50% 80%
+
+<Div style="margin-top:100px" /> <!-- start below university header -->
+
+.center[
+  .font200[**Data**
+  ]
+]
+
+<!-- Incremental lists do not give me what I want (due to changes in font formatting and large spacing), -->
+<!-- so I created new slides and duplicated the content... not elegant, but effective. -->
+---
+name: TOJ_analysis_desc1
+
+<Div style="margin-top:100px" /> <!-- start below university header -->
+
+.center[
+  .font200[**Bayesian multilevel modeling**
+  ]
+]
+
+---
+name: TOJ_analysis_desc2
+
+<Div style="margin-top:100px" /> <!-- start below university header -->
+
+.center[
+  .font200[**Bayesian multilevel modeling**
+  ]
+]
+
+.font120[
+* logistic regression
+]
+
+---
+name: TOJ_analysis_desc3
+
+<Div style="margin-top:100px" /> <!-- start below university header -->
+
+.center[
+  .font200[**Bayesian multilevel modeling**
+  ]
+]
+
+.font120[
+* logistic regression
+* linear mixed-effects models with random intercepts and slopes
+]
+
+---
+name: TOJ_analysis_desc4
+
+<Div style="margin-top:100px" /> <!-- start below university header -->
+
+.center[
+  .font200[**Bayesian multilevel modeling**
+  ]
+]
+
+.font120[
+* logistic regression
+* linear mixed-effects models with random intercepts and slopes
+* participants as group-level (= *random*) effect
+]
+
+---
+name: TOJ_analysis_desc5
+
+<Div style="margin-top:100px" /> <!-- start below university header -->
+
+.center[
+  .font200[**Bayesian multilevel modeling**
+  ]
+]
+
+.font120[
+* logistic regression
+* linear mixed-effects models with random intercepts and slopes
+* participants as group-level (= *random*) effect
+* **highly informative priors** (from a pilot study)
+]
+
+---
+name: TOJ_analysis_desc6
+
+<Div style="margin-top:100px" /> <!-- start below university header -->
+
+.center[
+  .font200[**Bayesian multilevel modeling**
+  ]
+]
+
+.font120[
+* logistic regression
+* linear mixed-effects models with random intercepts and slopes
+* participants as group-level (= *random*) effect
+* **highly informative priors** (from a pilot study)
+* model comparison
+]
+
+---
+name: TOJ_analysis_desc7
+
+<Div style="margin-top:100px" /> <!-- start below university header -->
+
+.center[
+  .font200[**Bayesian multilevel modeling**
+  ]
+]
+
+.font120[
+* logistic regression
+* linear mixed-effects models with random intercepts and slopes
+* participants as group-level (= *random*) effect
+* **highly informative priors** (from a pilot study)
+* model comparison
+  1. full model (**SOA** x **cue**)
+]
+
+---
+name: TOJ_analysis_desc8
+
+<Div style="margin-top:100px" /> <!-- start below university header -->
+
+.center[
+  .font200[**Bayesian multilevel modeling**
+  ]
+]
+
+.font120[
+* logistic regression
+* linear mixed-effects models with random intercepts and slopes
+* participants as group-level (= *random*) effect
+* **highly informative priors** (from a pilot study)
+* model comparison
+  1. full model (**SOA** x **cue**)
+  2. main effects (**SOA** + **cue**)
+]
+
+---
+name: TOJ_analysis_desc9
+
+<Div style="margin-top:100px" /> <!-- start below university header -->
+
+.center[
+  .font200[**Bayesian multilevel modeling**
+  ]
+]
+
+.font120[
+* logistic regression
+* linear mixed-effects models with random intercepts and slopes
+* participants as group-level (= *random*) effect
+* **highly informative priors** (from a pilot study)
+* model comparison
+  1. full model (**SOA** x **cue**)
+  2. main effects (**SOA** + **cue**)
+  3. main effect of **SOA**
+]
+
+---
+name: TOJ_analysis_desc10
+
+<Div style="margin-top:100px" /> <!-- start below university header -->
+
+.center[
+  .font200[**Bayesian multilevel modeling**
+  ]
+]
+
+.font120[
+* logistic regression
+* linear mixed-effects models with random intercepts and slopes
+* participants as group-level (= *random*) effect
+* **highly informative priors** (from a pilot study)
+* model comparison
+  1. full model (**SOA** x **cue**)
+  2. main effects (**SOA** + **cue**)
+  3. main effect of **SOA**
+  4. main effect of **cue**
+]
+
+---
+name: TOJ_analysis_desc11
+
+<Div style="margin-top:100px" /> <!-- start below university header -->
+
+.center[
+  .font200[**Bayesian multilevel modeling**
+  ]
+]
+
+.font120[
+* logistic regression
+* linear mixed-effects models with random intercepts and slopes
+* participants as group-level (= *random*) effect
+* **highly informative priors** (from a pilot study)
+* model comparison
+  1. full model (**SOA** x **cue**)
+  2. main effects (**SOA** + **cue**)
+  3. main effect of **SOA**
+  4. main effect of **cue**
+  5. null model (intercept only)
+]
+
+<!-- ###################################### -->
+<!-- Example of model specification in brms -->
+<!-- ###################################### -->
+---
+name: TOJ_analysis_model
+
+<Div style="margin-top:100px" /> <!-- start below university header -->
+
+.center[
+  .font200[**Bayesian multilevel modeling with ```brms```**
+  ]
+]
+
+```r
+##################### full model (SOA * cue) #####################
+model.full <- brm(num.horiz1st | trials(tot.trials) ~ conditions +
+              (conditions || participant), 
+              data=data.TOJ,
+              family=binomial("logit"),
+              prior=priors.full,
+              sample_prior=TRUE,
+              inits="random",
+              control=list(adapt_delta=.9),
+              chains=4,
+              iter=2000,
+              warmup=500,
+              thin=1,
+              algorithm="sampling",
+              cores=4,
+              seed=42)
+```
+
+---
+name: TOJ_analysis_model_highlight1
+
+<Div style="margin-top:100px" /> <!-- start below university header -->
+
+.center[
+  .font200[**Bayesian multilevel modeling with ```brms```**
+  ]
+]
+
+<!-- Dependent variable: number of trials in which participants responded "horizontal first" over all trials. -->
+<!-- Population-level (= fixed) effects: one column with all condition combinations. -->
+```r
+##################### full model (SOA * cue) #####################
+*   model.full <- brm(num.horiz1st | trials(tot.trials) ~ conditions +
+              (conditions || participant),
+              data=data.TOJ,
+              family=binomial("logit"),
+              prior=priors.full,
+              sample_prior=TRUE,
+              inits="random",
+              control=list(adapt_delta=.9),
+              chains=4,
+              iter=2000,
+              warmup=500,
+              thin=1,
+              algorithm="sampling",
+              cores=4,
+              seed=42)
+```
+
+---
+name: TOJ_analysis_model_highlight2
+
+<Div style="margin-top:100px" /> <!-- start below university header -->
+
+.center[
+  .font200[**Bayesian multilevel modeling with ```brms```**
+  ]
+]
+
+<!-- Group-level (= random) effects: allow intercepts and slopes to vary across participants. -->
+<!-- What does it **practically** mean? For example: -->
+<!-- - participant 1 could overall be slower than participant 2; or -->
+<!-- - participant 17 could be faster at SOA 217 but slower at SOA150 compared to participant 19; -->
+<!-- - ... you get the idea. -->
+<!-- Here, || is used to prevent group-level correlations from being modeled. -->
+```r
+##################### full model (SOA * cue) #####################
+model.full <- brm(num.horiz1st | trials(tot.trials) ~ conditions +
+*                (conditions || participant),
+              data=data.TOJ,
+              family=binomial("logit"),
+              prior=priors.full,
+              sample_prior=TRUE,
+              inits="random",
+              control=list(adapt_delta=.9),
+              chains=4,
+              iter=2000,
+              warmup=500,
+              thin=1,
+              algorithm="sampling",
+              cores=4,
+              seed=42)
+```
+
+---
+name: TOJ_analysis_model_highlight3
+
+<Div style="margin-top:100px" /> <!-- start below university header -->
+
+.center[
+  .font200[**Bayesian multilevel modeling with ```brms```**
+  ]
+]
+
+<!-- Your data. -->
+```r
+##################### full model (SOA * cue) #####################
+model.full <- brm(num.horiz1st | trials(tot.trials) ~ conditions +
+              (conditions || participant),
+*                data=data.TOJ,
+              family=binomial("logit"),
+              prior=priors.full,
+              sample_prior=TRUE,
+              inits="random",
+              control=list(adapt_delta=.9),
+              chains=4,
+              iter=2000,
+              warmup=500,
+              thin=1,
+              algorithm="sampling",
+              cores=4,
+              seed=42)
+```
+
+---
+name: TOJ_analysis_model_highlight4
+
+<Div style="margin-top:100px" /> <!-- start below university header -->
+
+.center[
+  .font200[**Bayesian multilevel modeling with ```brms```**
+  ]
+]
+
+<!-- The likelihood function. -->
+<!-- The data are a bunch of 0s and 1s (the participant did/didn't respond "horizontal first"), hence the binomial distribution. -->
+<!-- Why 'logit' link? coefficients can be interpreted in terms of odds ratios. -->
+```r
+##################### full model (SOA * cue) #####################
+model.full <- brm(num.horiz1st | trials(tot.trials) ~ conditions +
+              (conditions || participant),
+              data=data.TOJ,
+*                family=binomial("logit"),
+              prior=priors.full,
+              sample_prior=TRUE,
+              inits="random",
+              control=list(adapt_delta=.9),
+              chains=4,
+              iter=2000,
+              warmup=500,
+              thin=1,
+              algorithm="sampling",
+              cores=4,
+              seed=42)
+```
+
+---
+name: TOJ_analysis_model_highlight5
+
+<Div style="margin-top:100px" /> <!-- start below university header -->
+
+.center[
+  .font200[**Bayesian multilevel modeling with ```brms```**
+  ]
+]
+
+<!-- Highly informative priors! What are they? -->
+<!-- We ran a pilot study identical to this one, fitted this same mode (with default priors), -->
+<!-- and used the **posterior** distributions of those parameters as **priors** for this model. -->
+<!-- In brms, use the function 'set_prior'. -->
+```r
+##################### full model (SOA * cue) #####################
+model.full <- brm(num.horiz1st | trials(tot.trials) ~ conditions +
+              (conditions || participant),
+              data=data.TOJ,
+              family=binomial("logit"),
+*                prior=priors.full,
+              sample_prior=TRUE,
+              inits="random",
+              control=list(adapt_delta=.9),
+              chains=4,
+              iter=2000,
+              warmup=500,
+              thin=1,
+              algorithm="sampling",
+              cores=4,
+              seed=42)
+```
+
+---
+name: TOJ_analysis_model_highlight6
+
+<Div style="margin-top:100px" /> <!-- start below university header -->
+
+.center[
+  .font200[**Bayesian multilevel modeling with ```brms```**
+  ]
+]
+
+<!-- Extract samples from the priors, they will be useful later on. -->
+```r
+##################### full model (SOA * cue) #####################
+model.full <- brm(num.horiz1st | trials(tot.trials) ~ conditions +
+              (conditions || participant),
+              data=data.TOJ,
+              family=binomial("logit"),
+              prior=priors.full,
+*                sample_prior=TRUE,
+              inits="random",
+              control=list(adapt_delta=.9),
+              chains=4,
+              iter=2000,
+              warmup=500,
+              thin=1,
+              algorithm="sampling",
+              cores=4,
+              seed=42)
+```
+
+---
+name: TOJ_analysis_model_highlight7
+
+<Div style="margin-top:100px" /> <!-- start below university header -->
+
+.center[
+  .font200[**Bayesian multilevel modeling with ```brms```**
+  ]
+]
+
+<!-- These settings refer to the No-U-Turn-Sampler (NUTS) in STAN: -->
+<!-- - inits: initial parameter values in the Markov-Chain Monte Carlo (MCMC) chains; -->
+<!-- - control: steps of the NUTS sampler; -->
+<!-- - chains: number of MCMC chains; -->
+<!-- - iter: number of iterations for each MCMC chain; -->
+<!-- - warmup: number of burn-in samples; -->
+<!-- - thin: thinning rate; -->
+<!-- - algorithm: type of sampling algorithm; -->
+<!-- - cores: numer of processor cores for parallel computations; -->
+<!-- - seed: seed for RNG (to ensure reproducible results). -->
+<!-- For details, see help(brm). -->
+```r
+##################### full model (SOA * cue) #####################
+model.full <- brm(num.horiz1st | trials(tot.trials) ~ conditions +
+              (conditions || participant),
+              data=data.TOJ,
+              family=binomial("logit"),
+              prior=priors.full,
+              sample_prior=TRUE,
+*             inits="random",
+*             control=list(adapt_delta=.9),
+*             chains=4,
+*             iter=2000,
+*             warmup=500,
+*             thin=1,
+*             algorithm="sampling",
+*             cores=4,
+*             seed=42)
+```
+
+---
+name: TOJ_analysis_model_highlight8
+
+<Div style="margin-top:100px" /> <!-- start below university header -->
+
+.center[
+  .font200[**Bayesian multilevel modeling with ```brms```**
+  ]
+]
+
+<!-- To specify the other models, change the name of the independent variable -->
+<!-- and set the priors of the appropriate model. -->
+```r
+##################### main effect of SOA #####################
+*   model.full <- brm(num.horiz1st | trials(tot.trials) ~ SOA +
+              (conditions || participant),
+              data=data.TOJ,
+              family=binomial("logit"),
+*                 prior=priors.SOA,
+              sample_prior=TRUE,
+              inits="random",
+              control=list(adapt_delta=.9),
+              chains=4,
+              iter=2000,
+              warmup=500,
+              thin=1,
+              algorithm="sampling",
+              cores=4,
+              seed=42)
+```
+
+---
+
+
+
+
+
+
+```{r model_SOA, echo=FALSE, warning=FALSE, message=FALSE}
+# load results model
+model.SOA <- readRDS(here::here("model_logi_SOA.rds"))
+model.SOA
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -560,6 +897,9 @@ grid.draw(ACC.plot)
 ---
 name: thanks
 
+<!-- set FontAwesome icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <Div style="margin-top:100px" /> <!-- start below university header -->
 
 .center[
@@ -578,13 +918,6 @@ Slides available here: https://osf.io/8yzgq/
   ]
 ]
 
----
-name: references
-
-<Div style="margin-top:100px" /> <!-- start below university header -->
-
-.center[
-  .font200[**References**]
-]
-
-
+<!-- ################################### -->
+<!-- ############## END ################ -->
+<!-- ################################### -->
