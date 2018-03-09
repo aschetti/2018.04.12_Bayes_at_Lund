@@ -1,7 +1,6 @@
 # Startup
 
 .First <- function(){ # at startup
-  options(servr.daemon=TRUE) # daemonized mode (showing slides does not block R session)
   pkgdir <- "E:/R_workspace/packages" # set package directory
   .libPaths(c(pkgdir,.libPaths())) # add package directory
   # if (!require("pacman")) install.packages("pacman",dependencies=TRUE,lib=pkgdir) # install pacman if not already present
