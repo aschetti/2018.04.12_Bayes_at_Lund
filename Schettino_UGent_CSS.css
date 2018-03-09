@@ -129,6 +129,7 @@
   padding: 4px;
 }
 
+/* add header */
 div.my-header {
   background-color: #FAFAFA;
   background: url(logos.png) no-repeat;
@@ -140,6 +141,7 @@ div.my-header {
   width: 100%;
 }
 
+/* add footer */
 div.my-footer {
   background-color: #3348ed;
   position: absolute;
