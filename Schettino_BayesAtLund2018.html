@@ -4,6 +4,8 @@
     <title>Analyzing an experiment on   involuntary attention using brms</title>
     <meta charset="utf-8">
     <meta name="author" content="Antonio Schettino    Department of Experimental-Clinical &amp; Health Psychology  Ghent University" />
+    <link rel="stylesheet" href="default.css" type="text/css" />
+    <link rel="stylesheet" href="hygge.css" type="text/css" />
     <link rel="stylesheet" href="Schettino_UGent_CSS.css" type="text/css" />
     <link rel="stylesheet" href="Schettino_UGent-fonts.css" type="text/css" />
   </head>
@@ -39,7 +41,7 @@ Bayes@Lund - 12.04.2018&lt;/span&gt;&lt;/div&gt;
 ---
 name: outline
 
-&lt;Div style="margin-top:100px" /&gt; &lt;!-- start below university header --&gt;
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .left[
   .font200[
@@ -47,25 +49,17 @@ name: outline
   ]
 ]
 
---
-
 .font120[
   * background
 ]
-
---
 
 .font120[
   * experimental paradigm
 ]
 
---
-
 .font120[
   * data and results
 ]
-
---
 
 .font120[
   * conclusions
@@ -73,7 +67,7 @@ name: outline
 
 --
 &lt;!-- add collaborators picture --&gt;
-&lt;Div style="margin-top:-350px" /&gt;
+&lt;Div style="margin-top:-330px" /&gt;
 
 .right[
   ![collaborators](collaborators.jpg)
@@ -86,7 +80,7 @@ name: outline
 ---
 name: notification_trolling
 
-&lt;Div style="margin-top:100px" /&gt; &lt;!-- start below university header --&gt;
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
   .font200[**Involuntary attention**
@@ -110,7 +104,7 @@ name: notification_trolling
 ---
 name: clarify_example1
 
-&lt;Div style="margin-top:100px" /&gt; &lt;!-- start below university header --&gt;
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
   .font200[**What happened?**
@@ -138,7 +132,7 @@ name: clarify_example1
 ---
 name: clarify_example2
 
-&lt;Div style="margin-top:100px" /&gt; &lt;!-- start below university header --&gt;
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
   .font200[**Why study this phenomenon?**
@@ -169,7 +163,7 @@ name: clarify_example2
 ---
 name: TOJ
 
-&lt;Div style="margin-top:100px" /&gt; &lt;!-- start below university header --&gt;
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
   .font200[**Temporal Order Judgment (TOJ)**
@@ -200,7 +194,7 @@ background-image: url("TOJ_video.gif")
 background-size: 700px
 background-position: 50% 65%
 
-&lt;Div style="margin-top:100px" /&gt; &lt;!-- start below university header --&gt;
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
   .font200[**Temporal Order Judgment (TOJ)**
@@ -210,7 +204,7 @@ background-position: 50% 65%
 ---
 name: TOJ_cue
 
-&lt;Div style="margin-top:100px" /&gt; &lt;!-- start below university header --&gt;
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
   .font200[**Counterproductive TOJ**
@@ -239,7 +233,7 @@ background-image: url("TOJ_video_cue.gif")
 background-size: 700px
 background-position: 50% 80%
 
-&lt;Div style="margin-top:100px" /&gt; &lt;!-- start below university header --&gt;
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
   .font200[**Counterproductive TOJ**
@@ -250,8 +244,70 @@ background-position: 50% 80%
 &lt;!-- ########## DATA &amp; RESULTS ######### --&gt;
 &lt;!-- ################################### --&gt;
 
+---
+name: TOJ_data
+
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
+
+.center[
+  .font200[**Data**
+  ]
+]
 
 
+```
+## # A tibble: 14,141 x 4
+##    participant SOA   cue             response
+##    &lt;fct&gt;       &lt;fct&gt; &lt;fct&gt;              &lt;int&gt;
+##  1 1           +150  no.cue                 2
+##  2 1           +83   no.cue                 2
+##  3 1           +217  no.cue                 2
+##  4 1           -83   horizontal.cued        8
+##  5 1           -217  no.cue                 8
+##  6 1           -150  no.cue                 8
+##  7 1           +150  vertical.cued          2
+##  8 1           -83   horizontal.cued        2
+##  9 1           -150  no.cue                 8
+## 10 1           +150  no.cue                 2
+## # ... with 14,131 more rows
+```
+
+&lt;Div style="margin-top:-350px" /&gt;
+
+--
+
+.right[
+  .font120[31 participants
+  ]
+]
+
+--
+
+.right[
+  .font120[5 SOAs
+  ]
+]
+
+--
+
+.right[
+  .font120[3 cue conditions
+  ]
+]
+
+--
+
+.right[
+  .font120[*"2"*: horizontal first
+  ]
+]
+
+--
+
+.right[
+  .font120[*"8"*: vertical first
+  ]
+]
 
 &lt;!--
 
@@ -267,10 +323,10 @@ background-image: url(TOJ_graph.svg)
 background-size: 450px
 background-position: 50% 80%
 
-&lt;Div style="margin-top:100px" /&gt; &lt;!-- start below university header --&gt;
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
-  .font200[**Data**
+  .font200[**Graph**
   ]
 ]
 
@@ -279,7 +335,7 @@ background-position: 50% 80%
 ---
 name: TOJ_analysis_desc1
 
-&lt;Div style="margin-top:100px" /&gt; &lt;!-- start below university header --&gt;
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
   .font200[**Bayesian multilevel modeling**
@@ -289,7 +345,7 @@ name: TOJ_analysis_desc1
 ---
 name: TOJ_analysis_desc2
 
-&lt;Div style="margin-top:100px" /&gt; &lt;!-- start below university header --&gt;
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
   .font200[**Bayesian multilevel modeling**
@@ -303,7 +359,7 @@ name: TOJ_analysis_desc2
 ---
 name: TOJ_analysis_desc3
 
-&lt;Div style="margin-top:100px" /&gt; &lt;!-- start below university header --&gt;
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
   .font200[**Bayesian multilevel modeling**
@@ -312,13 +368,13 @@ name: TOJ_analysis_desc3
 
 .font120[
 * logistic regression
-* linear mixed-effects models with random intercepts and slopes
+* multilevel models with random intercepts and slopes on *participants*
 ]
 
 ---
 name: TOJ_analysis_desc4
 
-&lt;Div style="margin-top:100px" /&gt; &lt;!-- start below university header --&gt;
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
   .font200[**Bayesian multilevel modeling**
@@ -327,14 +383,14 @@ name: TOJ_analysis_desc4
 
 .font120[
 * logistic regression
-* linear mixed-effects models with random intercepts and slopes
-* participants as group-level (= *random*) effect
+* multilevel models with random intercepts and slopes on *participants*
+* **highly informative priors** (from a pilot study)
 ]
 
 ---
 name: TOJ_analysis_desc5
 
-&lt;Div style="margin-top:100px" /&gt; &lt;!-- start below university header --&gt;
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
   .font200[**Bayesian multilevel modeling**
@@ -343,15 +399,15 @@ name: TOJ_analysis_desc5
 
 .font120[
 * logistic regression
-* linear mixed-effects models with random intercepts and slopes
-* participants as group-level (= *random*) effect
+* multilevel models with random intercepts and slopes on *participants*
 * **highly informative priors** (from a pilot study)
+* model comparison:
 ]
 
 ---
 name: TOJ_analysis_desc6
 
-&lt;Div style="margin-top:100px" /&gt; &lt;!-- start below university header --&gt;
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
   .font200[**Bayesian multilevel modeling**
@@ -360,16 +416,16 @@ name: TOJ_analysis_desc6
 
 .font120[
 * logistic regression
-* linear mixed-effects models with random intercepts and slopes
-* participants as group-level (= *random*) effect
+* multilevel models with random intercepts and slopes on *participants*
 * **highly informative priors** (from a pilot study)
-* model comparison
+* model comparison:
+  1. full model (**SOA** x **cue**)
 ]
 
 ---
 name: TOJ_analysis_desc7
 
-&lt;Div style="margin-top:100px" /&gt; &lt;!-- start below university header --&gt;
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
   .font200[**Bayesian multilevel modeling**
@@ -378,17 +434,17 @@ name: TOJ_analysis_desc7
 
 .font120[
 * logistic regression
-* linear mixed-effects models with random intercepts and slopes
-* participants as group-level (= *random*) effect
+* multilevel models with random intercepts and slopes on *participants*
 * **highly informative priors** (from a pilot study)
-* model comparison
+* model comparison:
   1. full model (**SOA** x **cue**)
+  2. main effects (**SOA** + **cue**)
 ]
 
 ---
 name: TOJ_analysis_desc8
 
-&lt;Div style="margin-top:100px" /&gt; &lt;!-- start below university header --&gt;
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
   .font200[**Bayesian multilevel modeling**
@@ -397,18 +453,18 @@ name: TOJ_analysis_desc8
 
 .font120[
 * logistic regression
-* linear mixed-effects models with random intercepts and slopes
-* participants as group-level (= *random*) effect
+* multilevel models with random intercepts and slopes on *participants*
 * **highly informative priors** (from a pilot study)
-* model comparison
+* model comparison:
   1. full model (**SOA** x **cue**)
   2. main effects (**SOA** + **cue**)
+  3. main effect of **SOA**
 ]
 
 ---
 name: TOJ_analysis_desc9
 
-&lt;Div style="margin-top:100px" /&gt; &lt;!-- start below university header --&gt;
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
   .font200[**Bayesian multilevel modeling**
@@ -417,19 +473,19 @@ name: TOJ_analysis_desc9
 
 .font120[
 * logistic regression
-* linear mixed-effects models with random intercepts and slopes
-* participants as group-level (= *random*) effect
+* multilevel models with random intercepts and slopes on *participants*
 * **highly informative priors** (from a pilot study)
-* model comparison
+* model comparison:
   1. full model (**SOA** x **cue**)
   2. main effects (**SOA** + **cue**)
   3. main effect of **SOA**
+  4. main effect of **cue**
 ]
 
 ---
 name: TOJ_analysis_desc10
 
-&lt;Div style="margin-top:100px" /&gt; &lt;!-- start below university header --&gt;
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
   .font200[**Bayesian multilevel modeling**
@@ -438,37 +494,86 @@ name: TOJ_analysis_desc10
 
 .font120[
 * logistic regression
-* linear mixed-effects models with random intercepts and slopes
-* participants as group-level (= *random*) effect
+* multilevel models with random intercepts and slopes on *participants*
 * **highly informative priors** (from a pilot study)
-* model comparison
-  1. full model (**SOA** x **cue**)
-  2. main effects (**SOA** + **cue**)
-  3. main effect of **SOA**
-  4. main effect of **cue**
-]
-
----
-name: TOJ_analysis_desc11
-
-&lt;Div style="margin-top:100px" /&gt; &lt;!-- start below university header --&gt;
-
-.center[
-  .font200[**Bayesian multilevel modeling**
-  ]
-]
-
-.font120[
-* logistic regression
-* linear mixed-effects models with random intercepts and slopes
-* participants as group-level (= *random*) effect
-* **highly informative priors** (from a pilot study)
-* model comparison
+* model comparison:
   1. full model (**SOA** x **cue**)
   2. main effects (**SOA** + **cue**)
   3. main effect of **SOA**
   4. main effect of **cue**
   5. null model (intercept only)
+]
+
+---
+name: TOJ_analysis_desc11
+
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
+
+.center[
+  .font200[**Bayesian multilevel modeling**
+  ]
+]
+
+.font120[
+* logistic regression
+* multilevel models with random intercepts and slopes on *participants*
+* **highly informative priors** (from a pilot study)
+* model comparison:
+  1. full model (**SOA** x **cue**)
+  2. main effects (**SOA** + **cue**)
+  3. main effect of **SOA**
+  4. main effect of **cue**
+  5. null model (intercept only)
+* on the winning model:
+]
+
+---
+name: TOJ_analysis_desc12
+
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
+
+.center[
+  .font200[**Bayesian multilevel modeling**
+  ]
+]
+
+.font120[
+* logistic regression
+* multilevel models with random intercepts and slopes on *participants*
+* **highly informative priors** (from a pilot study)
+* model comparison:
+  1. full model (**SOA** x **cue**)
+  2. main effects (**SOA** + **cue**)
+  3. main effect of **SOA**
+  4. main effect of **cue**
+  5. null model (intercept only)
+* on the winning model:
+  - diagnostics &amp; posterior predictive checks
+]
+
+---
+name: TOJ_analysis_desc13
+
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
+
+.center[
+  .font200[**Bayesian multilevel modeling**
+  ]
+]
+
+.font120[
+* logistic regression
+* multilevel models with random intercepts and slopes on *participants*
+* **highly informative priors** (from a pilot study)
+* model comparison:
+  1. full model (**SOA** x **cue**)
+  2. main effects (**SOA** + **cue**)
+  3. main effect of **SOA**
+  4. main effect of **cue**
+  5. null model (intercept only)
+* on the winning model:
+  - diagnostics &amp; posterior predictive checks
+  - hypothesis testing
 ]
 
 &lt;!-- ###################################### --&gt;
@@ -477,7 +582,7 @@ name: TOJ_analysis_desc11
 ---
 name: TOJ_analysis_model
 
-&lt;Div style="margin-top:100px" /&gt; &lt;!-- start below university header --&gt;
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
   .font200[**Bayesian multilevel modeling with ```brms```**
@@ -500,13 +605,13 @@ model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ conditions +
               thin=1,
               algorithm="sampling",
               cores=4,
-              seed=42)
+              seed=9001)
 ```
 
 ---
 name: TOJ_analysis_model_highlight1
 
-&lt;Div style="margin-top:100px" /&gt; &lt;!-- start below university header --&gt;
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
   .font200[**Bayesian multilevel modeling with ```brms```**
@@ -531,13 +636,13 @@ name: TOJ_analysis_model_highlight1
               thin=1,
               algorithm="sampling",
               cores=4,
-              seed=42)
+              seed=9001)
 ```
 
 ---
 name: TOJ_analysis_model_highlight2
 
-&lt;Div style="margin-top:100px" /&gt; &lt;!-- start below university header --&gt;
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
   .font200[**Bayesian multilevel modeling with ```brms```**
@@ -566,13 +671,13 @@ model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ conditions +
               thin=1,
               algorithm="sampling",
               cores=4,
-              seed=42)
+              seed=9001)
 ```
 
 ---
 name: TOJ_analysis_model_highlight3
 
-&lt;Div style="margin-top:100px" /&gt; &lt;!-- start below university header --&gt;
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
   .font200[**Bayesian multilevel modeling with ```brms```**
@@ -596,13 +701,13 @@ model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ conditions +
               thin=1,
               algorithm="sampling",
               cores=4,
-              seed=42)
+              seed=9001)
 ```
 
 ---
 name: TOJ_analysis_model_highlight4
 
-&lt;Div style="margin-top:100px" /&gt; &lt;!-- start below university header --&gt;
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
   .font200[**Bayesian multilevel modeling with ```brms```**
@@ -628,13 +733,13 @@ model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ conditions +
               thin=1,
               algorithm="sampling",
               cores=4,
-              seed=42)
+              seed=9001)
 ```
 
 ---
 name: TOJ_analysis_model_highlight5
 
-&lt;Div style="margin-top:100px" /&gt; &lt;!-- start below university header --&gt;
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
   .font200[**Bayesian multilevel modeling with ```brms```**
@@ -661,13 +766,13 @@ model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ conditions +
               thin=1,
               algorithm="sampling",
               cores=4,
-              seed=42)
+              seed=9001)
 ```
 
 ---
 name: TOJ_analysis_model_highlight6
 
-&lt;Div style="margin-top:100px" /&gt; &lt;!-- start below university header --&gt;
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
   .font200[**Bayesian multilevel modeling with ```brms```**
@@ -691,13 +796,13 @@ model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ conditions +
               thin=1,
               algorithm="sampling",
               cores=4,
-              seed=42)
+              seed=9001)
 ```
 
 ---
 name: TOJ_analysis_model_highlight7
 
-&lt;Div style="margin-top:100px" /&gt; &lt;!-- start below university header --&gt;
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
   .font200[**Bayesian multilevel modeling with ```brms```**
@@ -731,13 +836,13 @@ model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ conditions +
 *             thin=1,
 *             algorithm="sampling",
 *             cores=4,
-*             seed=42)
+*             seed=9001)
 ```
 
 ---
 name: TOJ_analysis_model_highlight8
 
-&lt;Div style="margin-top:100px" /&gt; &lt;!-- start below university header --&gt;
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
   .font200[**Bayesian multilevel modeling with ```brms```**
@@ -748,7 +853,7 @@ name: TOJ_analysis_model_highlight8
 &lt;!-- and set the priors of the appropriate model. --&gt;
 ```r
 ##################### main effect of SOA #####################
-*   model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ SOA +
+*   model.SOA &lt;- brm(num.horiz1st | trials(tot.trials) ~ SOA +
               (conditions || participant),
               data=data.TOJ,
               family=binomial("logit"),
@@ -762,56 +867,54 @@ name: TOJ_analysis_model_highlight8
               thin=1,
               algorithm="sampling",
               cores=4,
-              seed=42)
+              seed=9001)
 ```
 
 ---
+name: TOJ_LOO
+
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
+
+.center[
+  .font200[**Model comparison**
+  ]
+]
+
+&lt;Div style="margin-top:-40px" /&gt;
+
+.center[
+  .font130[(*leave-one-out* cross-validation)
+  ]
+]
 
 
-
-
-
-
-
-```
-##  Family: binomial 
-##   Links: mu = logit 
-## Formula: num.horiz1st | trials(tot.trials) ~ SOA + (SOA || Participant) 
-##    Data: dataFREQ (Number of observations: 589) 
-## Samples: 4 chains, each with iter = 2000; warmup = 500; thin = 1; 
-##          total post-warmup samples = 6000
-##     ICs: LOO = NA; WAIC = NA; R2 = NA
-##  
-## Group-Level Effects: 
-## ~Participant (Number of levels: 31) 
-##               Estimate Est.Error l-95% CI u-95% CI Eff.Sample Rhat
-## sd(Intercept)     0.26      0.05     0.17     0.37       2028 1.00
-## sd(SOAM217)       0.83      0.17     0.56     1.20       2717 1.00
-## sd(SOAM150)       0.82      0.16     0.56     1.17       1646 1.00
-## sd(SOAM83)        0.52      0.11     0.33     0.75       2449 1.00
-## sd(SOAM17)        0.22      0.10     0.02     0.41       1328 1.00
-## sd(SOAP17)        0.16      0.10     0.01     0.36       1190 1.00
-## sd(SOAP83)        0.60      0.14     0.37     0.91       1907 1.00
-## sd(SOAP150)       0.91      0.19     0.60     1.33       2043 1.00
-## sd(SOAP217)       0.86      0.18     0.56     1.26       1872 1.00
-## 
-## Population-Level Effects: 
-##           Estimate Est.Error l-95% CI u-95% CI Eff.Sample Rhat
-## Intercept     0.08      0.05    -0.02     0.19       6000 1.00
-## SOAM217      -2.13      0.13    -2.38    -1.88       5109 1.00
-## SOAM150      -1.74      0.12    -1.97    -1.51       4241 1.00
-## SOAM83       -1.05      0.09    -1.24    -0.87       5416 1.00
-## SOAM17        0.06      0.06    -0.06     0.18       6000 1.00
-## SOAP17       -0.21      0.06    -0.33    -0.09       6000 1.00
-## SOAP83        1.13      0.10     0.93     1.33       5218 1.00
-## SOAP150       1.93      0.15     1.63     2.22       3716 1.00
-## SOAP217       2.22      0.16     1.91     2.55       4322 1.00
-## 
-## Samples were drawn using sampling(NUTS). For each parameter, Eff.Sample 
-## is a crude measure of effective sample size, and Rhat is the potential 
-## scale reduction factor on split chains (at convergence, Rhat = 1).
+```r
+model.comparison &lt;- LOO( # list with all models
+                      model.full, model.mains, model.SOA, model.cue, model.null,
+                      reloo=TRUE, # exact CV for problematic observations
+                      compare=FALSE) # do not compare models with each other
 ```
 
+&lt;table&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; model.names &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; mains &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; full &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; SOA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; cue &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; null &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; LOO.IC &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2727.31 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2844.49 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 3628.22 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 7998.10 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 8275.49 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 
 
 
@@ -822,7 +925,46 @@ name: TOJ_analysis_model_highlight8
 
 
 
+---
+name: TOJ_analysis_output
 
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
+
+.center[
+  .font200[**```brms``` output**
+  ]
+]
+
+&lt;Div style="margin-top:-40px" /&gt;
+
+.center[
+  .font130[(only **"fixed"** effects)
+  ]
+]
+
+&lt;br /&gt;
+
+&lt;!-- ################################### --&gt;
+&lt;!-- Explain Eff. Sample and Rhat --&gt;
+
+.code80[
+  
+  ```
+  ##  [1] "Population-Level Effects: "                                    
+  ##  [2] "          Estimate Est.Error l-95% CI u-95% CI Eff.Sample Rhat"
+  ##  [3] "Intercept     0.08      0.05    -0.02     0.19       6000 1.00"
+  ##  [4] "SOAM217      -2.13      0.13    -2.38    -1.88       5109 1.00"
+  ##  [5] "SOAM150      -1.74      0.12    -1.97    -1.51       4241 1.00"
+  ##  [6] "SOAM83       -1.05      0.09    -1.24    -0.87       5416 1.00"
+  ##  [7] "SOAM17        0.06      0.06    -0.06     0.18       6000 1.00"
+  ##  [8] "SOAP17       -0.21      0.06    -0.33    -0.09       6000 1.00"
+  ##  [9] "SOAP83        1.13      0.10     0.93     1.33       5218 1.00"
+  ## [10] "SOAP150       1.93      0.15     1.63     2.22       3716 1.00"
+  ## [11] "SOAP217       2.22      0.16     1.91     2.55       4322 1.00"
+  ```
+]
+
+---
 
 
 
@@ -865,7 +1007,7 @@ name: thanks
 &lt;!-- set FontAwesome icons --&gt;
 &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"&gt;
 
-&lt;Div style="margin-top:100px" /&gt; &lt;!-- start below university header --&gt;
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
   .font300[**Thanks for your attention!**]
