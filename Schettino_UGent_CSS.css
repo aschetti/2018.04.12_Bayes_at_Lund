@@ -22,7 +22,7 @@
 }
 
 .remark-slide-content > h1 {
-  font-family: 'Ubuntu';
+  font-family: 'Fira Sans';
   font-weight: normal;
   font-size: 45px;
   margin-top: -95px;
@@ -105,14 +105,14 @@
 .remark-slide-number {
   display: none; /*      # uncomment to display slide numbers
   font-size: 13pt;
-  font-family: 'Ubuntu';
+  font-family: 'Fira Sans';
   color: #272822;
   opacity: 1; */
 }
 
 .inverse .remark-slide-number {
   font-size: 13pt;
-  font-family: 'Ubuntu';
+  font-family: 'Fira Sans';
   color: #FAFAFA;
   opacity: 1;
 }
@@ -123,8 +123,8 @@
 }
 
 .remark-inline-code {
-  background: #F5F5F5; /* lighter */
-  /* background: #e7e8e2; /* darker */
+  /* background: #F5F5F5; /* lighter */
+  background: #e7e8e2; /* darker */
   border-radius: 3px;
   padding: 4px;
 }
