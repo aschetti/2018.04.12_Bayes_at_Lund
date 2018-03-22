@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta name="author" content="Antonio Schettino    Department of Experimental-Clinical &amp; Health Psychology  Ghent University" />
     <link rel="stylesheet" href="default.css" type="text/css" />
-    <link rel="stylesheet" href="hygge.css" type="text/css" />
     <link rel="stylesheet" href="Schettino_UGent_CSS.css" type="text/css" />
     <link rel="stylesheet" href="Schettino_UGent-fonts.css" type="text/css" />
   </head>
@@ -49,6 +48,8 @@ name: outline
   ]
 ]
 
+&lt;br /&gt;
+
 .font120[
   * background
 ]
@@ -67,7 +68,7 @@ name: outline
 
 --
 &lt;!-- add collaborators picture --&gt;
-&lt;Div style="margin-top:-330px" /&gt;
+&lt;Div style="margin-top:-380px" /&gt;
 
 .right[
   ![collaborators](collaborators.jpg)
@@ -126,7 +127,7 @@ name: clarify_example1
 --
 
 .font120[
-  * His attention was **automatically** attracted to *~~uninformative~~* **counterproductive** sounds (distraction from current task, watching TV)
+  * His attention was **automatically** attracted to ~~uninformative~~ **counterproductive** sounds (distraction from current task: watching TV)
 ]
 
 ---
@@ -135,7 +136,7 @@ name: clarify_example2
 &lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
-  .font200[**Why study this phenomenon?**
+  .font200[**Why study involuntary attention?**
   ]
 ]
 
@@ -250,7 +251,7 @@ name: TOJ_data
 &lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
-  .font200[**Data**
+  .font200[**TOJ - Data**
   ]
 ]
 
@@ -309,29 +310,24 @@ name: TOJ_data
   ]
 ]
 
-&lt;!--
-
---&gt;
-
-
-
-
 ---
 name: TOJ_graph
-
-background-image: url(TOJ_graph.svg)
-background-size: 450px
-background-position: 50% 80%
 
 &lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
-  .font200[**Graph**
+  .font200[**TOJ - Plot**
   ]
 ]
 
+&lt;Div style="margin-top:-40px" /&gt;
+
+.center[
+![](Schettino_BayesAtLund2018_files/figure-html/TOJ_exp1-1.svg)&lt;!-- --&gt;
+]
+
 &lt;!-- Incremental lists do not give me what I want (due to changes in font formatting and large spacing), --&gt;
-&lt;!-- so I created new slides and duplicated the content... not elegant, but effective. --&gt;
+&lt;!-- so I created new slides and duplicated the content. Not elegant, but effective. --&gt;
 ---
 name: TOJ_analysis_desc1
 
@@ -353,7 +349,7 @@ name: TOJ_analysis_desc2
 ]
 
 .font120[
-* logistic regression
+* multilevel logistic regression
 ]
 
 ---
@@ -367,8 +363,8 @@ name: TOJ_analysis_desc3
 ]
 
 .font120[
-* logistic regression
-* multilevel models with random intercepts and slopes on *participants*
+* multilevel logistic regression
+* random intercepts and slopes on *participants*
 ]
 
 ---
@@ -382,8 +378,8 @@ name: TOJ_analysis_desc4
 ]
 
 .font120[
-* logistic regression
-* multilevel models with random intercepts and slopes on *participants*
+* multilevel logistic regression
+* random intercepts and slopes on *participants*
 * **highly informative priors** (from a pilot study)
 ]
 
@@ -398,8 +394,8 @@ name: TOJ_analysis_desc5
 ]
 
 .font120[
-* logistic regression
-* multilevel models with random intercepts and slopes on *participants*
+* multilevel logistic regression
+* random intercepts and slopes on *participants*
 * **highly informative priors** (from a pilot study)
 * model comparison:
 ]
@@ -415,8 +411,8 @@ name: TOJ_analysis_desc6
 ]
 
 .font120[
-* logistic regression
-* multilevel models with random intercepts and slopes on *participants*
+* multilevel logistic regression
+* random intercepts and slopes on *participants*
 * **highly informative priors** (from a pilot study)
 * model comparison:
   1. full model (**SOA** x **cue**)
@@ -433,8 +429,8 @@ name: TOJ_analysis_desc7
 ]
 
 .font120[
-* logistic regression
-* multilevel models with random intercepts and slopes on *participants*
+* multilevel logistic regression
+* random intercepts and slopes on *participants*
 * **highly informative priors** (from a pilot study)
 * model comparison:
   1. full model (**SOA** x **cue**)
@@ -452,8 +448,8 @@ name: TOJ_analysis_desc8
 ]
 
 .font120[
-* logistic regression
-* multilevel models with random intercepts and slopes on *participants*
+* multilevel logistic regression
+* random intercepts and slopes on *participants*
 * **highly informative priors** (from a pilot study)
 * model comparison:
   1. full model (**SOA** x **cue**)
@@ -472,8 +468,8 @@ name: TOJ_analysis_desc9
 ]
 
 .font120[
-* logistic regression
-* multilevel models with random intercepts and slopes on *participants*
+* multilevel logistic regression
+* random intercepts and slopes on *participants*
 * **highly informative priors** (from a pilot study)
 * model comparison:
   1. full model (**SOA** x **cue**)
@@ -493,15 +489,15 @@ name: TOJ_analysis_desc10
 ]
 
 .font120[
-* logistic regression
-* multilevel models with random intercepts and slopes on *participants*
+* multilevel logistic regression
+* random intercepts and slopes on *participants*
 * **highly informative priors** (from a pilot study)
 * model comparison:
   1. full model (**SOA** x **cue**)
   2. main effects (**SOA** + **cue**)
   3. main effect of **SOA**
   4. main effect of **cue**
-  5. null model (intercept only)
+  5. **null** model (intercept only)
 ]
 
 ---
@@ -515,15 +511,15 @@ name: TOJ_analysis_desc11
 ]
 
 .font120[
-* logistic regression
-* multilevel models with random intercepts and slopes on *participants*
+* multilevel logistic regression
+* random intercepts and slopes on *participants*
 * **highly informative priors** (from a pilot study)
 * model comparison:
   1. full model (**SOA** x **cue**)
   2. main effects (**SOA** + **cue**)
   3. main effect of **SOA**
   4. main effect of **cue**
-  5. null model (intercept only)
+  5. **null** model (intercept only)
 * on the winning model:
 ]
 
@@ -538,15 +534,15 @@ name: TOJ_analysis_desc12
 ]
 
 .font120[
-* logistic regression
-* multilevel models with random intercepts and slopes on *participants*
+* multilevel logistic regression
+* random intercepts and slopes on *participants*
 * **highly informative priors** (from a pilot study)
 * model comparison:
   1. full model (**SOA** x **cue**)
   2. main effects (**SOA** + **cue**)
   3. main effect of **SOA**
   4. main effect of **cue**
-  5. null model (intercept only)
+  5. **null** model (intercept only)
 * on the winning model:
   - diagnostics &amp; posterior predictive checks
 ]
@@ -562,15 +558,15 @@ name: TOJ_analysis_desc13
 ]
 
 .font120[
-* logistic regression
-* multilevel models with random intercepts and slopes on *participants*
+* multilevel logistic regression
+* random intercepts and slopes on *participants*
 * **highly informative priors** (from a pilot study)
 * model comparison:
   1. full model (**SOA** x **cue**)
   2. main effects (**SOA** + **cue**)
   3. main effect of **SOA**
   4. main effect of **cue**
-  5. null model (intercept only)
+  5. **null** model (intercept only)
 * on the winning model:
   - diagnostics &amp; posterior predictive checks
   - hypothesis testing
@@ -588,6 +584,8 @@ name: TOJ_analysis_model
   .font200[**Bayesian multilevel modeling with ```brms```**
   ]
 ]
+
+&lt;Div style="margin-top:-30px" /&gt;
 
 ```r
 ##################### full model (SOA * cue) #####################
@@ -617,6 +615,8 @@ name: TOJ_analysis_model_highlight1
   .font200[**Bayesian multilevel modeling with ```brms```**
   ]
 ]
+
+&lt;Div style="margin-top:-30px" /&gt;
 
 &lt;!-- Dependent variable: number of trials in which participants responded "horizontal first" over all trials. --&gt;
 &lt;!-- Population-level (= fixed) effects: one column with all condition combinations. --&gt;
@@ -648,6 +648,8 @@ name: TOJ_analysis_model_highlight2
   .font200[**Bayesian multilevel modeling with ```brms```**
   ]
 ]
+
+&lt;Div style="margin-top:-30px" /&gt;
 
 &lt;!-- Group-level (= random) effects: allow intercepts and slopes to vary across participants. --&gt;
 &lt;!-- What does it **practically** mean? For example: --&gt;
@@ -684,7 +686,9 @@ name: TOJ_analysis_model_highlight3
   ]
 ]
 
-&lt;!-- Your data. --&gt;
+&lt;Div style="margin-top:-30px" /&gt;
+
+&lt;!-- The data. --&gt;
 ```r
 ##################### full model (SOA * cue) #####################
 model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ conditions +
@@ -713,6 +717,8 @@ name: TOJ_analysis_model_highlight4
   .font200[**Bayesian multilevel modeling with ```brms```**
   ]
 ]
+
+&lt;Div style="margin-top:-30px" /&gt;
 
 &lt;!-- The likelihood function. --&gt;
 &lt;!-- The data are a bunch of 0s and 1s (the participant did/didn't respond "horizontal first"), hence the binomial distribution. --&gt;
@@ -746,8 +752,10 @@ name: TOJ_analysis_model_highlight5
   ]
 ]
 
-&lt;!-- Highly informative priors! What are they? --&gt;
-&lt;!-- We ran a pilot study identical to this one, fitted this same mode (with default priors), --&gt;
+&lt;Div style="margin-top:-30px" /&gt;
+
+&lt;!-- Priors.full indicates a list with highly informative priors. --&gt;
+&lt;!-- We ran a pilot study identical to this one, fitted this same model (with default priors), --&gt;
 &lt;!-- and used the **posterior** distributions of those parameters as **priors** for this model. --&gt;
 &lt;!-- In brms, use the function 'set_prior'. --&gt;
 ```r
@@ -779,6 +787,8 @@ name: TOJ_analysis_model_highlight6
   ]
 ]
 
+&lt;Div style="margin-top:-30px" /&gt;
+
 &lt;!-- Extract samples from the priors, they will be useful later on. --&gt;
 ```r
 ##################### full model (SOA * cue) #####################
@@ -809,6 +819,8 @@ name: TOJ_analysis_model_highlight7
   ]
 ]
 
+&lt;Div style="margin-top:-30px" /&gt;
+
 &lt;!-- These settings refer to the No-U-Turn-Sampler (NUTS) in STAN: --&gt;
 &lt;!-- - inits: initial parameter values in the Markov-Chain Monte Carlo (MCMC) chains; --&gt;
 &lt;!-- - control: steps of the NUTS sampler; --&gt;
@@ -828,15 +840,15 @@ model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ conditions +
               family=binomial("logit"),
               prior=priors.full,
               sample_prior=TRUE,
-*             inits="random",
-*             control=list(adapt_delta=.9),
-*             chains=4,
-*             iter=2000,
-*             warmup=500,
-*             thin=1,
-*             algorithm="sampling",
-*             cores=4,
-*             seed=9001)
+*                inits="random",
+*                control=list(adapt_delta=.9),
+*                chains=4,
+*                iter=2000,
+*                warmup=500,
+*                thin=1,
+*                algorithm="sampling",
+*                cores=4,
+*                seed=9001)
 ```
 
 ---
@@ -848,6 +860,8 @@ name: TOJ_analysis_model_highlight8
   .font200[**Bayesian multilevel modeling with ```brms```**
   ]
 ]
+
+&lt;Div style="margin-top:-30px" /&gt;
 
 &lt;!-- To specify the other models, change the name of the independent variable --&gt;
 &lt;!-- and set the priors of the appropriate model. --&gt;
@@ -876,17 +890,16 @@ name: TOJ_LOO
 &lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
-  .font200[**Model comparison**
+  .font200[**Model comparison with ```brms```**
   ]
 ]
 
-&lt;Div style="margin-top:-40px" /&gt;
+&lt;Div style="margin-top:-30px" /&gt;
 
 .center[
   .font130[(*leave-one-out* cross-validation)
   ]
 ]
-
 
 ```r
 model.comparison &lt;- LOO( # list with all models
@@ -895,35 +908,19 @@ model.comparison &lt;- LOO( # list with all models
                       compare=FALSE) # do not compare models with each other
 ```
 
-&lt;table&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; model.names &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; mains &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; full &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; SOA &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; cue &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; null &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; LOO.IC &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 2727.31 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 2844.49 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 3628.22 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 7998.10 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; 8275.49 &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-
-
-
-
-
-
-
-
+.center[
+  .font130[
+  
+  ```
+  ##   models  LOO.IC
+  ## 1  mains 2727.31
+  ## 2   full 2844.49
+  ## 3    SOA 3628.22
+  ## 4    cue 7998.10
+  ## 5   null 8275.49
+  ```
+  ]
+]
 
 ---
 name: TOJ_analysis_output
@@ -938,68 +935,286 @@ name: TOJ_analysis_output
 &lt;Div style="margin-top:-40px" /&gt;
 
 .center[
-  .font130[(only **"fixed"** effects)
+  .font130[(**main effects** model, only **"fixed"** effects)
+  ]
+]
+
+&lt;!-- ################################### --&gt;
+&lt;!-- Explain Eff. Sample and Rhat --&gt;
+&lt;!-- Check the effective sample size ($\sf{N_{eff}}$), an estimate of the number of independent draws from the posterior distribution of the estimand of interest. Because the draws within a Markov chain are not independent if there is autocorrelation, `\(\sf{N_{eff}}\)` will be smaller than the total sample size ($N$). The larger the ratio `\(\sf{N_{eff}}\)`/$N$, the better the estimation. As a rule of thumb, this ratio can be worrisome if &lt; 0.1. With respect to the fixed effects of this model, the worst ratio is 3422/6000=0.57 (beta for SOA +150).
+
+Check `\(\hat{R}\)`, which measures the ratio of the average variance of samples within each chain to the variance of the pooled samples across chains. If all chains are at equilibrium, these will be the same and `\(\hat{R}\)` will be one. If the chains have not converged to a common distribution, `\(\hat{R}\)` will be greater than one (Stan Development Team, 2016). For this model, `\(\hat{R}\)` is never above 1.05.
+ --&gt;
+
+
+```
+##  [1] "Population-Level Effects: "                                             
+##  [2] "                   Estimate Est.Error l-95% CI u-95% CI Eff.Sample Rhat"
+##  [3] "Intercept              0.06      0.06    -0.06     0.19       4716 1.00"
+##  [4] "SOAM217               -2.64      0.13    -2.89    -2.38       4256 1.00"
+##  [5] "SOAM150               -2.23      0.13    -2.50    -1.97       3727 1.00"
+##  [6] "SOAM83                -1.53      0.10    -1.73    -1.34       4928 1.00"
+##  [7] "SOAM17                -0.35      0.06    -0.47    -0.22       6000 1.00"
+##  [8] "SOAP17                 0.21      0.06     0.09     0.33       6000 1.00"
+##  [9] "SOAP83                 1.60      0.11     1.39     1.81       4528 1.00"
+## [10] "SOAP150                2.42      0.16     2.11     2.72       3422 1.00"
+## [11] "SOAP217                2.73      0.16     2.41     3.06       3851 1.00"
+## [12] "cuevertical.cued      -0.80      0.06    -0.93    -0.68       6000 1.00"
+## [13] "cuehorizontal.cued     0.86      0.07     0.73     1.00       5145 1.00"
+```
+
+---
+name: TOJ_analysis_MCMCchains
+
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
+
+.center[
+  .font200[**MCMC chains**
   ]
 ]
 
 &lt;br /&gt;
+&lt;Div style="margin-left:-50px" /&gt;
 
-&lt;!-- ################################### --&gt;
-&lt;!-- Explain Eff. Sample and Rhat --&gt;
-
-.code80[
-  
-  ```
-  ##  [1] "Population-Level Effects: "                                    
-  ##  [2] "          Estimate Est.Error l-95% CI u-95% CI Eff.Sample Rhat"
-  ##  [3] "Intercept     0.08      0.05    -0.02     0.19       6000 1.00"
-  ##  [4] "SOAM217      -2.13      0.13    -2.38    -1.88       5109 1.00"
-  ##  [5] "SOAM150      -1.74      0.12    -1.97    -1.51       4241 1.00"
-  ##  [6] "SOAM83       -1.05      0.09    -1.24    -0.87       5416 1.00"
-  ##  [7] "SOAM17        0.06      0.06    -0.06     0.18       6000 1.00"
-  ##  [8] "SOAP17       -0.21      0.06    -0.33    -0.09       6000 1.00"
-  ##  [9] "SOAP83        1.13      0.10     0.93     1.33       5218 1.00"
-  ## [10] "SOAP150       1.93      0.15     1.63     2.22       3716 1.00"
-  ## [11] "SOAP217       2.22      0.16     1.91     2.55       4322 1.00"
+.pull-left[
+  ```r
+  library(bayesplot)
+  mcmc_trace(as.array(model.mains),
+  pars=c("b_Intercept", 
+    "b_cuevertical.cued", 
+    "b_cuehorizontal.cued"),
+  facet_args=list(ncol=1))
   ```
 ]
 
+&lt;Div style="margin-right:-40px" /&gt;
+&lt;Div style="margin-top:-100px" /&gt; 
+
+.pull-right[
+![](Schettino_BayesAtLund2018_files/figure-html/model_mains_MCMC-1.svg)&lt;!-- --&gt;
+]
+
 ---
+name: TOJ_analysis_PPC
+
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
+
+.center[
+  .font200[**Posterior Predictive Checks**
+  ]
+]
+
+&lt;br /&gt;
+&lt;Div style="margin-left:-50px" /&gt;
+
+.code100[
+  .pull-left[
+    ```r
+    pp_check(model.mains, 
+    nsamples=NULL, 
+    type="stat_grouped", 
+    group="cue")
+    ```
+  ]
+]
+
+&lt;Div style="margin-right:-40px" /&gt;
+&lt;Div style="margin-top:-100px" /&gt; 
+
+.pull-right[
+![](Schettino_BayesAtLund2018_files/figure-html/model_mains_PPC-1.svg)&lt;!-- --&gt;
+]
+
+---
+name: TOJ_analysis_predicted_observed
+
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
+
+.center[
+  .font200[**Observed vs. estimated data**
+  ]
+]
+
+&lt;Div style="margin-top:-40px" /&gt;
+
+.center[
+![](Schettino_BayesAtLund2018_files/figure-html/model_mains_obs_pred-1.svg)&lt;!-- --&gt;
+]
+
+---
+name: TOJ_analysis_hyptest_nocue_vertcued
+
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
+
+.center[
+  .font200[**Hypothesis testing**
+  ]
+]
+
+&lt;Div style="margin-top:-40px" /&gt;
+
+.center[
+  .font130[(**no cue** vs. **vertical cued** conditions)
+  ]
+]
 
 
 
+&lt;Div style="margin-left:-40px" /&gt;
 
+.code100[
+  .pull-left[
+  ```r
+  # posterior probability
+  # under the hypothesis
+  # (no.cue=vertical.cued)
+  # against its alternative
+  # (no.cue=/=vertical.cued)
+  hypothesis(model.mains, 
+  "Intercept=Intercept+cuevertical.cued")
+  ```
+  ]
+]
 
+&lt;br /&gt;
+&lt;Div style="margin-right:-40px" /&gt;
+&lt;Div style="margin-top:-100px" /&gt; 
 
+.pull-right[
+![](Schettino_BayesAtLund2018_files/figure-html/model_mains_hyptest_nocue_vertcued_graph-1.svg)&lt;!-- --&gt;
+]
 
+---
+name: TOJ_analysis_hyptest_nocue_prior_posterior
 
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
+.center[
+  .font200[**Hypothesis testing**
+  ]
+]
 
+&lt;Div style="margin-top:-40px" /&gt;
 
+.center[
+  .font130[(**pilot** vs. **current** experiment)
+  ]
+]
 
+![](Schettino_BayesAtLund2018_files/figure-html/model_mains_hyptest_prior_vs_post_graph-1.svg)&lt;!-- --&gt;
 
+---
+name: conclusions1
 
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
+.center[
+  .font200[**Conclusions**
+  ]
+]
 
+.font110[
+  What we have learned:
+]
 
+---
+name: conclusions2
 
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
+.center[
+  .font200[**Conclusions**
+  ]
+]
 
+.font110[
+  What we have learned:
+  * SOA and cue influence performance **independently**
+    - comparison of *theoretically plausible* multilevel models via loo-cv
+]
 
+---
+name: conclusions3
 
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
+.center[
+  .font200[**Conclusions**
+  ]
+]
 
+.font110[
+  What we have learned:
+  * SOA and cue influence performance **independently**
+    - comparison of *theoretically plausible* multilevel models via loo-cv
+  * the winning model is able to predict unobserved data pretty well
+    - *observed* and *estimated* data are very similar
+]
 
+---
+name: conclusions4
 
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
+.center[
+  .font200[**Conclusions**
+  ]
+]
 
+.font110[
+  What we have learned:
+  * SOA and cue influence performance **independently**
+    - comparison of *theoretically plausible* multilevel models via loo-cv
+  * the winning model is able to predict unobserved data pretty well
+    - *observed* and *estimated* data are very similar
+  * *"horizontal first"* responses are less likely when the *vertical* lines are cued
+    - comparison of the posterior distributions of no cue and vertical cued conditions
+]
 
+---
+name: conclusions5
 
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
+.center[
+  .font200[**Conclusions**
+  ]
+]
 
+.font110[
+  What we have learned:
+  * SOA and cue influence performance **independently**
+    - comparison of *theoretically plausible* multilevel models via loo-cv
+  * the winning model is able to predict unobserved data pretty well
+    - *observed* and *estimated* data are very similar
+  * *"horizontal first"* responses are less likely when the *vertical* lines are cued
+    - comparison of the posterior distributions of no cue and vertical cued conditions
+  * data of *pilot* and *current* experiment are very similar
+    - comparison of prior and posterior distributions of cue conditions
+]
 
+---
+name: conclusions6
 
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
+.center[
+  .font200[**Conclusions**
+  ]
+]
+
+.font110[
+  What we have learned:
+  * SOA and cue influence performance **independently**
+    - comparison of *theoretically plausible* multilevel models via loo-cv
+  * the winning model is able to predict unobserved data pretty well
+    - *observed* and *estimated* data are very similar
+  * *"horizontal first"* responses are less likely when the *vertical* lines are cued
+    - comparison of the posterior distributions of no cue and vertical cued conditions
+  * data of *pilot* and *current* experiment are very similar
+    - comparison of prior and posterior distributions of cue conditions
+  * ... and much more! Thanks for ```brms```, @paulbuerkner!
+]
 
 ---
 name: thanks

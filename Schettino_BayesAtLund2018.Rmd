@@ -5,13 +5,13 @@ date: ""
 output:
   xaringan::moon_reader:
     chakra: libs/remark-latest.min.js
-    css: ["default.css", "hygge.css", "Schettino_UGent_CSS.css", "Schettino_UGent-fonts.css"]
+    css: ["default.css", "Schettino_UGent_CSS.css", "Schettino_UGent-fonts.css"]
     lib_dir: libs
     nature:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
-      self_contained: false
+      self_contained: true
 ---
 
 ```{r setup, include=FALSE}
@@ -25,7 +25,7 @@ pacman::p_load("knitr", # dynamic report generation
                "ggthemes", # more themes for ggplot2
                "grid", # for plot annotations
                "brms", # Bayesian Regression Models using Stan
-               "ESTER") # Efficient Sequential Testing with Evidence Ratios
+               "bayesplot") # Plotting for Bayesian Models
 
 options(htmltools.dir.version=FALSE)
 ```
@@ -58,6 +58,8 @@ name: outline
   ]
 ]
 
+<br />
+
 .font120[
   * background
 ]
@@ -76,7 +78,7 @@ name: outline
 
 --
 <!-- add collaborators picture -->
-<Div style="margin-top:-330px" />
+<Div style="margin-top:-380px" />
 
 .right[
   ![collaborators](collaborators.jpg)
@@ -135,7 +137,7 @@ name: clarify_example1
 --
 
 .font120[
-  * His attention was **automatically** attracted to *~~uninformative~~* **counterproductive** sounds (distraction from current task, watching TV)
+  * His attention was **automatically** attracted to ~~uninformative~~ **counterproductive** sounds (distraction from current task: watching TV)
 ]
 
 ---
@@ -144,7 +146,7 @@ name: clarify_example2
 <Div style="margin-top:90px" /> <!-- start below university header -->
 
 .center[
-  .font200[**Why study this phenomenon?**
+  .font200[**Why study involuntary attention?**
   ]
 ]
 
@@ -259,7 +261,7 @@ name: TOJ_data
 <Div style="margin-top:90px" /> <!-- start below university header -->
 
 .center[
-  .font200[**Data**
+  .font200[**TOJ - Data**
   ]
 ]
 
@@ -315,8 +317,20 @@ read_csv("TOJ_exp1.csv") %>% # load data
   ]
 ]
 
-<!--
-```{r TOJ_exp1, eval=FALSE, echo=FALSE, warning=FALSE, message=FALSE, fig.height=5.5, fig.width=5.5, dev='svg'}
+---
+name: TOJ_graph
+
+<Div style="margin-top:90px" /> <!-- start below university header -->
+
+.center[
+  .font200[**TOJ - Plot**
+  ]
+]
+
+<Div style="margin-top:-40px" />
+
+.center[
+```{r TOJ_exp1, echo=FALSE, warning=FALSE, message=FALSE, fig.height=4.9, fig.width=7, dev='svg'}
 data.exp1 <- read_csv("TOJ_exp1.csv") %>% # load data
   select(participant=Participant, SOA, cue=MainConds, response=Resp) %>% # select and rename variables of interest
   mutate(participant=as.factor(participant), # convert participant as factor
@@ -332,19 +346,20 @@ data.exp1 <- read_csv("TOJ_exp1.csv") %>% # load data
   summarize(num.horiz1st=length(which(response==2)), # number of "horizontal first" responses
             tot.trials=length(response==2), # total number of trials
             prop.horizfirst=num.horiz1st/tot.trials) %>% # proportion of "horizontal first" responses
-  ungroup() %>%
-  summarySEwithin(., # summarize data
-                  measurevar="prop.horizfirst", # dependent variable
-                  withinvars=c("SOA", "cue"), # independent variables
-                  idvar="participant") %>% # ID variable
+  ungroup()
+
+summary.data.exp1 <- summarySEwithin(data.exp1, # summarize data
+                                     measurevar="prop.horizfirst", # dependent variable
+                                     withinvars=c("SOA", "cue"), # independent variables
+                                     idvar="participant") %>% # ID variable
   select(SOA, cue, prop.horizfirst, CI95.prop=ci) # select and rename variables of interest
 
 # include annotations on x-axis
 # (https://stackoverflow.com/questions/31079210/how-can-i-add-annotations-below-the-x-axis-in-ggplot2#31081162)
-text.L <- textGrob("vertical first", gp=gpar(fontsize=14))
-text.R <- textGrob("horizontal first", gp=gpar(fontsize=14))
+text.L <- textGrob("vertical lines first", gp=gpar(fontsize=14))
+text.R <- textGrob("horizontal lines first", gp=gpar(fontsize=14))
 
-ACC.plot <- ggplot(data.exp1, aes(SOA, prop.horizfirst, group=cue, color=cue, fill=cue)) + # basic graph
+ACC.plot <- ggplot(summary.data.exp1, aes(SOA, prop.horizfirst, group=cue, color=cue, fill=cue)) + # basic graph
   geom_line(size=1.3) + # lines: thickness
   geom_ribbon(aes(ymin=prop.horizfirst-CI95.prop, ymax=prop.horizfirst+CI95.prop), # ribbons (mean +/- 95% CI)
               color="white", # ribbon: color of external line
@@ -352,10 +367,10 @@ ACC.plot <- ggplot(data.exp1, aes(SOA, prop.horizfirst, group=cue, color=cue, fi
   geom_point(aes(shape=cue), # points at each SOA
              fill="white", # point shape: color fill
              size=3) + # point shape: size
-  scale_color_manual(values=c("red", "black", "blue")) + # different line colors per conditions
-  scale_fill_manual(values=c("red", "black", "blue")) + # different ribbon colors per conditions
+  scale_color_manual(values=c("orange", "black", "blue")) + # different line colors per conditions
+  scale_fill_manual(values=c("orange", "black", "blue")) + # different ribbon colors per conditions
   scale_x_discrete("SOA", # x-axis: title
-                   limits=levels(data.exp1$SOA)) + # x-axis: SOAs (positive are on the right)
+                   limits=levels(summary.data.exp1$SOA)) + # x-axis: SOAs (positive are on the right)
   ylab("prop. \"horizontal first\" responses") + # y-axis: title
   scale_y_continuous(breaks=seq(0, 1, .25)) + # x-axis: tick marks
   geom_hline(yintercept=seq(0, 1, .25), # reference lines
@@ -365,7 +380,7 @@ ACC.plot <- ggplot(data.exp1, aes(SOA, prop.horizfirst, group=cue, color=cue, fi
              alpha=.5) + # line: transparency
   annotation_custom(text.L, xmin=2, xmax=2, ymin=-.2, ymax=-.2) + # annotation on x-axis
   annotation_custom(text.R, xmin=8, xmax=8, ymin=-.2, ymax=-.2) + # annotation on x-axis
-  theme_pander(base_size=15, pc="white", lp=c(.2,.85)) + # custom theme
+  theme_pander(base_size=15, pc="white") + # custom theme
   theme(plot.margin=unit(c(1, 1, 2, 1), "lines")) # make room for the annotations
 
 # override clipping
@@ -373,27 +388,10 @@ ACC.plot <- ggplot_gtable(ggplot_build(ACC.plot))
 ACC.plot$layout$clip[ACC.plot$layout$name == "panel"] <- "off"
 grid.draw(ACC.plot)
 ```
--->
-
-
-
-
----
-name: TOJ_graph
-
-background-image: url(TOJ_graph.svg)
-background-size: 450px
-background-position: 50% 80%
-
-<Div style="margin-top:90px" /> <!-- start below university header -->
-
-.center[
-  .font200[**Graph**
-  ]
 ]
 
 <!-- Incremental lists do not give me what I want (due to changes in font formatting and large spacing), -->
-<!-- so I created new slides and duplicated the content... not elegant, but effective. -->
+<!-- so I created new slides and duplicated the content. Not elegant, but effective. -->
 ---
 name: TOJ_analysis_desc1
 
@@ -415,7 +413,7 @@ name: TOJ_analysis_desc2
 ]
 
 .font120[
-* logistic regression
+* multilevel logistic regression
 ]
 
 ---
@@ -429,8 +427,8 @@ name: TOJ_analysis_desc3
 ]
 
 .font120[
-* logistic regression
-* multilevel models with random intercepts and slopes on *participants*
+* multilevel logistic regression
+* random intercepts and slopes on *participants*
 ]
 
 ---
@@ -444,8 +442,8 @@ name: TOJ_analysis_desc4
 ]
 
 .font120[
-* logistic regression
-* multilevel models with random intercepts and slopes on *participants*
+* multilevel logistic regression
+* random intercepts and slopes on *participants*
 * **highly informative priors** (from a pilot study)
 ]
 
@@ -460,8 +458,8 @@ name: TOJ_analysis_desc5
 ]
 
 .font120[
-* logistic regression
-* multilevel models with random intercepts and slopes on *participants*
+* multilevel logistic regression
+* random intercepts and slopes on *participants*
 * **highly informative priors** (from a pilot study)
 * model comparison:
 ]
@@ -477,8 +475,8 @@ name: TOJ_analysis_desc6
 ]
 
 .font120[
-* logistic regression
-* multilevel models with random intercepts and slopes on *participants*
+* multilevel logistic regression
+* random intercepts and slopes on *participants*
 * **highly informative priors** (from a pilot study)
 * model comparison:
   1. full model (**SOA** x **cue**)
@@ -495,8 +493,8 @@ name: TOJ_analysis_desc7
 ]
 
 .font120[
-* logistic regression
-* multilevel models with random intercepts and slopes on *participants*
+* multilevel logistic regression
+* random intercepts and slopes on *participants*
 * **highly informative priors** (from a pilot study)
 * model comparison:
   1. full model (**SOA** x **cue**)
@@ -514,8 +512,8 @@ name: TOJ_analysis_desc8
 ]
 
 .font120[
-* logistic regression
-* multilevel models with random intercepts and slopes on *participants*
+* multilevel logistic regression
+* random intercepts and slopes on *participants*
 * **highly informative priors** (from a pilot study)
 * model comparison:
   1. full model (**SOA** x **cue**)
@@ -534,8 +532,8 @@ name: TOJ_analysis_desc9
 ]
 
 .font120[
-* logistic regression
-* multilevel models with random intercepts and slopes on *participants*
+* multilevel logistic regression
+* random intercepts and slopes on *participants*
 * **highly informative priors** (from a pilot study)
 * model comparison:
   1. full model (**SOA** x **cue**)
@@ -555,15 +553,15 @@ name: TOJ_analysis_desc10
 ]
 
 .font120[
-* logistic regression
-* multilevel models with random intercepts and slopes on *participants*
+* multilevel logistic regression
+* random intercepts and slopes on *participants*
 * **highly informative priors** (from a pilot study)
 * model comparison:
   1. full model (**SOA** x **cue**)
   2. main effects (**SOA** + **cue**)
   3. main effect of **SOA**
   4. main effect of **cue**
-  5. null model (intercept only)
+  5. **null** model (intercept only)
 ]
 
 ---
@@ -577,15 +575,15 @@ name: TOJ_analysis_desc11
 ]
 
 .font120[
-* logistic regression
-* multilevel models with random intercepts and slopes on *participants*
+* multilevel logistic regression
+* random intercepts and slopes on *participants*
 * **highly informative priors** (from a pilot study)
 * model comparison:
   1. full model (**SOA** x **cue**)
   2. main effects (**SOA** + **cue**)
   3. main effect of **SOA**
   4. main effect of **cue**
-  5. null model (intercept only)
+  5. **null** model (intercept only)
 * on the winning model:
 ]
 
@@ -600,15 +598,15 @@ name: TOJ_analysis_desc12
 ]
 
 .font120[
-* logistic regression
-* multilevel models with random intercepts and slopes on *participants*
+* multilevel logistic regression
+* random intercepts and slopes on *participants*
 * **highly informative priors** (from a pilot study)
 * model comparison:
   1. full model (**SOA** x **cue**)
   2. main effects (**SOA** + **cue**)
   3. main effect of **SOA**
   4. main effect of **cue**
-  5. null model (intercept only)
+  5. **null** model (intercept only)
 * on the winning model:
   - diagnostics & posterior predictive checks
 ]
@@ -624,15 +622,15 @@ name: TOJ_analysis_desc13
 ]
 
 .font120[
-* logistic regression
-* multilevel models with random intercepts and slopes on *participants*
+* multilevel logistic regression
+* random intercepts and slopes on *participants*
 * **highly informative priors** (from a pilot study)
 * model comparison:
   1. full model (**SOA** x **cue**)
   2. main effects (**SOA** + **cue**)
   3. main effect of **SOA**
   4. main effect of **cue**
-  5. null model (intercept only)
+  5. **null** model (intercept only)
 * on the winning model:
   - diagnostics & posterior predictive checks
   - hypothesis testing
@@ -650,6 +648,8 @@ name: TOJ_analysis_model
   .font200[**Bayesian multilevel modeling with ```brms```**
   ]
 ]
+
+<Div style="margin-top:-30px" />
 
 ```r
 ##################### full model (SOA * cue) #####################
@@ -679,6 +679,8 @@ name: TOJ_analysis_model_highlight1
   .font200[**Bayesian multilevel modeling with ```brms```**
   ]
 ]
+
+<Div style="margin-top:-30px" />
 
 <!-- Dependent variable: number of trials in which participants responded "horizontal first" over all trials. -->
 <!-- Population-level (= fixed) effects: one column with all condition combinations. -->
@@ -710,6 +712,8 @@ name: TOJ_analysis_model_highlight2
   .font200[**Bayesian multilevel modeling with ```brms```**
   ]
 ]
+
+<Div style="margin-top:-30px" />
 
 <!-- Group-level (= random) effects: allow intercepts and slopes to vary across participants. -->
 <!-- What does it **practically** mean? For example: -->
@@ -746,7 +750,9 @@ name: TOJ_analysis_model_highlight3
   ]
 ]
 
-<!-- Your data. -->
+<Div style="margin-top:-30px" />
+
+<!-- The data. -->
 ```r
 ##################### full model (SOA * cue) #####################
 model.full <- brm(num.horiz1st | trials(tot.trials) ~ conditions +
@@ -775,6 +781,8 @@ name: TOJ_analysis_model_highlight4
   .font200[**Bayesian multilevel modeling with ```brms```**
   ]
 ]
+
+<Div style="margin-top:-30px" />
 
 <!-- The likelihood function. -->
 <!-- The data are a bunch of 0s and 1s (the participant did/didn't respond "horizontal first"), hence the binomial distribution. -->
@@ -808,8 +816,10 @@ name: TOJ_analysis_model_highlight5
   ]
 ]
 
-<!-- Highly informative priors! What are they? -->
-<!-- We ran a pilot study identical to this one, fitted this same mode (with default priors), -->
+<Div style="margin-top:-30px" />
+
+<!-- Priors.full indicates a list with highly informative priors. -->
+<!-- We ran a pilot study identical to this one, fitted this same model (with default priors), -->
 <!-- and used the **posterior** distributions of those parameters as **priors** for this model. -->
 <!-- In brms, use the function 'set_prior'. -->
 ```r
@@ -841,6 +851,8 @@ name: TOJ_analysis_model_highlight6
   ]
 ]
 
+<Div style="margin-top:-30px" />
+
 <!-- Extract samples from the priors, they will be useful later on. -->
 ```r
 ##################### full model (SOA * cue) #####################
@@ -871,6 +883,8 @@ name: TOJ_analysis_model_highlight7
   ]
 ]
 
+<Div style="margin-top:-30px" />
+
 <!-- These settings refer to the No-U-Turn-Sampler (NUTS) in STAN: -->
 <!-- - inits: initial parameter values in the Markov-Chain Monte Carlo (MCMC) chains; -->
 <!-- - control: steps of the NUTS sampler; -->
@@ -890,15 +904,15 @@ model.full <- brm(num.horiz1st | trials(tot.trials) ~ conditions +
               family=binomial("logit"),
               prior=priors.full,
               sample_prior=TRUE,
-*             inits="random",
-*             control=list(adapt_delta=.9),
-*             chains=4,
-*             iter=2000,
-*             warmup=500,
-*             thin=1,
-*             algorithm="sampling",
-*             cores=4,
-*             seed=9001)
+*                inits="random",
+*                control=list(adapt_delta=.9),
+*                chains=4,
+*                iter=2000,
+*                warmup=500,
+*                thin=1,
+*                algorithm="sampling",
+*                cores=4,
+*                seed=9001)
 ```
 
 ---
@@ -910,6 +924,8 @@ name: TOJ_analysis_model_highlight8
   .font200[**Bayesian multilevel modeling with ```brms```**
   ]
 ]
+
+<Div style="margin-top:-30px" />
 
 <!-- To specify the other models, change the name of the independent variable -->
 <!-- and set the priors of the appropriate model. -->
@@ -938,17 +954,16 @@ name: TOJ_LOO
 <Div style="margin-top:90px" /> <!-- start below university header -->
 
 .center[
-  .font200[**Model comparison**
+  .font200[**Model comparison with ```brms```**
   ]
 ]
 
-<Div style="margin-top:-40px" />
+<Div style="margin-top:-30px" />
 
 .center[
   .font130[(*leave-one-out* cross-validation)
   ]
 ]
-
 
 ```r
 model.comparison <- LOO( # list with all models
@@ -957,23 +972,16 @@ model.comparison <- LOO( # list with all models
                       compare=FALSE) # do not compare models with each other
 ```
 
-```{r model_comparison, echo=FALSE, warning=FALSE, message=FALSE}
-      # load results model
-      readRDS(here::here("pseudoBMA.rds")) %>%
-      select(model.names=modnames, LOO.IC=ic) %>%
-      mutate(LOO.IC=format(LOO.IC, digits=6)) %>%
-      t(.) %>%
-      kable(., format="html")
-```
-
-
-
-
-
-
-
-
-
+.center[
+  .font130[
+  ```{r model_comparison, echo=FALSE, warning=FALSE, message=FALSE}
+        # load results model
+        readRDS(here::here("pseudoBMA.rds")) %>%
+        select(models=modnames, LOO.IC=ic) %>%
+        mutate(LOO.IC=format(LOO.IC, digits=6))
+  ```
+  ]
+]
 
 ---
 name: TOJ_analysis_output
@@ -988,60 +996,428 @@ name: TOJ_analysis_output
 <Div style="margin-top:-40px" />
 
 .center[
-  .font130[(only **"fixed"** effects)
+  .font130[(**main effects** model, only **"fixed"** effects)
+  ]
+]
+
+<!-- ################################### -->
+<!-- Explain Eff. Sample and Rhat -->
+<!-- Check the effective sample size ($\sf{N_{eff}}$), an estimate of the number of independent draws from the posterior distribution of the estimand of interest. Because the draws within a Markov chain are not independent if there is autocorrelation, $\sf{N_{eff}}$ will be smaller than the total sample size ($N$). The larger the ratio $\sf{N_{eff}}$/$N$, the better the estimation. As a rule of thumb, this ratio can be worrisome if < 0.1. With respect to the fixed effects of this model, the worst ratio is 3422/6000=0.57 (beta for SOA +150).
+
+Check $\hat{R}$, which measures the ratio of the average variance of samples within each chain to the variance of the pooled samples across chains. If all chains are at equilibrium, these will be the same and $\hat{R}$ will be one. If the chains have not converged to a common distribution, $\hat{R}$ will be greater than one (Stan Development Team, 2016). For this model, $\hat{R}$ is never above 1.05.
+ -->
+
+```{r model_mains, echo=FALSE, warning=FALSE, message=FALSE}
+    # load results model
+    model.mains <- readRDS(here::here("model_mains.rds"))
+    capture.output(model.mains)[36:48]
+```
+
+---
+name: TOJ_analysis_MCMCchains
+
+<Div style="margin-top:90px" /> <!-- start below university header -->
+
+.center[
+  .font200[**MCMC chains**
   ]
 ]
 
 <br />
+<Div style="margin-left:-50px" />
 
-<!-- ################################### -->
-<!-- Explain Eff. Sample and Rhat -->
-
-.code80[
-  ```{r model_SOA, echo=FALSE, warning=FALSE, message=FALSE}
-      # load results model
-      model.SOA <- capture.output(readRDS(here::here("model_SOA.rds")))[22:32]
-      model.SOA <- gsub("dataFREQ", "data.TOJ", model.SOA)
-      model.SOA
+.pull-left[
+  ```r
+  library(bayesplot)
+  mcmc_trace(as.array(model.mains),
+  pars=c("b_Intercept", 
+    "b_cuevertical.cued", 
+    "b_cuehorizontal.cued"),
+  facet_args=list(ncol=1))
   ```
 ]
 
+<Div style="margin-right:-40px" />
+<Div style="margin-top:-100px" /> 
+
+.pull-right[
+```{r model_mains_MCMC, echo=FALSE, warning=FALSE, message=FALSE, fig.height=4.5, fig.width=4.5, dev='svg'}
+color_scheme_set("viridis")
+mcmc_trace(as.array(model.mains),
+           pars=c("b_Intercept", "b_cuevertical.cued", "b_cuehorizontal.cued"),
+           facet_args=list(ncol=1))
+```
+]
+
 ---
+name: TOJ_analysis_PPC
 
+<Div style="margin-top:90px" /> <!-- start below university header -->
 
+.center[
+  .font200[**Posterior Predictive Checks**
+  ]
+]
 
+<br />
+<Div style="margin-left:-50px" />
 
+.code100[
+  .pull-left[
+    ```r
+    pp_check(model.mains, 
+    nsamples=NULL, 
+    type="stat_grouped", 
+    group="cue")
+    ```
+  ]
+]
 
+<Div style="margin-right:-40px" />
+<Div style="margin-top:-100px" /> 
 
+.pull-right[
+```{r model_mains_PPC, echo=FALSE, warning=FALSE, message=FALSE, fig.height=4.5, fig.width=6, dev='svg'}
+color_scheme_set("viridis")
+pp_check(model.mains, nsamples=NULL, type="stat_grouped", group="cue")
+```
+]
 
+---
+name: TOJ_analysis_predicted_observed
 
+<Div style="margin-top:90px" /> <!-- start below university header -->
 
+.center[
+  .font200[**Observed vs. estimated data**
+  ]
+]
 
+<Div style="margin-top:-40px" />
 
+.center[
+```{r model_mains_obs_pred, echo=FALSE, warning=FALSE, message=FALSE, fig.height=4.9, fig.width=7, dev='svg'}
+summary.data.exp1.est <- data.exp1 %>%
+  mutate(num.horizfirst.est=predict(model.mains)[,1], # add estimated accuracy to original dataframe
+         prop.horizfirst.est=num.horizfirst.est/tot.trials) %>% # calculate frequency of "horizontal first" responses for estimated data
+  select(participant, SOA, cue, prop.horizfirst, prop.horizfirst.est) %>% # select variables of interest
+  gather(prop.horizfirst, prop.horizfirst.est, key="datatype", value="accuracy") %>% # convert to long format
+  mutate(datatype=recode(factor(datatype), # change names of factor levels
+         "prop.horizfirst"="observed",
+           "prop.horizfirst.est"="estimated")) %>%
+  # summarize data
+  summarySEwithin(., # data
+                  measurevar="accuracy", # dependent variable
+                  withinvars=c("SOA", "cue", "datatype"), # independent variables
+                  idvar="participant") %>% # ID variable
+  mutate(SOA=recode(factor(SOA), # convert SOA to factor
+                    # add "+" to positive SOAs (for plot)
+                    "17"="+17",
+                    "83"="+83",
+                    "150"="+150",
+                    "217"="+217"),
+         # reorder factor (for plot)
+         SOA=factor(SOA, levels=c("-217", "-150", "-83", "-17", "0", "+17", "+83", "+150", "+217")),
+         condition=paste0(cue, ".", datatype)) # create variable with merged names of conditions and datapoints (for plot)
 
+# plot observed and estimated data
+ACC.plot.obs.est <- summary.data.exp1.est %>% # summary table
+  select(cue, data.type=datatype, condition, SOA, prop.horizfirst=accuracy, ci_95=ci) %>% # select and rename variables of interest
+  ggplot(aes(x=SOA, y=prop.horizfirst, group=condition, color=cue, fill=cue)) + # basic graph
+  geom_line(aes(linetype=data.type), # separate lines per condition
+            size=1.3) + # line: thickness
+  geom_ribbon(aes(ymin=prop.horizfirst-ci_95, ymax=prop.horizfirst+ci_95), # ribbons (mean +/- 95% confidence intervals)
+              color="white", # ribbon: color of external line
+              alpha=.3) + # ribbon: transparency
+  geom_point(aes(shape=data.type), # points at each SOA 
+             fill="white", # point shape: color fill
+             size=3) + # point shape: size
+  scale_shape_manual(values=rep(c(21, 22), 2)) + # estimated -> circle; observed -> square
+  scale_linetype_manual(values=rep(c("dotted", "solid"), 3)) + # different line types per condition
+  scale_color_manual(values=c("orange", "black", "blue")) + # different line colors per conditions
+  scale_fill_manual(values=c("orange", "black", "blue")) + # different ribbon colors per conditions
+  scale_x_discrete("SOA", # x-axis: title
+                   limits=levels(summary.data.exp1.est$SOA)) + # x-axis: SOAs (positive are on the right)
+  ylab("prop. \"horizontal first\" responses") + # y-axis: title
+  scale_y_continuous(breaks=seq(0, 1, .25)) + # x-axis: tick marks
+  geom_hline(yintercept=seq(0, 1, .25), # reference lines
+             linetype="dotted", # line: type
+             colour="#999999", # line: color
+             size=.8, # line: thickness
+             alpha=.5) + # line: transparency
+  guides(color="none", shape="none") + # legends
+  annotation_custom(text.L, xmin=2, xmax=2, ymin=-.2, ymax=-.2) + # annotation on x-axis
+  annotation_custom(text.R, xmin=8, xmax=8, ymin=-.2, ymax=-.2) + # annotation on x-axis
+  theme_pander(base_size=15, pc="white") + # custom theme
+  theme(plot.margin=unit(c(1, 1, 2, 1), "lines")) # make room for the annotations
 
+# override clipping
+ACC.plot.obs.est <- ggplot_gtable(ggplot_build(ACC.plot.obs.est))
+ACC.plot.obs.est$layout$clip[ACC.plot.obs.est$layout$name == "panel"] <- "off"
+grid.draw(ACC.plot.obs.est)
+```
+]
 
+---
+name: TOJ_analysis_hyptest_nocue_vertcued
 
+<Div style="margin-top:90px" /> <!-- start below university header -->
 
+.center[
+  .font200[**Hypothesis testing**
+  ]
+]
 
+<Div style="margin-top:-40px" />
 
+.center[
+  .font130[(**no cue** vs. **vertical cued** conditions)
+  ]
+]
 
+```{r model_mains_hyptest_prep, echo=FALSE, warning=FALSE, message=FALSE}
+samples.model.mains <- as.data.frame(posterior_samples(model.mains, "b")) # posterior samples of all betas (on log scale)
 
+temp.post <- samples.model.mains[, 1:11] # select only posterior samples
+temp.post <- temp.post+temp.post$b_Intercept # add intercept value to all posterior samples
+# convert log odds to probability odds (see https://sebastiansauer.github.io/convert_logit2prob/)
+temp.post <- exp(temp.post)/(1+exp(temp.post))
 
+temp.prior <- samples.model.mains[, 12:22] # select only posterior samples
+temp.prior <- temp.prior+temp.prior$prior_b_Intercept # add intercept value to all posterior samples
+# convert log odds to probability odds (see https://sebastiansauer.github.io/convert_logit2prob/)
+temp.prior <- exp(temp.prior)/(1+exp(temp.prior))
 
+samples.model.mains <- cbind(temp.post, temp.prior) # bind
 
+rm(temp.post, temp.prior) # delete temporary variables
 
+# change variable names
+names(samples.model.mains) <- c("SOA0.no.cue", "SOA217.horizontal.cued", "SOA150.horizontal.cued", "SOA83.horizontal.cued", "SOA17.horizontal.cued", "SOA17.vertical.cued", "SOA83.vertical.cued", "SOA150.vertical.cued", "SOA217.vertical.cued", "vertical.cued", "horizontal.cued","prior.SOA0.no.cue", "prior.SOA217.horizontal.cued", "prior.SOA150.horizontal.cued", "prior.SOA83.horizontal.cued", "prior.SOA17.horizontal.cued", "prior.SOA17.vertical.cued", "prior.SOA83.vertical.cued", "prior.SOA150.vertical.cued", "prior.SOA217.vertical.cued", "prior.vertical.cued", "prior.horizontal.cued")
+```
 
+<Div style="margin-left:-40px" />
 
+.code100[
+  .pull-left[
+  ```r
+  # posterior probability
+  # under the hypothesis
+  # (no.cue=vertical.cued)
+  # against its alternative
+  # (no.cue=/=vertical.cued)
+  hypothesis(model.mains, 
+  "Intercept=Intercept+cuevertical.cued")
+  ```
+  ]
+]
 
+<br />
+<Div style="margin-right:-40px" />
+<Div style="margin-top:-100px" /> 
 
+.pull-right[
+```{r model_mains_hyptest_nocue_vertcued_graph, echo=FALSE, warning=FALSE, message=FALSE, fig.height=3.8, fig.width=4.5, dev='svg'}
+gather(samples.model.mains[, c("SOA0.no.cue", "vertical.cued")], type, value) %>% # summarize values
+  mutate(type=recode(type, "SOA0.no.cue"="no.cue")) %>% # change condition names
+  ggplot(aes(value, color=type)) + # main plot
+  geom_density(aes(fill=type), size=1.2, alpha=.5) + # fill, line thickness, transparency
+  scale_color_manual(values=c("black", "orange")) + # different line colors per conditions
+  scale_fill_manual(values=c("black", "orange")) + # different density fill colors per conditions
+  scale_x_continuous(breaks=seq(0, 1, .1), limits=c(0, 1)) + # x-axis: limits
+  scale_y_continuous(breaks=seq(0, 20, 5)) + # y-axis: tick marks
+  labs(x="probability of \"horizontal first\" responses", y="density") + # title & axes labels
+  geom_vline(xintercept=seq(0, 1, .1), linetype="dotted", colour="gray", size=.8, alpha=.5) + # reference lines
+  geom_hline(yintercept=seq(0, 20, 5), linetype="dotted", colour="gray", size=.8, alpha=.5) + # reference lines
+  geom_hline(yintercept=0, linetype="solid", colour="gray", size=1.2, alpha=1) + # x-axis
+  theme_pander(base_size=15, pc="white", lp=c(.8,.8)) # custom theme
+```
+]
 
+---
+name: TOJ_analysis_hyptest_nocue_prior_posterior
 
+<Div style="margin-top:90px" /> <!-- start below university header -->
 
+.center[
+  .font200[**Hypothesis testing**
+  ]
+]
 
+<Div style="margin-top:-40px" />
 
+.center[
+  .font130[(**pilot** vs. **current** experiment)
+  ]
+]
 
+```{r model_mains_hyptest_prior_vs_post_graph, echo=FALSE, warning=FALSE, message=FALSE, fig.height=3.8, fig.width=8.6, dev='svg'}
+# no cue
+plot.no.cue <-
+gather(samples.model.mains[, c("SOA0.no.cue", "prior.SOA0.no.cue")], type, value) %>% # summarize values
+  mutate(type=recode(type, "SOA0.no.cue"="posterior" , "prior.SOA0.no.cue"="prior")) %>% # change condition names
+  ggplot(aes(value, color=type)) + # main plot
+  geom_density(aes(fill=type), size=1.2, alpha=.5) + # fill, line thickness, transparency
+  scale_color_manual(values=c("black", "gray")) + # different line colors per conditions
+  scale_fill_manual(values=c("black", "gray")) + # different density fill colors per conditions
+  scale_x_continuous(breaks=seq(0, 1, .1), limits=c(0, 1)) + # x-axis: limits
+  scale_y_continuous(breaks=seq(0, 15, 5)) + # y-axis: tick marks
+  labs(title="no cue", x="prob. \"horizontal first\" resp.", y="density") + # title & axes labels
+  geom_vline(xintercept=seq(0, 1, .1), linetype="dotted", colour="gray", size=.8, alpha=.5) + # reference lines
+  geom_hline(yintercept=seq(0, 15, 5), linetype="dotted", colour="gray", size=.8, alpha=.5) + # reference lines
+  geom_hline(yintercept=0, linetype="solid", colour="gray", size=1.2, alpha=1) + # x-axis
+  theme(plot.title=element_text(hjust=.5)) + # center title
+  theme_pander(base_size=13, pc="white", lp=c(.25,.8)) # custom theme
 
+# vertical cued
+plot.vert.cued <-
+gather(samples.model.mains[, c("vertical.cued", "prior.vertical.cued")], type, value) %>% # summarize values
+  mutate(type=recode(type, "vertical.cued"="posterior" , "prior.vertical.cued"="prior")) %>% # change condition names
+  ggplot(aes(value, color=type)) + # main plot
+  geom_density(aes(fill=type), size=1.2, alpha=.5) + # fill, line thickness, transparency
+  scale_color_manual(values=c("orange", "gray")) + # different line colors per conditions
+  scale_fill_manual(values=c("orange", "gray")) + # different density fill colors per conditions
+  scale_x_continuous(breaks=seq(0, 1, .1), limits=c(0, 1)) + # x-axis: limits
+  scale_y_continuous(breaks=seq(0, 25, 5)) + # y-axis: tick marks
+  labs(title="vertical cued", x="prob. \"horizontal first\" resp.", y="density") + # title & axes labels
+  geom_vline(xintercept=seq(0, 1, .1), linetype="dotted", colour="gray", size=.8, alpha=.5) + # reference lines
+  geom_hline(yintercept=seq(0, 25, 5), linetype="dotted", colour="gray", size=.8, alpha=.5) + # reference lines
+  geom_hline(yintercept=0, linetype="solid", colour="gray", size=1.2, alpha=1) + # x-axis
+  theme(plot.title=element_text(hjust=.5)) + # center title
+  theme_pander(base_size=13, pc="white", lp=c(.7,.8)) # custom theme
+
+# horizontal cued
+plot.horiz.cued <-
+gather(samples.model.mains[, c("horizontal.cued", "prior.horizontal.cued")], type, value) %>% # summarize values
+  mutate(type=recode(type, "horizontal.cued"="posterior" , "prior.horizontal.cued"="prior")) %>% # change condition names
+  ggplot(aes(value, color=type)) + # main plot
+  geom_density(aes(fill=type), size=1.2, alpha=.5) + # fill, line thickness, transparency
+  scale_color_manual(values=c("blue", "gray")) + # different line colors per conditions
+  scale_fill_manual(values=c("blue", "gray")) + # different density fill colors per conditions
+  scale_x_continuous(breaks=seq(0, 1, .1), limits=c(0, 1)) + # x-axis: limits
+  scale_y_continuous(breaks=seq(0, 25, 5)) + # y-axis: tick marks
+  labs(title="horizontal cued", x="prob. \"horizontal first\" resp.", y="density") + # title & axes labels
+  geom_vline(xintercept=seq(0, 1, .1), linetype="dotted", colour="gray", size=.8, alpha=.5) + # reference lines
+  geom_hline(yintercept=seq(0, 25, 5), linetype="dotted", colour="gray", size=.8, alpha=.5) + # reference lines
+  geom_hline(yintercept=0, linetype="solid", colour="gray", size=1.2, alpha=1) + # x-axis
+  theme(plot.title=element_text(hjust=.5)) + # center title
+  theme_pander(base_size=13, pc="white", lp=c(.25,.8)) # custom theme
+
+multiplot(plot.no.cue, plot.vert.cued, plot.horiz.cued, cols=3)
+```
+
+---
+name: conclusions1
+
+<Div style="margin-top:90px" /> <!-- start below university header -->
+
+.center[
+  .font200[**Conclusions**
+  ]
+]
+
+.font110[
+  What we have learned:
+]
+
+---
+name: conclusions2
+
+<Div style="margin-top:90px" /> <!-- start below university header -->
+
+.center[
+  .font200[**Conclusions**
+  ]
+]
+
+.font110[
+  What we have learned:
+  * SOA and cue influence performance **independently**
+    - comparison of *theoretically plausible* multilevel models via loo-cv
+]
+
+---
+name: conclusions3
+
+<Div style="margin-top:90px" /> <!-- start below university header -->
+
+.center[
+  .font200[**Conclusions**
+  ]
+]
+
+.font110[
+  What we have learned:
+  * SOA and cue influence performance **independently**
+    - comparison of *theoretically plausible* multilevel models via loo-cv
+  * the winning model is able to predict unobserved data pretty well
+    - *observed* and *estimated* data are very similar
+]
+
+---
+name: conclusions4
+
+<Div style="margin-top:90px" /> <!-- start below university header -->
+
+.center[
+  .font200[**Conclusions**
+  ]
+]
+
+.font110[
+  What we have learned:
+  * SOA and cue influence performance **independently**
+    - comparison of *theoretically plausible* multilevel models via loo-cv
+  * the winning model is able to predict unobserved data pretty well
+    - *observed* and *estimated* data are very similar
+  * *"horizontal first"* responses are less likely when the *vertical* lines are cued
+    - comparison of the posterior distributions of no cue and vertical cued conditions
+]
+
+---
+name: conclusions5
+
+<Div style="margin-top:90px" /> <!-- start below university header -->
+
+.center[
+  .font200[**Conclusions**
+  ]
+]
+
+.font110[
+  What we have learned:
+  * SOA and cue influence performance **independently**
+    - comparison of *theoretically plausible* multilevel models via loo-cv
+  * the winning model is able to predict unobserved data pretty well
+    - *observed* and *estimated* data are very similar
+  * *"horizontal first"* responses are less likely when the *vertical* lines are cued
+    - comparison of the posterior distributions of no cue and vertical cued conditions
+  * data of *pilot* and *current* experiment are very similar
+    - comparison of prior and posterior distributions of cue conditions
+]
+
+---
+name: conclusions6
+
+<Div style="margin-top:90px" /> <!-- start below university header -->
+
+.center[
+  .font200[**Conclusions**
+  ]
+]
+
+.font110[
+  What we have learned:
+  * SOA and cue influence performance **independently**
+    - comparison of *theoretically plausible* multilevel models via loo-cv
+  * the winning model is able to predict unobserved data pretty well
+    - *observed* and *estimated* data are very similar
+  * *"horizontal first"* responses are less likely when the *vertical* lines are cued
+    - comparison of the posterior distributions of no cue and vertical cued conditions
+  * data of *pilot* and *current* experiment are very similar
+    - comparison of prior and posterior distributions of cue conditions
+  * ... and much more! Thanks for ```brms```, @paulbuerkner!
+]
 
 ---
 name: thanks
