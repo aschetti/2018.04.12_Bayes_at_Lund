@@ -47,6 +47,18 @@ Bayes@Lund - 12.04.2018</span></div>
 <!-- ############# OUTLINE ############# -->
 <!-- ################################### -->
 
+<!-- ##################################################### NOTES ################################################################## -->
+<!-- Good day everyone, my name is Antonio Schettino and I am a post-doctoral researcher at Ghent University.                       -->
+<!-- Today I will show you the analyses (in progress) of some data collected during an experiment on involuntary spatial attention. -->
+<!-- These analyses are conducted in R using the package brms by Paul Buerkner, one of the keynote speakers of this meeting.        -->
+<!-- ############################################################################################################################## -->
+
+<!-- ##################################################### NOTES ################################################################## -->
+<!-- I will first give a broad background on what we are investigating.                                                             -->
+<!-- Then I will show the experimental paradigm we used to address the issue.                                                       -->
+<!-- I will then show you the data and mention what kind of analysis we performed.                                                  -->
+<!-- Finally, I will give an overview of what we were able to learn with these analyses.                                            -->
+<!-- ############################################################################################################################## -->
 ---
 name: outline
 
@@ -76,6 +88,14 @@ name: outline
   * conclusions
 ]
 
+<!-- ##################################################### NOTES ################################################################## -->
+<!-- Before starting, I would like to acknowledge the contribution of these people.                                                 -->
+<!-- Sarina Evens collected the data of the pilot study and crafted a remarkable master thesis,                                     -->
+<!-- which you can find on the Open Science Framework (https://osf.io/azh5r/).                                                      -->
+<!-- Annelies Elegeert collected the data of the experiment I will present today.                                                   -->
+<!-- Valentina Rossi and Gilles Pourtois are long-time collaborators                                                                -->
+<!-- who helped with the experimental design and framing the theoretical background.                                                -->
+<!-- ############################################################################################################################## -->
 --
 <!-- add collaborators picture -->
 <Div style="margin-top:-380px" />
@@ -88,6 +108,10 @@ name: outline
 <!-- ############ BACKGROUND ########### -->
 <!-- ################################### -->
 
+<!-- ##################################################### NOTES ################################################################## -->
+<!-- Let's start by clarifying what we wanted to study: involuntary attention.                                                      -->
+<!-- Instead of giving a definition, perhaps a video might show this process more intuitively.                                   -->
+<!-- ############################################################################################################################## -->
 ---
 name: notification_trolling
 
@@ -112,6 +136,13 @@ name: notification_trolling
   source: https://www.youtube.com/watch?v=0M2L9XNYfLs
 ]
 
+<!-- ##################################################### NOTES ################################################################## -->
+<!-- So, what happened here?                                                                                                        -->
+<!-- The guy in the background was attracted to the phone despite knowing that his friend was making the notification sounds.       -->
+<!-- In other words, his attention was automatically attracted to his phone. Note that these sounds were not just uninformative     -->
+<!-- (they were not signalling a real message), but were counterproductive,                                                         -->
+<!-- because they distracted him from his current task (watching TV).                                                               -->
+<!-- ############################################################################################################################## -->
 ---
 name: clarify_example1
 
@@ -140,6 +171,14 @@ name: clarify_example1
   * His attention was **automatically** attracted to ~~uninformative~~ **counterproductive** sounds (distraction from current task: watching TV)
 ]
 
+<!-- ##################################################### NOTES ################################################################## -->
+<!-- This is just a funny example, but involuntary attention can also lead to dangerous consequences in real life.                  -->
+<!-- For example, imagine driving your car in a busy road and suddenly being distracted by a flash on your mobile phone.            -->
+<!-- You could cause an accident.                                                                                                   -->
+<!-- Imagine a worker operating a hydraulic press and being distracted by a blinking light. They could get seriously injured.       -->
+<!-- We need to understand this phenomenon deeply, but first we need to do it in controlled situations.                             -->
+<!-- So how can we study it in the lab?                                                                                             -->
+<!-- ############################################################################################################################## -->
 ---
 name: clarify_example2
 
@@ -149,8 +188,6 @@ name: clarify_example2
   .font200[**Why study involuntary attention?**
   ]
 ]
-
---
 
 .font120[
   * Involuntary attentional orienting can be dangerous in some real-life situations
@@ -171,6 +208,13 @@ name: clarify_example2
 <!-- ################################### -->
 <!-- ###### EXPERIMENTAL PARADIGM ###### -->
 <!-- ################################### -->
+
+<!-- ##################################################### NOTES ################################################################## -->
+<!-- One way would be to use a temporal order judgment task.                                                                        -->
+<!-- In the simplest version of this experimental paradigm, two stimuli are briefly flashed on the screen and                       -->
+<!-- observers have to say which stimulus appeared first.                                                                           -->
+<!-- Difficulty varies as a function of Stimulus Onset Asynchrony (SOA), which is the time between the onset of the stimuli.        -->
+<!-- ############################################################################################################################## -->
 ---
 name: TOJ
 
@@ -199,6 +243,13 @@ name: TOJ
   * Difficulty depends on the time between the onset of the stimuli (**SOA**)
 ]
 
+<!-- ##################################################### NOTES ################################################################## -->
+<!-- This is an example of an easy trial.                                                                                           -->
+<!-- Here the first stimulus (vertical lines) appear on the right side, followed by the second stimulus (horizontal lines).         -->
+<!-- Participants have to judge which lines appear first.                                                                           -->
+<!-- Changing the time between the onset of the two stimuli makes it easier or more difficult.                                      -->
+<!-- Here timing is not correct due to technical limitations of the presentation, but at least you get my point.                    -->
+<!-- ############################################################################################################################## -->
 ---
 name: TOJ_example
 background-image: url("TOJ_video.gif")
@@ -212,6 +263,13 @@ background-position: 50% 65%
   ]
 ]
 
+<!-- ##################################################### NOTES ################################################################## -->
+<!-- In our modified version of this paradigm, we use an exogenous cue to attract attention to one of the two placeholders.         -->
+<!-- This creates the illusion of perceiving the stimulus at the attended location as appearing first even when it's not true.      -->
+<!-- Now, what would happen if we present a cue that is always wrong, always appearing on the location of the second stimulus?      -->
+<!-- Would participants' attention still automatically shift towards that location, even though it's counterproductive?             -->
+<!-- This would be strong evidence that people cannot suppress this automatic urge to look at the cued location.                    -->
+<!-- ############################################################################################################################## -->
 ---
 name: TOJ_cue
 
@@ -238,6 +296,15 @@ name: TOJ_cue
   * What if the cue is **always wrong**, i.e., appearing on the location of the *second* stimulus?
 ]
 
+<!-- ##################################################### NOTES ################################################################## -->
+<!-- This is an example of this modified paradigm.                                                                                  -->
+<!-- Here the cue (a thick placeholder box) appears on the left,                                                                    -->
+<!-- then the first stimulus (horizontal lines) appear on the right side,                                                           -->
+<!-- followed by the second stimulus (the vertical lines).                                                                          -->
+<!-- So, the correct answer would be to judge the horizontal lines as appearing first but,                                          -->
+<!-- because of the cue, participants should be more inclined to say that the vertical lines appeared first.                        -->
+<!-- Again, timing here is not correct, this example is just to get the point across.                                               -->
+<!-- ############################################################################################################################## -->
 ---
 name: TOJ_video_cue
 background-image: url("TOJ_video_cue.gif")
@@ -255,8 +322,24 @@ background-position: 50% 80%
 <!-- ########## DATA & RESULTS ######### -->
 <!-- ################################### -->
 
+<!-- ##################################################### NOTES ################################################################## -->
+<!-- This is a visualization of the data.                                                                                           -->
+<!-- On the x-axis you see the SOAs. Positive SOAs mean that the horizontal lines were presented first,                             -->
+<!-- negative SOAs mean that the horizontal lines were presented first.                                                             -->
+<!-- On the y-axis you see the proportion of times people judged the horizontal lines as appearing first.                           -->
+<!-- X-axis: FACT. Y-axis: PERCEPTION.                                                                                              -->
+<!-- The black line represents responses when no cue was presented, our baseline condition.                                         -->
+<!-- When the vertical lineas appear long before the horizontal lines,                                                              -->
+<!-- people should almost never judge the horizontal lines as appearing first. This is what we see here.                            -->
+<!-- The shorter the SOA, the more uncertain people are in their judgment. When the stimuli are presented simultaneously,           -->
+<!-- there is a 50/50 chance of perceiving the horizontal or vertical lines as first.                                               -->
+<!-- What happens when the horizontal lines are cued (blue line)?                                                                   -->
+<!-- If the horizontal lines are cued, it means that the vertical lines always appeared first.                                      -->
+<!-- However, participants say more often that the horizontal lines appeared first because they were cued.                          -->
+<!-- The same effect can be seen when the vertical lines were cued.                                                                 -->
+<!-- ############################################################################################################################## -->
 ---
-name: TOJ_data
+name: TOJ_graph
 
 <Div style="margin-top:90px" /> <!-- start below university header -->
 
@@ -265,72 +348,10 @@ name: TOJ_data
   ]
 ]
 
-```{r TOJ_exp1_data, echo=FALSE, warning=FALSE, message=FALSE}
-read_csv("TOJ_exp1.csv") %>% # load data
-  select(participant=Participant, SOA, cue=MainConds, response=Resp) %>% # select and rename variables of interest
-  mutate(participant=as.factor(participant), # convert participant as factor
-         SOA=recode(factor(SOA), # convert SOA to factor
-                    # add "+" to positive SOAs (useful for graphs)
-                    "17"="+17",
-                    "83"="+83",
-                    "150"="+150",
-                    "217"="+217"),
-         cue=recode(factor(cue), # convert cue to factor and change level names
-                    "NoCue"="no.cue", "Horiz1st"="vertical.cued", "Vert1st"="horizontal.cued")) %>%
-  print(.) # visualize first entries of dataset
-```
-
-<Div style="margin-top:-350px" />
-
---
-
-.right[
-  .font120[31 participants
-  ]
-]
-
---
-
-.right[
-  .font120[5 SOAs
-  ]
-]
-
---
-
-.right[
-  .font120[3 cue conditions
-  ]
-]
-
---
-
-.right[
-  .font120[*"2"*: horizontal first
-  ]
-]
-
---
-
-.right[
-  .font120[*"8"*: vertical first
-  ]
-]
-
----
-name: TOJ_graph
-
-<Div style="margin-top:90px" /> <!-- start below university header -->
-
-.center[
-  .font200[**TOJ - Plot**
-  ]
-]
-
 <Div style="margin-top:-40px" />
 
 .center[
-```{r TOJ_exp1, echo=FALSE, warning=FALSE, message=FALSE, fig.height=4.9, fig.width=7, dev='svg'}
+```{r TOJ_plot, echo=FALSE, warning=FALSE, message=FALSE, fig.height=4.9, fig.width=7, dev='svg'}
 data.exp1 <- read_csv("TOJ_exp1.csv") %>% # load data
   select(participant=Participant, SOA, cue=MainConds, response=Resp) %>% # select and rename variables of interest
   mutate(participant=as.factor(participant), # convert participant as factor
@@ -390,8 +411,17 @@ grid.draw(ACC.plot)
 ```
 ]
 
-<!-- Incremental lists do not give me what I want (due to changes in font formatting and large spacing), -->
-<!-- so I created new slides and duplicated the content. Not elegant, but effective. -->
+<!-- ##################################################### NOTES ################################################################## -->
+<!-- We analyzed these data using Bayesian multilevel modeling in brms.                                                             -->
+<!-- Because the data were binary (a bunch of 2s and 8s), we fitted multilevel logistic regressions                                 -->
+<!-- and allowed participants' intercepts and slopes to vary.                                                                       -->
+<!-- On all the parameters of interest, we placed highly informative priors (posterior distributions obtained in a pilot study).    -->
+<!-- We fitted several models and quantified which one had the best predictive validity.                                            -->
+<!-- Once we identified the winning model, we ran diagnostics and posterior predictive checks and did some hypothesis testing.      -->
+<!-- ############################################################################################################################## -->
+
+<!-- Incremental lists do not give me what I want (due to increased font formatting and spacing), -->
+<!-- so I created new slides and duplicated the content. Not elegant, but effective.              -->
 ---
 name: TOJ_analysis_desc1
 
@@ -413,7 +443,7 @@ name: TOJ_analysis_desc2
 ]
 
 .font120[
-* multilevel logistic regression
+* logistic regression, random intercepts & slopes on *participants*
 ]
 
 ---
@@ -427,8 +457,8 @@ name: TOJ_analysis_desc3
 ]
 
 .font120[
-* multilevel logistic regression
-* random intercepts and slopes on *participants*
+* logistic regression, random intercepts & slopes on *participants*
+* **highly informative priors** (from a pilot study)
 ]
 
 ---
@@ -442,9 +472,14 @@ name: TOJ_analysis_desc4
 ]
 
 .font120[
-* multilevel logistic regression
-* random intercepts and slopes on *participants*
+* logistic regression, random intercepts & slopes on *participants*
 * **highly informative priors** (from a pilot study)
+* model comparison:
+  1. full model (**SOA** x **cue**)
+  2. main effects (**SOA** + **cue**)
+  3. main effect of **SOA**
+  4. main effect of **cue**
+  5. **null** model (intercept only)
 ]
 
 ---
@@ -458,10 +493,15 @@ name: TOJ_analysis_desc5
 ]
 
 .font120[
-* multilevel logistic regression
-* random intercepts and slopes on *participants*
+* logistic regression, random intercepts & slopes on *participants*
 * **highly informative priors** (from a pilot study)
 * model comparison:
+  1. full model (**SOA** x **cue**)
+  2. main effects (**SOA** + **cue**)
+  3. main effect of **SOA**
+  4. main effect of **cue**
+  5. **null** model (intercept only)
+* on the winning model:
 ]
 
 ---
@@ -475,11 +515,16 @@ name: TOJ_analysis_desc6
 ]
 
 .font120[
-* multilevel logistic regression
-* random intercepts and slopes on *participants*
+* logistic regression, random intercepts & slopes on *participants*
 * **highly informative priors** (from a pilot study)
 * model comparison:
   1. full model (**SOA** x **cue**)
+  2. main effects (**SOA** + **cue**)
+  3. main effect of **SOA**
+  4. main effect of **cue**
+  5. **null** model (intercept only)
+* on the winning model:
+  - diagnostics & posterior predictive checks
 ]
 
 ---
@@ -493,137 +538,7 @@ name: TOJ_analysis_desc7
 ]
 
 .font120[
-* multilevel logistic regression
-* random intercepts and slopes on *participants*
-* **highly informative priors** (from a pilot study)
-* model comparison:
-  1. full model (**SOA** x **cue**)
-  2. main effects (**SOA** + **cue**)
-]
-
----
-name: TOJ_analysis_desc8
-
-<Div style="margin-top:90px" /> <!-- start below university header -->
-
-.center[
-  .font200[**Bayesian multilevel modeling**
-  ]
-]
-
-.font120[
-* multilevel logistic regression
-* random intercepts and slopes on *participants*
-* **highly informative priors** (from a pilot study)
-* model comparison:
-  1. full model (**SOA** x **cue**)
-  2. main effects (**SOA** + **cue**)
-  3. main effect of **SOA**
-]
-
----
-name: TOJ_analysis_desc9
-
-<Div style="margin-top:90px" /> <!-- start below university header -->
-
-.center[
-  .font200[**Bayesian multilevel modeling**
-  ]
-]
-
-.font120[
-* multilevel logistic regression
-* random intercepts and slopes on *participants*
-* **highly informative priors** (from a pilot study)
-* model comparison:
-  1. full model (**SOA** x **cue**)
-  2. main effects (**SOA** + **cue**)
-  3. main effect of **SOA**
-  4. main effect of **cue**
-]
-
----
-name: TOJ_analysis_desc10
-
-<Div style="margin-top:90px" /> <!-- start below university header -->
-
-.center[
-  .font200[**Bayesian multilevel modeling**
-  ]
-]
-
-.font120[
-* multilevel logistic regression
-* random intercepts and slopes on *participants*
-* **highly informative priors** (from a pilot study)
-* model comparison:
-  1. full model (**SOA** x **cue**)
-  2. main effects (**SOA** + **cue**)
-  3. main effect of **SOA**
-  4. main effect of **cue**
-  5. **null** model (intercept only)
-]
-
----
-name: TOJ_analysis_desc11
-
-<Div style="margin-top:90px" /> <!-- start below university header -->
-
-.center[
-  .font200[**Bayesian multilevel modeling**
-  ]
-]
-
-.font120[
-* multilevel logistic regression
-* random intercepts and slopes on *participants*
-* **highly informative priors** (from a pilot study)
-* model comparison:
-  1. full model (**SOA** x **cue**)
-  2. main effects (**SOA** + **cue**)
-  3. main effect of **SOA**
-  4. main effect of **cue**
-  5. **null** model (intercept only)
-* on the winning model:
-]
-
----
-name: TOJ_analysis_desc12
-
-<Div style="margin-top:90px" /> <!-- start below university header -->
-
-.center[
-  .font200[**Bayesian multilevel modeling**
-  ]
-]
-
-.font120[
-* multilevel logistic regression
-* random intercepts and slopes on *participants*
-* **highly informative priors** (from a pilot study)
-* model comparison:
-  1. full model (**SOA** x **cue**)
-  2. main effects (**SOA** + **cue**)
-  3. main effect of **SOA**
-  4. main effect of **cue**
-  5. **null** model (intercept only)
-* on the winning model:
-  - diagnostics & posterior predictive checks
-]
-
----
-name: TOJ_analysis_desc13
-
-<Div style="margin-top:90px" /> <!-- start below university header -->
-
-.center[
-  .font200[**Bayesian multilevel modeling**
-  ]
-]
-
-.font120[
-* multilevel logistic regression
-* random intercepts and slopes on *participants*
+* logistic regression, random intercepts & slopes on *participants*
 * **highly informative priors** (from a pilot study)
 * model comparison:
   1. full model (**SOA** x **cue**)
@@ -637,8 +552,52 @@ name: TOJ_analysis_desc13
 ]
 
 <!-- ###################################### -->
-<!-- Example of model specification in brms -->
+<!-- #### MODEL SPECIFICATION IN BRMS ##### -->
 <!-- ###################################### -->
+
+<!-- ##################################################### NOTES ################################################################## -->
+<!-- This is the syntax in brms.                                                                                                    -->
+<!--                                                                                                                                -->
+<!-- First, you should specify the model formula. Here, the dependent variable is the number of trials                              -->
+<!-- in which participants responded "horizontal first" over all trials.                                                            -->
+<!-- "Conditions" is the name of the variable containing all condition combinations                                                 -->
+<!-- (e.g., no cue at SOA-217, horizontal cued at SOA+83, ...). It is our population-level (or fixed) effect.                       -->
+<!--                                                                                                                                -->
+<!-- Then we specify the group-level (or random) effects.                                                                           -->
+<!-- In this case, we allow intercepts and slopes to vary across participants for each condition combination.                       -->
+<!-- What does it practically mean? For example:                                                                                    -->
+<!-- - participant 1 could overall be slower than participant 2; or                                                                 -->
+<!-- - participant 17 could be faster at SOA 217 but slower at SOA150 compared to participant 19;                                   -->
+<!-- - ... you get the idea.                                                                                                        -->
+<!-- Here, || is used to prevent group-level correlations from being modeled.                                                       -->
+<!--                                                                                                                                -->
+<!-- This is the name of the data frame containing your data.                                                                       -->
+<!--                                                                                                                                -->
+<!-- Here we specify the likelihood function.                                                                                       -->
+<!-- The data are a bunch of 2s and 8s (the participant did/didn't respond "horizontal first"), hence the binomial distribution.    -->
+<!-- The 'logit' link allows us to interpret the resulting coefficients in terms of odds ratios.                                    -->
+<!--                                                                                                                                -->
+<!-- Priors.full indicates a list with highly informative priors.                                                                   -->
+<!-- We ran a pilot study identical to this one, fitted this same model (with default priors),                                      -->
+<!-- and used the posterior distributions of those parameters as priors for this model.                                             -->
+<!--                                                                                                                                -->
+<!-- We tell brms to extract samples from the priors... they will be useful later on.                                               -->
+<!--                                                                                                                                -->
+<!-- These settings refer to the No-U-Turn-Sampler (NUTS) in STAN:                                                                  -->
+<!-- - inits: initial parameter values in the Markov-Chain Monte Carlo (MCMC) chains;                                               -->
+<!-- - control: steps of the NUTS sampler;                                                                                          -->
+<!-- - chains: number of MCMC chains;                                                                                               -->
+<!-- - iter: number of iterations for each MCMC chain;                                                                              -->
+<!-- - warmup: number of burn-in samples (not included in final posterior distribution);                                            -->
+<!-- - thin: thinning rate (to decrease autocorrelation);                                                                           -->
+<!-- - algorithm: type of sampling algorithm;                                                                                       -->
+<!-- - cores: numer of processor cores for parallel computations;                                                                   -->
+<!-- - seed: seed for RNG (to ensure reproducible results).                                                                         -->
+<!-- For details, see help(brm).                                                                                                    -->
+<!-- ############################################################################################################################## -->
+
+<!-- Incremental lists do not give me what I want (due to increased font formatting and spacing), -->
+<!-- so I created new slides and duplicated the content. Not elegant, but effective.              -->
 ---
 name: TOJ_analysis_model
 
@@ -682,8 +641,6 @@ name: TOJ_analysis_model_highlight1
 
 <Div style="margin-top:-30px" />
 
-<!-- Dependent variable: number of trials in which participants responded "horizontal first" over all trials. -->
-<!-- Population-level (= fixed) effects: one column with all condition combinations. -->
 ```r
 ##################### full model (SOA * cue) #####################
 *   model.full <- brm(num.horiz1st | trials(tot.trials) ~ conditions +
@@ -715,12 +672,6 @@ name: TOJ_analysis_model_highlight2
 
 <Div style="margin-top:-30px" />
 
-<!-- Group-level (= random) effects: allow intercepts and slopes to vary across participants. -->
-<!-- What does it **practically** mean? For example: -->
-<!-- - participant 1 could overall be slower than participant 2; or -->
-<!-- - participant 17 could be faster at SOA 217 but slower at SOA150 compared to participant 19; -->
-<!-- - ... you get the idea. -->
-<!-- Here, || is used to prevent group-level correlations from being modeled. -->
 ```r
 ##################### full model (SOA * cue) #####################
 model.full <- brm(num.horiz1st | trials(tot.trials) ~ conditions +
@@ -752,7 +703,6 @@ name: TOJ_analysis_model_highlight3
 
 <Div style="margin-top:-30px" />
 
-<!-- The data. -->
 ```r
 ##################### full model (SOA * cue) #####################
 model.full <- brm(num.horiz1st | trials(tot.trials) ~ conditions +
@@ -784,9 +734,6 @@ name: TOJ_analysis_model_highlight4
 
 <Div style="margin-top:-30px" />
 
-<!-- The likelihood function. -->
-<!-- The data are a bunch of 0s and 1s (the participant did/didn't respond "horizontal first"), hence the binomial distribution. -->
-<!-- Why 'logit' link? coefficients can be interpreted in terms of odds ratios. -->
 ```r
 ##################### full model (SOA * cue) #####################
 model.full <- brm(num.horiz1st | trials(tot.trials) ~ conditions +
@@ -818,10 +765,6 @@ name: TOJ_analysis_model_highlight5
 
 <Div style="margin-top:-30px" />
 
-<!-- Priors.full indicates a list with highly informative priors. -->
-<!-- We ran a pilot study identical to this one, fitted this same model (with default priors), -->
-<!-- and used the **posterior** distributions of those parameters as **priors** for this model. -->
-<!-- In brms, use the function 'set_prior'. -->
 ```r
 ##################### full model (SOA * cue) #####################
 model.full <- brm(num.horiz1st | trials(tot.trials) ~ conditions +
@@ -853,7 +796,6 @@ name: TOJ_analysis_model_highlight6
 
 <Div style="margin-top:-30px" />
 
-<!-- Extract samples from the priors, they will be useful later on. -->
 ```r
 ##################### full model (SOA * cue) #####################
 model.full <- brm(num.horiz1st | trials(tot.trials) ~ conditions +
@@ -885,17 +827,6 @@ name: TOJ_analysis_model_highlight7
 
 <Div style="margin-top:-30px" />
 
-<!-- These settings refer to the No-U-Turn-Sampler (NUTS) in STAN: -->
-<!-- - inits: initial parameter values in the Markov-Chain Monte Carlo (MCMC) chains; -->
-<!-- - control: steps of the NUTS sampler; -->
-<!-- - chains: number of MCMC chains; -->
-<!-- - iter: number of iterations for each MCMC chain; -->
-<!-- - warmup: number of burn-in samples; -->
-<!-- - thin: thinning rate; -->
-<!-- - algorithm: type of sampling algorithm; -->
-<!-- - cores: numer of processor cores for parallel computations; -->
-<!-- - seed: seed for RNG (to ensure reproducible results). -->
-<!-- For details, see help(brm). -->
 ```r
 ##################### full model (SOA * cue) #####################
 model.full <- brm(num.horiz1st | trials(tot.trials) ~ conditions +
@@ -915,6 +846,10 @@ model.full <- brm(num.horiz1st | trials(tot.trials) ~ conditions +
 *                seed=9001)
 ```
 
+<!-- ##################################################### NOTES ################################################################## -->
+<!-- To specify the other models, change the name of the independent variable                                                       -->
+<!-- and set the priors of the appropriate model.                                                                                   -->
+<!-- ############################################################################################################################## -->
 ---
 name: TOJ_analysis_model_highlight8
 
@@ -927,8 +862,6 @@ name: TOJ_analysis_model_highlight8
 
 <Div style="margin-top:-30px" />
 
-<!-- To specify the other models, change the name of the independent variable -->
-<!-- and set the priors of the appropriate model. -->
 ```r
 ##################### main effect of SOA #####################
 *   model.SOA <- brm(num.horiz1st | trials(tot.trials) ~ SOA +
@@ -948,6 +881,11 @@ name: TOJ_analysis_model_highlight8
               seed=9001)
 ```
 
+<!-- ##################################################### NOTES ################################################################## -->
+<!-- We fitted all the models and compared their out-of-sample predictive validity through leave-one-out cross-validation.          -->
+<!-- The results indicated that the model with the lowest information loss was the one with both main effects, but no interaction.  -->
+<!-- In other words, the effects of SOA and cue independently affect responses but do not interact with each other.                 -->
+<!-- ############################################################################################################################## -->
 ---
 name: TOJ_LOO
 
@@ -983,6 +921,20 @@ model.comparison <- LOO( # list with all models
   ]
 ]
 
+<!-- ##################################################### NOTES ################################################################## -->
+<!-- This is the output that brms gives you.                                                                                        -->
+<!-- For brevity, here I am only showing the output of the population-level ("fixed") effects.                                      -->
+<!-- You can see mean, estimated error, and 95% credible intervals                                                                  -->
+<!-- of the posterior distributions of all the parameters of this model (the intercept is SOA0, no cue).                            -->
+<!--                                                                                                                                -->
+<!-- "Effective sample" is an estimate of the number of independent draws from the posterior distribution.                          -->
+<!-- The closer this number is to the total number of samples (in this case, 6,000), the better the estimation.                     -->
+<!-- As a rule of thumb, the ratio between the effective and total samples should not be lower than .1.                             -->
+<!--                                                                                                                                -->
+<!-- "Rhat" measures the ratio of the average variance of samples within each chain                                                 -->
+<!-- to the variance of the pooled samples across chains. If all chains converged (i.e., they are at equilibrium), Rhat = 1.        -->
+<!-- As a rule of thumb, Rhat should not be higher than 1.05.                                                                       -->
+<!-- ############################################################################################################################## -->
 ---
 name: TOJ_analysis_output
 
@@ -1000,19 +952,16 @@ name: TOJ_analysis_output
   ]
 ]
 
-<!-- ################################### -->
-<!-- Explain Eff. Sample and Rhat -->
-<!-- Check the effective sample size ($\sf{N_{eff}}$), an estimate of the number of independent draws from the posterior distribution of the estimand of interest. Because the draws within a Markov chain are not independent if there is autocorrelation, $\sf{N_{eff}}$ will be smaller than the total sample size ($N$). The larger the ratio $\sf{N_{eff}}$/$N$, the better the estimation. As a rule of thumb, this ratio can be worrisome if < 0.1. With respect to the fixed effects of this model, the worst ratio is 3422/6000=0.57 (beta for SOA +150).
-
-Check $\hat{R}$, which measures the ratio of the average variance of samples within each chain to the variance of the pooled samples across chains. If all chains are at equilibrium, these will be the same and $\hat{R}$ will be one. If the chains have not converged to a common distribution, $\hat{R}$ will be greater than one (Stan Development Team, 2016). For this model, $\hat{R}$ is never above 1.05.
- -->
-
 ```{r model_mains, echo=FALSE, warning=FALSE, message=FALSE}
     # load results model
     model.mains <- readRDS(here::here("model_mains.rds"))
     capture.output(model.mains)[36:48]
 ```
 
+<!-- ##################################################### NOTES ################################################################## -->
+<!-- You can visually explore the MCMC chains, to see whether they converged.                                                       -->
+<!-- For these representative parameters, the chains converged nicely onto the same parameter space ("fat hairy caterpillar").      -->
+<!-- ############################################################################################################################## -->
 ---
 name: TOJ_analysis_MCMCchains
 
@@ -1049,6 +998,13 @@ mcmc_trace(as.array(model.mains),
 ```
 ]
 
+<!-- ##################################################### NOTES ################################################################## -->
+<!-- One way of verifying whether your model is an adequate representation of the observed data                                     -->
+<!-- is by running graphical posterior predictive checks.                                                                           -->
+<!-- Here the blue line is the mean of the observed data                                                                            -->
+<!-- and the yellow histograms represent the posterior distributions of these parameters.                                           -->
+<!-- We can see that observed and estimated data are quite similar.                                                                 -->
+<!-- ############################################################################################################################## -->
 ---
 name: TOJ_analysis_PPC
 
@@ -1083,6 +1039,11 @@ pp_check(model.mains, nsamples=NULL, type="stat_grouped", group="cue")
 ```
 ]
 
+<!-- ##################################################### NOTES ################################################################## -->
+<!-- This is my favorite way of showing that the model accurately predicts the observed data.                                       -->
+<!-- This is the same graph that I showed you earlier, but I also added the data generated by the model (dotted lines).             -->
+<!-- Observed and predicted data are almost undistinguishable, suggesting that the same process may have generated them.            -->
+<!-- ############################################################################################################################## -->
 ---
 name: TOJ_analysis_predicted_observed
 
@@ -1158,6 +1119,14 @@ grid.draw(ACC.plot.obs.est)
 ```
 ]
 
+<!-- ##################################################### NOTES ################################################################## -->
+<!-- Now, suppose we are interested in testing whether responses in the no cue condition                                            -->
+<!-- are different from the vertical cued condition. Through the 'hypothesis' function in brms we can test whether                  -->
+<!-- the 95% credible interval of the difference between these two posterior probabilities includes 0.                              -->
+<!-- As you can see here, the two distributions are clearly different (there is no overlap),                                        -->
+<!-- so we can confidently conclude that "horizontal first" responses are much more likely in the no cue condition                  -->
+<!-- compared to the vertical cued condition.                                                                                       -->
+<!-- ############################################################################################################################## -->
 ---
 name: TOJ_analysis_hyptest_nocue_vertcued
 
@@ -1234,6 +1203,11 @@ gather(samples.model.mains[, c("SOA0.no.cue", "vertical.cued")], type, value) %>
 ```
 ]
 
+<!-- ##################################################### NOTES ################################################################## -->
+<!-- In the same way, we can test whether the results of this experiment are different from the results of the pilot experiment     -->
+<!-- by simply comparing the prior and posterior distributions of our parameters of interest.                                       -->
+<!-- In this case, we can see a great overlap, indicating no difference between pilot and current experiment.                       -->
+<!-- ############################################################################################################################## -->
 ---
 name: TOJ_analysis_hyptest_nocue_prior_posterior
 
@@ -1306,6 +1280,26 @@ gather(samples.model.mains[, c("horizontal.cued", "prior.horizontal.cued")], typ
 multiplot(plot.no.cue, plot.vert.cued, plot.horiz.cued, cols=3)
 ```
 
+
+<!-- ##################################################### NOTES ################################################################## -->
+<!-- So, what have learned?                                                                                                         -->
+<!--                                                                                                                                -->
+<!-- We now know that SOA and cue affect performance independently.                                                                 -->
+<!-- We reached this conclusion by comparing the predictive validity of all theoretically plausible models                          -->
+<!-- via leave-one-out cross-validation procedures.                                                                                 -->
+<!--                                                                                                                                -->
+<!-- We have visually checked that the winning model can predict unobserved data pretty well.                                       -->
+<!--                                                                                                                                -->
+<!-- In line with our predictions, we have verified that "horizontal first" responses are less likely                               -->
+<!-- when the vertical lines are cued compared to when no cue is presented.                                                         -->
+<!-- This was possible by comparing the posterior distributions of these two parameters                                             -->
+<!-- and show that their 95% credible intervals do not overlap.                                                                     -->
+<!--                                                                                                                                -->
+<!-- In the same way, we were also able to show (by comparing prior and posterior distributions) that                               -->
+<!-- "horizontal first" response during the pilot and current experiment are virtually identical.                                   -->
+<!--                                                                                                                                -->
+<!-- There is so much more that can be done in brms... thank you Paul!                                                              -->
+<!-- ############################################################################################################################## -->
 ---
 name: conclusions1
 
@@ -1319,6 +1313,12 @@ name: conclusions1
 .font110[
   What we have learned:
 ]
+
+<!-- ##################################################### NOTES ################################################################## -->
+<!-- I would also like to thank you for your attention. 
+<!-- If you want to keep in touch, this is my email, website, and Twitter handle.
+<!-- You can also find these slides on this blog post on my website.
+<!-- ############################################################################################################################## -->
 
 ---
 name: conclusions2
