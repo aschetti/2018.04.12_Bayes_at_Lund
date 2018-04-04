@@ -794,8 +794,8 @@ name: TOJ_LOO
 ```r
 model.comparison &lt;- LOO( # list with all models
                       model.full, model.mains, model.SOA, model.cue, model.null,
-                      reloo=TRUE, # exact CV for problematic observations
-                      compare=FALSE) # do not compare models with each other
+                      reloo = TRUE, # exact CV for problematic observations
+                      compare = FALSE) # do not compare models with each other
 ```
 
 .center[
@@ -881,10 +881,10 @@ name: TOJ_analysis_MCMCchains
   ```r
   library(bayesplot)
   mcmc_trace(as.array(model.mains),
-  pars=c("b_Intercept", 
+  pars = c("b_Intercept", 
     "b_cuevertical.cued", 
     "b_cuehorizontal.cued"),
-  facet_args=list(ncol=1))
+  facet_args = list(ncol=1))
   ```
 ]
 
@@ -919,9 +919,9 @@ name: TOJ_analysis_PPC
   .pull-left[
     ```r
     pp_check(model.mains, 
-    nsamples=NULL, 
-    type="stat_grouped", 
-    group="cue")
+    nsamples = NULL, 
+    type = "stat_grouped", 
+    group = "cue")
     ```
   ]
 ]
@@ -992,7 +992,7 @@ name: TOJ_analysis_hyptest_nocue_vertcued
   # against its alternative
   # (no.cue=/=vertical.cued)
   hypothesis(model.mains, 
-  "Intercept=Intercept+cuevertical.cued")
+  "Intercept = Intercept + cuevertical.cued")
   ```
   ]
 ]
