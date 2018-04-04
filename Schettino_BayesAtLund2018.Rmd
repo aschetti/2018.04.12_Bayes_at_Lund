@@ -110,7 +110,7 @@ name: outline
 
 <!-- ##################################################### NOTES ################################################################## -->
 <!-- Let's start by clarifying what we wanted to study: involuntary attention.                                                      -->
-<!-- Instead of giving a definition, perhaps a video might show this process more intuitively.                                   -->
+<!-- Instead of giving a definition, perhaps a video might show this process more intuitively.                                      -->
 <!-- ############################################################################################################################## -->
 ---
 name: notification_trolling
@@ -325,18 +325,18 @@ background-position: 50% 80%
 <!-- ##################################################### NOTES ################################################################## -->
 <!-- This is a visualization of the data.                                                                                           -->
 <!-- On the x-axis you see the SOAs. Positive SOAs mean that the horizontal lines were presented first,                             -->
-<!-- negative SOAs mean that the horizontal lines were presented first.                                                             -->
+<!-- negative SOAs mean that the vertical lines were presented first.                                                             -->
 <!-- On the y-axis you see the proportion of times people judged the horizontal lines as appearing first.                           -->
 <!-- X-axis: FACT. Y-axis: PERCEPTION.                                                                                              -->
 <!-- The black line represents responses when no cue was presented, our baseline condition.                                         -->
-<!-- When the vertical lineas appear long before the horizontal lines,                                                              -->
+<!-- When the vertical lines appear long before the horizontal lines,                                                              -->
 <!-- people should almost never judge the horizontal lines as appearing first. This is what we see here.                            -->
 <!-- The shorter the SOA, the more uncertain people are in their judgment. When the stimuli are presented simultaneously,           -->
 <!-- there is a 50/50 chance of perceiving the horizontal or vertical lines as first.                                               -->
 <!-- What happens when the horizontal lines are cued (blue line)?                                                                   -->
 <!-- If the horizontal lines are cued, it means that the vertical lines always appeared first.                                      -->
 <!-- However, participants say more often that the horizontal lines appeared first because they were cued.                          -->
-<!-- The same effect can be seen when the vertical lines were cued.                                                                 -->
+<!-- The reverse effect can be seen when the vertical lines were cued.                                                              -->
 <!-- ############################################################################################################################## -->
 ---
 name: TOJ_graph
@@ -932,7 +932,7 @@ model.comparison <- LOO( # list with all models
 <!-- As a rule of thumb, the ratio between the effective and total samples should not be lower than .1.                             -->
 <!--                                                                                                                                -->
 <!-- "Rhat" measures the ratio of the average variance of samples within each chain                                                 -->
-<!-- to the variance of the pooled samples across chains. If all chains converged (i.e., they are at equilibrium), Rhat = 1.        -->
+<!-- to the variance of the pooled samples across chains. If all chains converge (i.e., they are at equilibrium), Rhat = 1.         -->
 <!-- As a rule of thumb, Rhat should not be higher than 1.05.                                                                       -->
 <!-- ############################################################################################################################## -->
 ---
@@ -1279,7 +1279,6 @@ gather(samples.model.mains[, c("horizontal.cued", "prior.horizontal.cued")], typ
 
 multiplot(plot.no.cue, plot.vert.cued, plot.horiz.cued, cols=3)
 ```
-
 
 <!-- ##################################################### NOTES ################################################################## -->
 <!-- So, what have learned?                                                                                                         -->
