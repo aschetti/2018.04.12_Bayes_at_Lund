@@ -29,7 +29,7 @@ layout: true
 &amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;
 &amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;
 &amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;
-&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;
+&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;
 Bayes@Lund - 12.04.2018&lt;/span&gt;&lt;/div&gt;
 
 &lt;!-- ################################### --&gt;
@@ -99,7 +99,7 @@ name: outline
 
 &lt;!-- ##################################################### NOTES ################################################################## --&gt;
 &lt;!-- Let's start by clarifying what we wanted to study: involuntary attention.                                                      --&gt;
-&lt;!-- Instead of giving a definition, perhaps a video might show this process more intuitively.                                   --&gt;
+&lt;!-- Instead of giving a definition, perhaps a video might show this process more intuitively.                                      --&gt;
 &lt;!-- ############################################################################################################################## --&gt;
 ---
 name: notification_trolling
@@ -314,18 +314,18 @@ background-position: 50% 80%
 &lt;!-- ##################################################### NOTES ################################################################## --&gt;
 &lt;!-- This is a visualization of the data.                                                                                           --&gt;
 &lt;!-- On the x-axis you see the SOAs. Positive SOAs mean that the horizontal lines were presented first,                             --&gt;
-&lt;!-- negative SOAs mean that the horizontal lines were presented first.                                                             --&gt;
+&lt;!-- negative SOAs mean that the vertical lines were presented first.                                                               --&gt;
 &lt;!-- On the y-axis you see the proportion of times people judged the horizontal lines as appearing first.                           --&gt;
 &lt;!-- X-axis: FACT. Y-axis: PERCEPTION.                                                                                              --&gt;
 &lt;!-- The black line represents responses when no cue was presented, our baseline condition.                                         --&gt;
-&lt;!-- When the vertical lineas appear long before the horizontal lines,                                                              --&gt;
+&lt;!-- When the vertical lines appear long before the horizontal lines,                                                               --&gt;
 &lt;!-- people should almost never judge the horizontal lines as appearing first. This is what we see here.                            --&gt;
 &lt;!-- The shorter the SOA, the more uncertain people are in their judgment. When the stimuli are presented simultaneously,           --&gt;
 &lt;!-- there is a 50/50 chance of perceiving the horizontal or vertical lines as first.                                               --&gt;
 &lt;!-- What happens when the horizontal lines are cued (blue line)?                                                                   --&gt;
 &lt;!-- If the horizontal lines are cued, it means that the vertical lines always appeared first.                                      --&gt;
 &lt;!-- However, participants say more often that the horizontal lines appeared first because they were cued.                          --&gt;
-&lt;!-- The same effect can be seen when the vertical lines were cued.                                                                 --&gt;
+&lt;!-- The reverse effect can be seen when the vertical lines were cued.                                                              --&gt;
 &lt;!-- ############################################################################################################################## --&gt;
 ---
 name: TOJ_graph
@@ -375,7 +375,7 @@ name: TOJ_analysis_desc2
 ]
 
 .font120[
-* logistic regression, random intercepts &amp; slopes on *participants*
+* logistic regression, varying intercepts &amp; slopes on *participants*
 ]
 
 ---
@@ -389,7 +389,7 @@ name: TOJ_analysis_desc3
 ]
 
 .font120[
-* logistic regression, random intercepts &amp; slopes on *participants*
+* logistic regression, varying intercepts &amp; slopes on *participants*
 * **highly informative priors** (from a pilot study)
 ]
 
@@ -404,10 +404,10 @@ name: TOJ_analysis_desc4
 ]
 
 .font120[
-* logistic regression, random intercepts &amp; slopes on *participants*
+* logistic regression, varying intercepts &amp; slopes on *participants*
 * **highly informative priors** (from a pilot study)
 * model comparison:
-  1. full model (**SOA** x **cue**)
+  1. full model (**SOA** + **cue** + **SOA** x **cue**)
   2. main effects (**SOA** + **cue**)
   3. main effect of **SOA**
   4. main effect of **cue**
@@ -425,55 +425,10 @@ name: TOJ_analysis_desc5
 ]
 
 .font120[
-* logistic regression, random intercepts &amp; slopes on *participants*
+* logistic regression, varying intercepts &amp; slopes on *participants*
 * **highly informative priors** (from a pilot study)
 * model comparison:
-  1. full model (**SOA** x **cue**)
-  2. main effects (**SOA** + **cue**)
-  3. main effect of **SOA**
-  4. main effect of **cue**
-  5. **null** model (intercept only)
-* on the winning model:
-]
-
----
-name: TOJ_analysis_desc6
-
-&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
-
-.center[
-  .font200[**Bayesian multilevel modeling**
-  ]
-]
-
-.font120[
-* logistic regression, random intercepts &amp; slopes on *participants*
-* **highly informative priors** (from a pilot study)
-* model comparison:
-  1. full model (**SOA** x **cue**)
-  2. main effects (**SOA** + **cue**)
-  3. main effect of **SOA**
-  4. main effect of **cue**
-  5. **null** model (intercept only)
-* on the winning model:
-  - diagnostics &amp; posterior predictive checks
-]
-
----
-name: TOJ_analysis_desc7
-
-&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
-
-.center[
-  .font200[**Bayesian multilevel modeling**
-  ]
-]
-
-.font120[
-* logistic regression, random intercepts &amp; slopes on *participants*
-* **highly informative priors** (from a pilot study)
-* model comparison:
-  1. full model (**SOA** x **cue**)
+  1. full model (**SOA** + **cue** + **SOA** x **cue**)
   2. main effects (**SOA** + **cue**)
   3. main effect of **SOA**
   4. main effect of **cue**
@@ -546,19 +501,19 @@ name: TOJ_analysis_model
 ##################### full model (SOA * cue) #####################
 model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ conditions +
               (conditions || participant), 
-              data=data.TOJ,
-              family=binomial("logit"),
-              prior=priors.full,
-              sample_prior=TRUE,
-              inits="random",
-              control=list(adapt_delta=.9),
-              chains=4,
-              iter=2000,
-              warmup=500,
-              thin=1,
-              algorithm="sampling",
-              cores=4,
-              seed=9001)
+              data = data.TOJ,
+              family = binomial("logit"),
+              prior = priors.full,
+              sample_prior = TRUE,
+              inits = "random",
+              control = list(adapt_delta = .9),
+              chains = 4,
+              iter = 2000,
+              warmup = 500,
+              thin = 1,
+              algorithm = "sampling",
+              cores = 4,
+              seed = 9001)
 ```
 
 ---
@@ -577,19 +532,19 @@ name: TOJ_analysis_model_highlight1
 ##################### full model (SOA * cue) #####################
 *   model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ conditions +
               (conditions || participant),
-              data=data.TOJ,
-              family=binomial("logit"),
-              prior=priors.full,
-              sample_prior=TRUE,
-              inits="random",
-              control=list(adapt_delta=.9),
-              chains=4,
-              iter=2000,
-              warmup=500,
-              thin=1,
-              algorithm="sampling",
-              cores=4,
-              seed=9001)
+              data = data.TOJ,
+              family = binomial("logit"),
+              prior = priors.full,
+              sample_prior = TRUE,
+              inits = "random",
+              control = list(adapt_delta = .9),
+              chains = 4,
+              iter = 2000,
+              warmup = 500,
+              thin = 1,
+              algorithm = "sampling",
+              cores = 4,
+              seed = 9001)
 ```
 
 ---
@@ -608,19 +563,19 @@ name: TOJ_analysis_model_highlight2
 ##################### full model (SOA * cue) #####################
 model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ conditions +
 *                (conditions || participant),
-              data=data.TOJ,
-              family=binomial("logit"),
-              prior=priors.full,
-              sample_prior=TRUE,
-              inits="random",
-              control=list(adapt_delta=.9),
-              chains=4,
-              iter=2000,
-              warmup=500,
-              thin=1,
-              algorithm="sampling",
-              cores=4,
-              seed=9001)
+              data = data.TOJ,
+              family = binomial("logit"),
+              prior = priors.full,
+              sample_prior = TRUE,
+              inits = "random",
+              control = list(adapt_delta = .9),
+              chains = 4,
+              iter = 2000,
+              warmup = 500,
+              thin = 1,
+              algorithm = "sampling",
+              cores = 4,
+              seed = 9001)
 ```
 
 ---
@@ -639,19 +594,19 @@ name: TOJ_analysis_model_highlight3
 ##################### full model (SOA * cue) #####################
 model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ conditions +
               (conditions || participant),
-*                data=data.TOJ,
-              family=binomial("logit"),
-              prior=priors.full,
-              sample_prior=TRUE,
-              inits="random",
-              control=list(adapt_delta=.9),
-              chains=4,
-              iter=2000,
-              warmup=500,
-              thin=1,
-              algorithm="sampling",
-              cores=4,
-              seed=9001)
+*                data = data.TOJ,
+              family = binomial("logit"),
+              prior = priors.full,
+              sample_prior = TRUE,
+              inits = "random",
+              control = list(adapt_delta = .9),
+              chains = 4,
+              iter = 2000,
+              warmup = 500,
+              thin = 1,
+              algorithm = "sampling",
+              cores = 4,
+              seed = 9001)
 ```
 
 ---
@@ -670,19 +625,19 @@ name: TOJ_analysis_model_highlight4
 ##################### full model (SOA * cue) #####################
 model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ conditions +
               (conditions || participant),
-              data=data.TOJ,
-*                family=binomial("logit"),
-              prior=priors.full,
-              sample_prior=TRUE,
-              inits="random",
-              control=list(adapt_delta=.9),
-              chains=4,
-              iter=2000,
-              warmup=500,
-              thin=1,
-              algorithm="sampling",
-              cores=4,
-              seed=9001)
+              data = data.TOJ,
+*                family = binomial("logit"),
+              prior = priors.full,
+              sample_prior = TRUE,
+              inits = "random",
+              control = list(adapt_delta = .9),
+              chains = 4,
+              iter = 2000,
+              warmup = 500,
+              thin = 1,
+              algorithm = "sampling",
+              cores = 4,
+              seed = 9001)
 ```
 
 ---
@@ -701,19 +656,19 @@ name: TOJ_analysis_model_highlight5
 ##################### full model (SOA * cue) #####################
 model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ conditions +
               (conditions || participant),
-              data=data.TOJ,
-              family=binomial("logit"),
-*                prior=priors.full,
-              sample_prior=TRUE,
-              inits="random",
-              control=list(adapt_delta=.9),
-              chains=4,
-              iter=2000,
-              warmup=500,
-              thin=1,
-              algorithm="sampling",
-              cores=4,
-              seed=9001)
+              data = data.TOJ,
+              family = binomial("logit"),
+*                prior = priors.full,
+              sample_prior = TRUE,
+              inits = "random",
+              control = list(adapt_delta = .9),
+              chains = 4,
+              iter = 2000,
+              warmup = 500,
+              thin = 1,
+              algorithm = "sampling",
+              cores = 4,
+              seed = 9001)
 ```
 
 ---
@@ -732,19 +687,19 @@ name: TOJ_analysis_model_highlight6
 ##################### full model (SOA * cue) #####################
 model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ conditions +
               (conditions || participant),
-              data=data.TOJ,
-              family=binomial("logit"),
-              prior=priors.full,
-*                sample_prior=TRUE,
-              inits="random",
-              control=list(adapt_delta=.9),
-              chains=4,
-              iter=2000,
-              warmup=500,
-              thin=1,
-              algorithm="sampling",
-              cores=4,
-              seed=9001)
+              data = data.TOJ,
+              family = binomial("logit"),
+              prior = priors.full,
+*                sample_prior = TRUE,
+              inits = "random",
+              control = list(adapt_delta = .9),
+              chains = 4,
+              iter = 2000,
+              warmup = 500,
+              thin = 1,
+              algorithm = "sampling",
+              cores = 4,
+              seed = 9001)
 ```
 
 ---
@@ -763,19 +718,19 @@ name: TOJ_analysis_model_highlight7
 ##################### full model (SOA * cue) #####################
 model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ conditions +
               (conditions || participant),
-              data=data.TOJ,
-              family=binomial("logit"),
-              prior=priors.full,
-              sample_prior=TRUE,
-*                inits="random",
-*                control=list(adapt_delta=.9),
-*                chains=4,
-*                iter=2000,
-*                warmup=500,
-*                thin=1,
-*                algorithm="sampling",
-*                cores=4,
-*                seed=9001)
+              data = data.TOJ,
+              family = binomial("logit"),
+              prior = priors.full,
+              sample_prior = TRUE,
+*                inits = "random",
+*                control = list(adapt_delta = .9),
+*                chains = 4,
+*                iter = 2000,
+*                warmup = 500,
+*                thin = 1,
+*                algorithm = "sampling",
+*                cores = 4,
+*                seed = 9001)
 ```
 
 &lt;!-- ##################################################### NOTES ################################################################## --&gt;
@@ -798,23 +753,24 @@ name: TOJ_analysis_model_highlight8
 ##################### main effect of SOA #####################
 *   model.SOA &lt;- brm(num.horiz1st | trials(tot.trials) ~ SOA +
               (conditions || participant),
-              data=data.TOJ,
-              family=binomial("logit"),
-*                 prior=priors.SOA,
-              sample_prior=TRUE,
-              inits="random",
-              control=list(adapt_delta=.9),
-              chains=4,
-              iter=2000,
-              warmup=500,
-              thin=1,
-              algorithm="sampling",
-              cores=4,
-              seed=9001)
+              data = data.TOJ,
+              family = binomial("logit"),
+*                 prior = priors.SOA,
+              sample_prior = TRUE,
+              inits = "random",
+              control = list(adapt_delta = .9),
+              chains = 4,
+              iter = 2000,
+              warmup = 500,
+              thin = 1,
+              algorithm = "sampling",
+              cores = 4,
+              seed = 9001)
 ```
 
 &lt;!-- ##################################################### NOTES ################################################################## --&gt;
 &lt;!-- We fitted all the models and compared their out-of-sample predictive validity through leave-one-out cross-validation.          --&gt;
+&lt;!-- We iteratively fit each model on all observations except one, and then try to predict the one we left out.                     --&gt;
 &lt;!-- The results indicated that the model with the lowest information loss was the one with both main effects, but no interaction.  --&gt;
 &lt;!-- In other words, the effects of SOA and cue independently affect responses but do not interact with each other.                 --&gt;
 &lt;!-- ############################################################################################################################## --&gt;
@@ -858,7 +814,7 @@ model.comparison &lt;- LOO( # list with all models
 
 &lt;!-- ##################################################### NOTES ################################################################## --&gt;
 &lt;!-- This is the output that brms gives you.                                                                                        --&gt;
-&lt;!-- For brevity, here I am only showing the output of the population-level ("fixed") effects.                                      --&gt;
+&lt;!-- For brevity, here I am only showing the output of the constant ("fixed") effects.                                              --&gt;
 &lt;!-- You can see mean, estimated error, and 95% credible intervals                                                                  --&gt;
 &lt;!-- of the posterior distributions of all the parameters of this model (the intercept is SOA0, no cue).                            --&gt;
 &lt;!--                                                                                                                                --&gt;
@@ -867,7 +823,7 @@ model.comparison &lt;- LOO( # list with all models
 &lt;!-- As a rule of thumb, the ratio between the effective and total samples should not be lower than .1.                             --&gt;
 &lt;!--                                                                                                                                --&gt;
 &lt;!-- "Rhat" measures the ratio of the average variance of samples within each chain                                                 --&gt;
-&lt;!-- to the variance of the pooled samples across chains. If all chains converged (i.e., they are at equilibrium), Rhat = 1.        --&gt;
+&lt;!-- to the variance of the pooled samples between chains. If all chains converge (i.e., they are at equilibrium), Rhat = 1.        --&gt;
 &lt;!-- As a rule of thumb, Rhat should not be higher than 1.05.                                                                       --&gt;
 &lt;!-- ############################################################################################################################## --&gt;
 ---
@@ -883,7 +839,7 @@ name: TOJ_analysis_output
 &lt;Div style="margin-top:-40px" /&gt;
 
 .center[
-  .font130[(**main effects** model, only **"fixed"** effects)
+  .font130[(**main effects** model, only **constant** effects)
   ]
 ]
 
@@ -940,7 +896,7 @@ name: TOJ_analysis_MCMCchains
 ]
 
 &lt;!-- ##################################################### NOTES ################################################################## --&gt;
-&lt;!-- One way of verifying whether your model is an adequate representation of the observed data                                     --&gt;
+&lt;!-- One way of verifying whether your model can adequately predict unobserved data                                                 --&gt;
 &lt;!-- is by running graphical posterior predictive checks.                                                                           --&gt;
 &lt;!-- Here the blue line is the mean of the observed data                                                                            --&gt;
 &lt;!-- and the yellow histograms represent the posterior distributions of these parameters.                                           --&gt;
@@ -978,7 +934,7 @@ name: TOJ_analysis_PPC
 ]
 
 &lt;!-- ##################################################### NOTES ################################################################## --&gt;
-&lt;!-- This is my favorite way of showing that the model accurately predicts the observed data.                                       --&gt;
+&lt;!-- This is another way of showing that the model generates data very similar to the observed data.                                --&gt;
 &lt;!-- This is the same graph that I showed you earlier, but I also added the data generated by the model (dotted lines).             --&gt;
 &lt;!-- Observed and predicted data are almost undistinguishable, suggesting that the same process may have generated them.            --&gt;
 &lt;!-- ############################################################################################################################## --&gt;
@@ -988,7 +944,7 @@ name: TOJ_analysis_predicted_observed
 &lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
 
 .center[
-  .font200[**Observed vs. estimated data**
+  .font200[**Observed vs. predicted data**
   ]
 ]
 
@@ -1073,7 +1029,6 @@ name: TOJ_analysis_hyptest_nocue_prior_posterior
 
 ![](Schettino_BayesAtLund2018_files/figure-html/model_mains_hyptest_prior_vs_post_graph-1.svg)&lt;!-- --&gt;
 
-
 &lt;!-- ##################################################### NOTES ################################################################## --&gt;
 &lt;!-- So, what have learned?                                                                                                         --&gt;
 &lt;!--                                                                                                                                --&gt;
@@ -1120,7 +1075,7 @@ name: conclusions2
 .font110[
   What we have learned:
   * SOA and cue influence performance **independently**
-    - comparison of *theoretically plausible* multilevel models via loo-cv
+    - comparison of *theoretically plausible* multilevel models
 ]
 
 ---
@@ -1136,9 +1091,8 @@ name: conclusions3
 .font110[
   What we have learned:
   * SOA and cue influence performance **independently**
-    - comparison of *theoretically plausible* multilevel models via loo-cv
-  * the winning model is able to predict unobserved data pretty well
-    - *observed* and *estimated* data are very similar
+    - comparison of *theoretically plausible* multilevel models
+  * the winning model is the best in terms of **predictive accuracy**
 ]
 
 ---
@@ -1154,11 +1108,9 @@ name: conclusions4
 .font110[
   What we have learned:
   * SOA and cue influence performance **independently**
-    - comparison of *theoretically plausible* multilevel models via loo-cv
-  * the winning model is able to predict unobserved data pretty well
-    - *observed* and *estimated* data are very similar
-  * *"horizontal first"* responses are less likely when the *vertical* lines are cued
-    - comparison of the posterior distributions of no cue and vertical cued conditions
+    - comparison of *theoretically plausible* multilevel models
+  * the winning model is the best in terms of **predictive accuracy**
+  * **observed** and **predicted** data are very similar
 ]
 
 ---
@@ -1174,13 +1126,11 @@ name: conclusions5
 .font110[
   What we have learned:
   * SOA and cue influence performance **independently**
-    - comparison of *theoretically plausible* multilevel models via loo-cv
-  * the winning model is able to predict unobserved data pretty well
-    - *observed* and *estimated* data are very similar
+    - comparison of *theoretically plausible* multilevel models
+  * the winning model is the best in terms of **predictive accuracy**
+  * **observed** and **predicted** data are very similar
   * *"horizontal first"* responses are less likely when the *vertical* lines are cued
     - comparison of the posterior distributions of no cue and vertical cued conditions
-  * data of *pilot* and *current* experiment are very similar
-    - comparison of prior and posterior distributions of cue conditions
 ]
 
 ---
@@ -1196,12 +1146,34 @@ name: conclusions6
 .font110[
   What we have learned:
   * SOA and cue influence performance **independently**
-    - comparison of *theoretically plausible* multilevel models via loo-cv
-  * the winning model is able to predict unobserved data pretty well
-    - *observed* and *estimated* data are very similar
+    - comparison of *theoretically plausible* multilevel models
+  * the winning model is the best in terms of **predictive accuracy**
+  * **observed** and **predicted** data are very similar
   * *"horizontal first"* responses are less likely when the *vertical* lines are cued
     - comparison of the posterior distributions of no cue and vertical cued conditions
-  * data of *pilot* and *current* experiment are very similar
+  * data of **pilot** and **current** experiment are very similar
+    - comparison of prior and posterior distributions of cue conditions
+]
+
+---
+name: conclusions7
+
+&lt;Div style="margin-top:90px" /&gt; &lt;!-- start below university header --&gt;
+
+.center[
+  .font200[**Conclusions**
+  ]
+]
+
+.font110[
+  What we have learned:
+  * SOA and cue influence performance **independently**
+    - comparison of *theoretically plausible* multilevel models
+  * the winning model is the best in terms of **predictive accuracy**
+  * **observed** and **predicted** data are very similar
+  * *"horizontal first"* responses are less likely when the *vertical* lines are cued
+    - comparison of the posterior distributions of no cue and vertical cued conditions
+  * data of **pilot** and **current** experiment are very similar
     - comparison of prior and posterior distributions of cue conditions
   * ... and much more! Thanks for ```brms```, @paulbuerkner!
 ]
