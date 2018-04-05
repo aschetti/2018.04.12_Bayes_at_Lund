@@ -499,8 +499,8 @@ name: TOJ_analysis_model
 
 ```r
 ##################### full model (SOA * cue) #####################
-model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ conditions +
-              (conditions || participant), 
+model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ SOA * cue +
+              (SOA * cue || participant), 
               data = data.TOJ,
               family = binomial("logit"),
               prior = priors.full,
@@ -530,8 +530,8 @@ name: TOJ_analysis_model_highlight1
 
 ```r
 ##################### full model (SOA * cue) #####################
-*   model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ conditions +
-              (conditions || participant),
+*   model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ SOA * cue +
+              (SOA * cue || participant),
               data = data.TOJ,
               family = binomial("logit"),
               prior = priors.full,
@@ -561,8 +561,8 @@ name: TOJ_analysis_model_highlight2
 
 ```r
 ##################### full model (SOA * cue) #####################
-model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ conditions +
-*                (conditions || participant),
+model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ SOA * cue +
+*                (SOA * cue || participant),
               data = data.TOJ,
               family = binomial("logit"),
               prior = priors.full,
@@ -592,8 +592,8 @@ name: TOJ_analysis_model_highlight3
 
 ```r
 ##################### full model (SOA * cue) #####################
-model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ conditions +
-              (conditions || participant),
+model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ SOA * cue +
+              (SOA * cue || participant),
 *                data = data.TOJ,
               family = binomial("logit"),
               prior = priors.full,
@@ -623,8 +623,8 @@ name: TOJ_analysis_model_highlight4
 
 ```r
 ##################### full model (SOA * cue) #####################
-model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ conditions +
-              (conditions || participant),
+model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ SOA * cue +
+              (SOA * cue || participant),
               data = data.TOJ,
 *                family = binomial("logit"),
               prior = priors.full,
@@ -654,8 +654,8 @@ name: TOJ_analysis_model_highlight5
 
 ```r
 ##################### full model (SOA * cue) #####################
-model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ conditions +
-              (conditions || participant),
+model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ SOA * cue +
+              (SOA * cue || participant),
               data = data.TOJ,
               family = binomial("logit"),
 *                prior = priors.full,
@@ -685,8 +685,8 @@ name: TOJ_analysis_model_highlight6
 
 ```r
 ##################### full model (SOA * cue) #####################
-model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ conditions +
-              (conditions || participant),
+model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ SOA * cue +
+              (SOA * cue || participant),
               data = data.TOJ,
               family = binomial("logit"),
               prior = priors.full,
@@ -716,8 +716,8 @@ name: TOJ_analysis_model_highlight7
 
 ```r
 ##################### full model (SOA * cue) #####################
-model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ conditions +
-              (conditions || participant),
+model.full &lt;- brm(num.horiz1st | trials(tot.trials) ~ SOA * cue +
+              (SOA * cue || participant),
               data = data.TOJ,
               family = binomial("logit"),
               prior = priors.full,
@@ -752,7 +752,7 @@ name: TOJ_analysis_model_highlight8
 ```r
 ##################### main effect of SOA #####################
 *   model.SOA &lt;- brm(num.horiz1st | trials(tot.trials) ~ SOA +
-              (conditions || participant),
+*                 (SOA || participant),
               data = data.TOJ,
               family = binomial("logit"),
 *                 prior = priors.SOA,
