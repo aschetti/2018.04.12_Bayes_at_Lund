@@ -1,4 +1,4 @@
-# Analyzing an experiment on involuntary attention using **```brms``**
+# Analyzing an experiment on involuntary attention using **```brms```**
 
 ![Bayes @ Lund 2018](media/BayesAtLund2018_avatar.jpg)
 
