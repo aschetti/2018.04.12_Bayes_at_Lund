@@ -14,20 +14,32 @@ output:
       self_contained: true
 ---
 
-```{r setup, include=FALSE}
-# use pacman to install and load relevant packages
-pacman::p_load("knitr", # dynamic report generation
-               "here", # constructs paths to your project's files
-               "Rmisc", # for advanced summary functions
-               # WARNING: "Rmisc" requires "plyr", which gives problems with group_by function in "dplyr"
-               # --> solution: load "dplyr" (part of "tidyverse") after "plyr"
-               "tidyverse", # install the following packages: ggplot2, tibble, tidyr, readr, purrr, dplyr
-               "ggthemes", # more themes for ggplot2
-               "grid", # for plot annotations
-               "brms", # Bayesian Regression Models using Stan
-               "bayesplot") # Plotting for Bayesian Models
+```{r setup, include = FALSE}
 
-options(htmltools.dir.version=FALSE)
+# ### install packages
+# install.packages("knitr")
+# install.packages("here")
+# install.packages("Rmisc")
+# install.packages("tidyverse")
+# install.packages("ggthemes")
+# install.packages("grid")
+# install.packages("brms")
+# install.packages("bayesplot")
+
+### load packages
+library(knitr) # dynamic report generation
+library(here) # constructs paths to your project's files
+library(Rmisc) # for advanced summary functions
+# WARNING: "Rmisc" requires "plyr", which gives problems with group_by function in "dplyr"
+# --> solution: load "dplyr" (part of "tidyverse") after "plyr"
+library(tidyverse) # install the following packages: ggplot2, tibble, tidyr, readr, purrr, dplyr
+library(ggthemes) # more themes for ggplot2
+library(grid) # for plot annotations
+library(brms) # Bayesian Regression Models using Stan
+library(bayesplot) # Plotting for Bayesian Models
+
+options(htmltools.dir.version = FALSE)
+
 ```
 
 layout: true
@@ -43,22 +55,6 @@ layout: true
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 Bayes@Lund - 12.04.2018</span></div>
 
-<!-- ################################### -->
-<!-- ############# OUTLINE ############# -->
-<!-- ################################### -->
-
-<!-- ##################################################### NOTES ################################################################## -->
-<!-- Good day everyone, my name is Antonio Schettino and I am a post-doctoral researcher at Ghent University.                       -->
-<!-- Today I will show you the analyses (in progress) of some data collected during an experiment on involuntary spatial attention. -->
-<!-- These analyses are conducted in R using the package brms by Paul Buerkner, one of the keynote speakers of this meeting.        -->
-<!-- ############################################################################################################################## -->
-
-<!-- ##################################################### NOTES ################################################################## -->
-<!-- I will first give a broad background on what we are investigating.                                                             -->
-<!-- Then I will show the experimental paradigm we used to address the issue.                                                       -->
-<!-- I will then show you the data and mention what kind of analysis we performed.                                                  -->
-<!-- Finally, I will give an overview of what we were able to learn with these analyses.                                            -->
-<!-- ############################################################################################################################## -->
 ---
 name: outline
 
@@ -88,30 +84,40 @@ name: outline
   * conclusions
 ]
 
-<!-- ##################################################### NOTES ################################################################## -->
-<!-- Before starting, I would like to acknowledge the contribution of these people.                                                 -->
-<!-- Sarina Evens collected the data of the pilot study and crafted a remarkable master thesis,                                     -->
-<!-- which you can find on the Open Science Framework (https://osf.io/azh5r/).                                                      -->
-<!-- Annelies Elegeert collected the data of the experiment I will present today.                                                   -->
-<!-- Valentina Rossi and Gilles Pourtois are long-time collaborators                                                                -->
-<!-- who helped with the experimental design and framing the theoretical background.                                                -->
-<!-- ############################################################################################################################## -->
+<!-- notes -->
+
+???
+
+Good day everyone, my name is Antonio Schettino and I am a post-doctoral researcher at Ghent University.   
+Today I will show you the analyses (in progress) of some data collected during an experiment on involuntary spatial attention. These analyses are conducted in *R* using the package `brms` by Paul Buerkner, one of the keynote speakers of this meeting.   
+
+* I will first give a broad background on what we are investigating.
+* Then I will show the experimental paradigm we used to address the issue.
+* I will then show you the data and mention what kind of analysis we performed.
+* Finally, I will give an overview of what we were able to learn with these analyses.
+
+<!-- end notes -->
+
 --
-<!-- add collaborators picture -->
 <Div style="margin-top:-380px" />
 
 .right[
-  ![collaborators](collaborators.jpg)
+  ![collaborators](media/collaborators.jpg)
 ]
 
-<!-- ################################### -->
-<!-- ############ BACKGROUND ########### -->
-<!-- ################################### -->
+<!-- notes -->
 
-<!-- ##################################################### NOTES ################################################################## -->
-<!-- Let's start by clarifying what we wanted to study: involuntary attention.                                                      -->
-<!-- Instead of giving a definition, perhaps a video might show this process more intuitively.                                      -->
-<!-- ############################################################################################################################## -->
+???
+
+Before starting, I would like to acknowledge the contribution of these people:
+
+* Sarina Evens collected the data of the pilot study and crafted a remarkable master thesis,
+which you can find on the [Open Science Framework](https://osf.io/azh5r/)
+* Annelies Elegeert collected the data of the experiment I will present today
+* Valentina Rossi and Gilles Pourtois are long-time collaborators who helped with the experimental design and framing the theoretical background
+
+<!-- end notes -->
+
 ---
 name: notification_trolling
 
@@ -124,11 +130,10 @@ name: notification_trolling
 
 <br />
 
-<!-- add video -->
 .center[
   <body>
   <video width="320" height="240" controls="controls" vid.autoplay="false">
-  <source src="notification_troll.mp4" type="video/mp4">
+  <source src="media/notification_troll.mp4" type="video/mp4">
   <object data="" width="320" height="240">
   <embed width="320" height="240" src="notification_troll.mp4">
   </object></video></body>
@@ -136,13 +141,16 @@ name: notification_trolling
   source: https://www.youtube.com/watch?v=0M2L9XNYfLs
 ]
 
-<!-- ##################################################### NOTES ################################################################## -->
-<!-- So, what happened here?                                                                                                        -->
-<!-- The guy in the background was attracted to the phone despite knowing that his friend was making the notification sounds.       -->
-<!-- In other words, his attention was automatically attracted to his phone. Note that these sounds were not just uninformative     -->
-<!-- (they were not signalling a real message), but were counterproductive,                                                         -->
-<!-- because they distracted him from his current task (watching TV).                                                               -->
-<!-- ############################################################################################################################## -->
+<!-- notes -->
+
+???
+
+Let's start by clarifying what we wanted to study: involuntary attention.   
+   
+Instead of giving a definition, perhaps a video might show this process more intuitively.
+
+<!-- end notes -->
+
 ---
 name: clarify_example1
 
@@ -153,11 +161,27 @@ name: clarify_example1
   ]
 ]
 
+<!-- notes -->
+
+???
+
+So, what happened here?
+
+<!-- end notes -->
+
 --
 
 .font120[
   * The guy in the background was attracted to the phone...
 ]
+
+<!-- notes -->
+
+???
+
+The guy in the background was attracted to the phone *despite knowing* that his friend was making the notification sounds. In other words, his attention was **automatically** attracted to his phone.
+
+<!-- end notes -->
 
 --
 
@@ -171,14 +195,14 @@ name: clarify_example1
   * His attention was **automatically** attracted to ~~uninformative~~ **counterproductive** sounds (distraction from current task: watching TV)
 ]
 
-<!-- ##################################################### NOTES ################################################################## -->
-<!-- This is just a funny example, but involuntary attention can also lead to dangerous consequences in real life.                  -->
-<!-- For example, imagine driving your car in a busy road and suddenly being distracted by a flash on your mobile phone.            -->
-<!-- You could cause an accident.                                                                                                   -->
-<!-- Imagine a worker operating a hydraulic press and being distracted by a blinking light. They could get seriously injured.       -->
-<!-- We need to understand this phenomenon deeply, but first we need to do it in controlled situations.                             -->
-<!-- So how can we study it in the lab?                                                                                             -->
-<!-- ############################################################################################################################## -->
+<!-- notes -->
+
+???
+
+Note that these sounds were not just uninformative (they were not signalling a real message), but were **counterproductive**, because they distracted him from his current task (watching TV).
+
+<!-- end notes -->
+
 ---
 name: clarify_example2
 
@@ -193,11 +217,31 @@ name: clarify_example2
   * Involuntary attentional orienting can be dangerous in some real-life situations
 ]
 
+
+<!-- notes -->
+
+???
+
+This is just a funny example, but involuntary attention can also lead to dangerous consequences in real life. 
+
+<!-- end notes -->
+
 --
 
 .font120[
   *  Car driver distracted by flashing mobile phone, worker operating heavy machinery distracted by blinking lights, ...
 ]
+
+
+<!-- notes -->
+
+???
+ 
+For example, imagine driving your car in a busy road and suddenly being distracted by a flash on your mobile phone.
+You could cause an accident.   
+Imagine a worker operating a hydraulic press and being distracted by a blinking light. They could get seriously injured.
+
+<!-- end notes -->
 
 --
 
@@ -205,16 +249,14 @@ name: clarify_example2
   * How to study this phenomenon in the lab?
 ]
 
-<!-- ################################### -->
-<!-- ###### EXPERIMENTAL PARADIGM ###### -->
-<!-- ################################### -->
+<!-- notes -->
 
-<!-- ##################################################### NOTES ################################################################## -->
-<!-- One way would be to use a temporal order judgment task.                                                                        -->
-<!-- In the simplest version of this experimental paradigm, two stimuli are briefly flashed on the screen and                       -->
-<!-- observers have to say which stimulus appeared first.                                                                           -->
-<!-- Difficulty varies as a function of Stimulus Onset Asynchrony (SOA), which is the time between the onset of the stimuli.        -->
-<!-- ############################################################################################################################## -->
+???
+
+We need to understand this phenomenon deeply, but first we need to do it in controlled situations. So how can we study it in the lab?
+
+<!-- end notes -->
+
 ---
 name: TOJ
 
@@ -224,6 +266,15 @@ name: TOJ
   .font200[**Temporal Order Judgment (TOJ)**
   ]
 ]
+
+<!-- notes -->
+
+???
+
+One way would be to use a **temporal order judgment task**.
+
+<!-- end notes -->
+
 
 --
 
@@ -237,22 +288,32 @@ name: TOJ
   * Task: which stimulus appeared **first**?
 ]
 
+<!-- notes -->
+
+???
+
+In the simplest version of this experimental paradigm, two stimuli are briefly flashed on the screen and
+observers have to say which stimulus appeared first.
+
+<!-- end notes -->
+
 --
 
 .font120[
   * Difficulty depends on the time between the onset of the stimuli (**SOA**)
 ]
 
-<!-- ##################################################### NOTES ################################################################## -->
-<!-- This is an example of an easy trial.                                                                                           -->
-<!-- Here the first stimulus (vertical lines) appear on the right side, followed by the second stimulus (horizontal lines).         -->
-<!-- Participants have to judge which lines appear first.                                                                           -->
-<!-- Changing the time between the onset of the two stimuli makes it easier or more difficult.                                      -->
-<!-- Here timing is not correct due to technical limitations of the presentation, but at least you get my point.                    -->
-<!-- ############################################################################################################################## -->
+<!-- notes -->
+
+???
+
+Difficulty varies as a function of Stimulus Onset Asynchrony (SOA), which is the time between the onset of the stimuli.
+
+<!-- end notes -->
+
 ---
 name: TOJ_example
-background-image: url("TOJ_video.gif")
+background-image: url("media/TOJ_video.gif")
 background-size: 700px
 background-position: 50% 65%
 
@@ -263,13 +324,17 @@ background-position: 50% 65%
   ]
 ]
 
-<!-- ##################################################### NOTES ################################################################## -->
-<!-- In our modified version of this paradigm, we use an exogenous cue to attract attention to one of the two placeholders.         -->
-<!-- This creates the illusion of perceiving the stimulus at the attended location as appearing first even when it's not true.      -->
-<!-- Now, what would happen if we present a cue that is always wrong, always appearing on the location of the second stimulus?      -->
-<!-- Would participants' attention still automatically shift towards that location, even though it's counterproductive?             -->
-<!-- This would be strong evidence that people cannot suppress this automatic urge to look at the cued location.                    -->
-<!-- ############################################################################################################################## -->
+<!-- notes -->
+
+???
+
+This is an example of an easy trial.   
+Here the first stimulus (vertical lines) appear on the right side, followed by the second stimulus (horizontal lines). Participants have to judge which lines appear first.   
+Changing the time between the onset of the two stimuli makes it easier or more difficult.   
+Here timing is not correct due to technical limitations of the presentation, but at least you get my point.
+
+<!-- end notes -->
+
 ---
 name: TOJ_cue
 
@@ -284,11 +349,27 @@ name: TOJ_cue
   * An **exogenous cue** is used to attract attention towards one placeholder
 ]
 
+<!-- notes -->
+
+???
+
+In our modified version of this paradigm, we use an exogenous cue to attract attention to one of the two placeholders.
+
+<!-- end notes -->
+
 --
 
 .font120[
   * The stimulus on the attended location is perceived as **first** even when appearing second
 ]
+
+<!-- notes -->
+
+???
+
+This creates the illusion of perceiving the stimulus at the attended location as appearing first **even when it's not true**.
+
+<!-- end notes -->
 
 --
 
@@ -296,18 +377,17 @@ name: TOJ_cue
   * What if the cue is **always wrong**, i.e., appearing on the location of the *second* stimulus?
 ]
 
-<!-- ##################################################### NOTES ################################################################## -->
-<!-- This is an example of this modified paradigm.                                                                                  -->
-<!-- Here the cue (a thick placeholder box) appears on the left,                                                                    -->
-<!-- then the first stimulus (horizontal lines) appear on the right side,                                                           -->
-<!-- followed by the second stimulus (the vertical lines).                                                                          -->
-<!-- So, the correct answer would be to judge the horizontal lines as appearing first but,                                          -->
-<!-- because of the cue, participants should be more inclined to say that the vertical lines appeared first.                        -->
-<!-- Again, timing here is not correct, this example is just to get the point across.                                               -->
-<!-- ############################################################################################################################## -->
+<!-- notes -->
+
+???
+
+Now, what would happen if we present a cue that is **always wrong**, always appearing on the location of the second stimulus? Would participants' attention still automatically shift towards that location, even though it's counterproductive? This would be strong evidence that people cannot suppress this automatic urge to look at the cued location.
+
+<!-- end notes -->
+
 ---
 name: TOJ_video_cue
-background-image: url("TOJ_video_cue.gif")
+background-image: url("media/TOJ_video_cue.gif")
 background-size: 700px
 background-position: 50% 80%
 
@@ -318,26 +398,17 @@ background-position: 50% 80%
   ]
 ]
 
-<!-- ################################### -->
-<!-- ########## DATA & RESULTS ######### -->
-<!-- ################################### -->
+<!-- notes -->
 
-<!-- ##################################################### NOTES ################################################################## -->
-<!-- This is a visualization of the data.                                                                                           -->
-<!-- On the x-axis you see the SOAs. Positive SOAs mean that the horizontal lines were presented first,                             -->
-<!-- negative SOAs mean that the vertical lines were presented first.                                                               -->
-<!-- On the y-axis you see the proportion of times people judged the horizontal lines as appearing first.                           -->
-<!-- X-axis: FACT. Y-axis: PERCEPTION.                                                                                              -->
-<!-- The black line represents responses when no cue was presented, our baseline condition.                                         -->
-<!-- When the vertical lines appear long before the horizontal lines,                                                               -->
-<!-- people should almost never judge the horizontal lines as appearing first. This is what we see here.                            -->
-<!-- The shorter the SOA, the more uncertain people are in their judgment. When the stimuli are presented simultaneously,           -->
-<!-- there is a 50/50 chance of perceiving the horizontal or vertical lines as first.                                               -->
-<!-- What happens when the horizontal lines are cued (blue line)?                                                                   -->
-<!-- If the horizontal lines are cued, it means that the vertical lines always appeared first.                                      -->
-<!-- However, participants say more often that the horizontal lines appeared first because they were cued.                          -->
-<!-- The reverse effect can be seen when the vertical lines were cued.                                                              -->
-<!-- ############################################################################################################################## -->
+???
+
+This is an example of this modified paradigm.   
+Here the cue (a thick placeholder box) appears on the left, then the first stimulus (horizontal lines) appear on the right side, followed by the second stimulus (the vertical lines).   
+So, the correct answer would be to judge the horizontal lines as appearing first but, because of the cue, participants should be more inclined to say that the **vertical lines** appeared first.   
+Again, timing here is not correct, this example is just to get the point across.
+
+<!-- end notes -->
+
 ---
 name: TOJ_graph
 
@@ -351,79 +422,111 @@ name: TOJ_graph
 <Div style="margin-top:-40px" />
 
 .center[
-```{r TOJ_plot, echo=FALSE, warning=FALSE, message=FALSE, fig.height=4.9, fig.width=7, dev='svg'}
-data.exp1 <- read_csv("TOJ_exp1.csv") %>% # load data
-  select(participant=Participant, SOA, cue=MainConds, response=Resp) %>% # select and rename variables of interest
-  mutate(participant=as.factor(participant), # convert participant as factor
-         SOA=recode(factor(SOA), # convert SOA to factor
-                    # add "+" to positive SOAs (useful for graphs)
-                    "17"="+17",
-                    "83"="+83",
-                    "150"="+150",
-                    "217"="+217"),
-         cue=recode(factor(cue), # convert cue to factor and change level names
-                    "NoCue"="no.cue", "Horiz1st"="vertical.cued", "Vert1st"="horizontal.cued")) %>%
+
+```{r TOJ_plot, echo = FALSE, warning = FALSE, message = FALSE, fig.height = 4.9, fig.width = 7, dev = 'svg'}
+
+data.exp1 <- 
+  read_csv(here::here("data/TOJ_exp1.csv")) %>% # load data
+  select(participant = Participant, SOA, cue = MainConds, response = Resp) %>% # select and rename variables of interest
+  mutate(
+    participant = as.factor(participant), # convert participant as factor
+    SOA = recode(factor(SOA), # convert SOA to factor
+      # add "+" to positive SOAs (useful for graphs)
+      "17" = "+17",
+      "83" = "+83",
+      "150" = "+150",
+      "217" = "+217"
+    ),
+    cue = recode(factor(cue), # convert cue to factor and change level names
+      "NoCue" = "no.cue", "Horiz1st" = "vertical.cued", "Vert1st" = "horizontal.cued"
+    )
+  ) %>%
   group_by(participant, SOA, cue) %>% # groups
-  summarize(num.horiz1st=length(which(response==2)), # number of "horizontal first" responses
-            tot.trials=length(response==2), # total number of trials
-            prop.horizfirst=num.horiz1st/tot.trials) %>% # proportion of "horizontal first" responses
+  summarize(
+    num.horiz1st = length(which(response == 2)), # number of "horizontal first" responses
+    tot.trials = length(response == 2), # total number of trials
+    prop.horizfirst = num.horiz1st / tot.trials # proportion of "horizontal first" responses
+  ) %>% 
   ungroup()
 
 summary.data.exp1 <- summarySEwithin(data.exp1, # summarize data
-                                     measurevar="prop.horizfirst", # dependent variable
-                                     withinvars=c("SOA", "cue"), # independent variables
-                                     idvar="participant") %>% # ID variable
-  select(SOA, cue, prop.horizfirst, CI95.prop=ci) # select and rename variables of interest
+  measurevar = "prop.horizfirst", # dependent variable
+  withinvars = c("SOA", "cue"), # independent variables
+  idvar = "participant" # ID variable
+) %>% 
+  select(SOA, cue, prop.horizfirst, CI95.prop = ci) # select and rename variables of interest
 
 # include annotations on x-axis
 # (https://stackoverflow.com/questions/31079210/how-can-i-add-annotations-below-the-x-axis-in-ggplot2#31081162)
-text.L <- textGrob("vertical lines first", gp=gpar(fontsize=14))
-text.R <- textGrob("horizontal lines first", gp=gpar(fontsize=14))
+text.L <- textGrob("vertical lines first", gp = gpar(fontsize = 14))
+text.R <- textGrob("horizontal lines first", gp = gpar(fontsize = 14))
 
-ACC.plot <- ggplot(summary.data.exp1, aes(SOA, prop.horizfirst, group=cue, color=cue, fill=cue)) + # basic graph
-  geom_line(size=1.3) + # lines: thickness
-  geom_ribbon(aes(ymin=prop.horizfirst-CI95.prop, ymax=prop.horizfirst+CI95.prop), # ribbons (mean +/- 95% CI)
-              color="white", # ribbon: color of external line
-              alpha=.3) + # ribbon: transparency
-  geom_point(aes(shape=cue), # points at each SOA
-             fill="white", # point shape: color fill
-             size=3) + # point shape: size
-  scale_color_manual(values=c("orange", "black", "blue")) + # different line colors per conditions
-  scale_fill_manual(values=c("orange", "black", "blue")) + # different ribbon colors per conditions
+ACC.plot <- 
+  ggplot(summary.data.exp1, aes(SOA, prop.horizfirst, group = cue, color = cue, fill = cue)) + # basic graph
+  geom_line(size = 1.3) + # lines: thickness
+  geom_ribbon(aes(ymin = prop.horizfirst - CI95.prop, ymax = prop.horizfirst + CI95.prop), # ribbons (mean +/- 95% CI)
+    color = "white", # ribbon: color of external line
+    alpha = .3 # ribbon: transparency
+  ) +
+  geom_point(aes(shape = cue), # points at each SOA
+    fill = "white", # point shape: color fill
+    size = 3 # point shape: size
+  ) +
+  scale_color_manual(values = c("orange", "black", "blue")) + # different line colors per conditions
+  scale_fill_manual(values = c("orange", "black", "blue")) + # different ribbon colors per conditions
   scale_x_discrete("SOA", # x-axis: title
-                   limits=levels(summary.data.exp1$SOA)) + # x-axis: SOAs (positive are on the right)
+    limits = levels(summary.data.exp1$SOA) # x-axis: SOAs (positive are on the right)
+  ) +
   ylab("prop. \"horizontal first\" responses") + # y-axis: title
-  scale_y_continuous(breaks=seq(0, 1, .25)) + # x-axis: tick marks
-  geom_hline(yintercept=seq(0, 1, .25), # reference lines
-             linetype="dotted", # line: type
-             colour="#999999", # line: color
-             size=.8, # line: thickness
-             alpha=.5) + # line: transparency
-  annotation_custom(text.L, xmin=2, xmax=2, ymin=-.2, ymax=-.2) + # annotation on x-axis
-  annotation_custom(text.R, xmin=8, xmax=8, ymin=-.2, ymax=-.2) + # annotation on x-axis
-  theme_pander(base_size=15, pc="white") + # custom theme
-  theme(plot.margin=unit(c(1, 1, 2, 1), "lines")) # make room for the annotations
+  scale_y_continuous(breaks = seq(0, 1, .25)) + # x-axis: tick marks
+  geom_hline(
+    yintercept = seq(0, 1, .25), # reference lines
+    linetype = "dotted", # line: type
+    colour = "#999999", # line: color
+    size = .8, # line: thickness
+    alpha = .5 # line: transparency
+  ) +
+  annotation_custom(text.L, xmin = 2, xmax = 2, ymin = -.2, ymax = -.2) + # annotation on x-axis
+  annotation_custom(text.R, xmin = 8, xmax = 8, ymin = -.2, ymax = -.2) + # annotation on x-axis
+  theme_pander(base_size = 15, pc = "white") + # custom theme
+  theme(plot.margin = unit(c(1, 1, 2, 1), "lines")) # make room for the annotations
 
 # override clipping
 ACC.plot <- ggplot_gtable(ggplot_build(ACC.plot))
 ACC.plot$layout$clip[ACC.plot$layout$name == "panel"] <- "off"
 grid.draw(ACC.plot)
+
 ```
+
 ]
 
-<!-- ##################################################### NOTES ################################################################## -->
-<!-- We analyzed these data using Bayesian multilevel modeling in brms.                                                             -->
-<!-- Because the data were binary (a bunch of 2s and 8s), we fitted multilevel logistic regressions                                 -->
-<!-- and allowed participants' intercepts and slopes to vary.                                                                       -->
-<!-- On all the parameters of interest, we placed highly informative priors (posterior distributions obtained in a pilot study).    -->
-<!-- We fitted several models and quantified which one had the best predictive validity.                                            -->
-<!-- Once we identified the winning model, we ran diagnostics and posterior predictive checks and did some hypothesis testing.      -->
-<!-- ############################################################################################################################## -->
+<!-- notes -->
 
-<!-- Incremental lists do not give me what I want (due to increased font formatting and spacing), -->
-<!-- so I created new slides and duplicated the content. Not elegant, but effective.              -->
+???
+
+This is a visualization of the data.   
+   
+On the x-axis you see the SOAs. Positive SOAs mean that the horizontal lines were presented first, negative SOAs mean that the vertical lines were presented first.   
+   
+On the y-axis you see the proportion of times people judged the horizontal lines as appearing first.   
+X-axis: FACT. Y-axis: PERCEPTION.   
+   
+The black line represents responses when no cue was presented, our baseline condition.   
+When the vertical lines appear long before the horizontal lines, people should almost never judge the horizontal lines as appearing first. This is what we see here.   
+The shorter the SOA, the more uncertain people are in their judgment. When the stimuli are presented simultaneously,
+there is a 50/50 chance of perceiving the horizontal or vertical lines as first.   
+   
+What happens when the horizontal lines are cued (blue line)?   
+If the horizontal lines are cued, it means that the vertical lines always appeared first. However, participants say more often that the horizontal lines appeared first because they were cued.   
+The reverse effect can be seen when the vertical lines were cued.
+
+<!-- end notes -->
+
 ---
 name: TOJ_analysis_desc1
+
+<!-- Incremental lists do not give me what I want (due to increased font formatting and spacing), -->
+<!-- so I created new slides and duplicated the content. Not elegant, but effective. -->
 
 <Div style="margin-top:90px" /> <!-- start below university header -->
 
@@ -431,6 +534,14 @@ name: TOJ_analysis_desc1
   .font200[**Bayesian multilevel modeling**
   ]
 ]
+
+<!-- notes -->
+
+???
+
+We analyzed these data using Bayesian multilevel modeling in `brms`.
+
+<!-- end notes -->
 
 ---
 name: TOJ_analysis_desc2
@@ -446,6 +557,15 @@ name: TOJ_analysis_desc2
 * logistic regression, varying intercepts & slopes on *participants*
 ]
 
+
+<!-- notes -->
+
+???
+ 
+Because the data were binary (a bunch of 2s and 8s), we fitted multilevel logistic regressions and allowed participants' intercepts and slopes to vary.
+
+<!-- end notes -->
+
 ---
 name: TOJ_analysis_desc3
 
@@ -460,6 +580,14 @@ name: TOJ_analysis_desc3
 * logistic regression, varying intercepts & slopes on *participants*
 * **highly informative priors** (from a pilot study)
 ]
+
+<!-- notes -->
+
+???
+
+On all the parameters of interest, we placed highly informative priors (posterior distributions obtained in a pilot study).
+
+<!-- end notes -->
 
 ---
 name: TOJ_analysis_desc4
@@ -481,6 +609,14 @@ name: TOJ_analysis_desc4
   4. main effect of **cue**
   5. **null** model (intercept only)
 ]
+
+<!-- notes -->
+
+???
+
+We fitted several models and quantified which one had the best predictive validity.
+
+<!-- end notes -->
 
 ---
 name: TOJ_analysis_desc5
@@ -506,55 +642,19 @@ name: TOJ_analysis_desc5
   - hypothesis testing
 ]
 
-<!-- ###################################### -->
-<!-- #### MODEL SPECIFICATION IN BRMS ##### -->
-<!-- ###################################### -->
+<!-- notes -->
 
-<!-- ##################################################### NOTES ################################################################## -->
-<!-- This is the syntax in brms.                                                                                                    -->
-<!--                                                                                                                                -->
-<!-- First, you should specify the model formula. Here, the dependent variable is the number of trials                              -->
-<!-- in which participants responded "horizontal first" over all trials.                                                            -->
-<!-- "Conditions" is the name of the variable containing all condition combinations                                                 -->
-<!-- (e.g., no cue at SOA-217, horizontal cued at SOA+83, ...). It is our population-level (or fixed) effect.                       -->
-<!--                                                                                                                                -->
-<!-- Then we specify the group-level (or random) effects.                                                                           -->
-<!-- In this case, we allow intercepts and slopes to vary across participants for each condition combination.                       -->
-<!-- What does it practically mean? For example:                                                                                    -->
-<!-- - participant 1 could overall be slower than participant 2; or                                                                 -->
-<!-- - participant 17 could be faster at SOA 217 but slower at SOA150 compared to participant 19;                                   -->
-<!-- - ... you get the idea.                                                                                                        -->
-<!-- Here, || is used to prevent group-level correlations from being modeled.                                                       -->
-<!--                                                                                                                                -->
-<!-- This is the name of the data frame containing your data.                                                                       -->
-<!--                                                                                                                                -->
-<!-- Here we specify the likelihood function.                                                                                       -->
-<!-- The data are a bunch of 2s and 8s (the participant did/didn't respond "horizontal first"), hence the binomial distribution.    -->
-<!-- The 'logit' link allows us to interpret the resulting coefficients in terms of odds ratios.                                    -->
-<!--                                                                                                                                -->
-<!-- Priors.full indicates a list with highly informative priors.                                                                   -->
-<!-- We ran a pilot study identical to this one, fitted this same model (with default priors),                                      -->
-<!-- and used the posterior distributions of those parameters as priors for this model.                                             -->
-<!--                                                                                                                                -->
-<!-- We tell brms to extract samples from the priors... they will be useful later on.                                               -->
-<!--                                                                                                                                -->
-<!-- These settings refer to the No-U-Turn-Sampler (NUTS) in STAN:                                                                  -->
-<!-- - inits: initial parameter values in the Markov-Chain Monte Carlo (MCMC) chains;                                               -->
-<!-- - control: steps of the NUTS sampler;                                                                                          -->
-<!-- - chains: number of MCMC chains;                                                                                               -->
-<!-- - iter: number of iterations for each MCMC chain;                                                                              -->
-<!-- - warmup: number of burn-in samples (not included in final posterior distribution);                                            -->
-<!-- - thin: thinning rate (to decrease autocorrelation);                                                                           -->
-<!-- - algorithm: type of sampling algorithm;                                                                                       -->
-<!-- - cores: numer of processor cores for parallel computations;                                                                   -->
-<!-- - seed: seed for RNG (to ensure reproducible results).                                                                         -->
-<!-- For details, see help(brm).                                                                                                    -->
-<!-- ############################################################################################################################## -->
+???
+
+Once we identified the winning model, we ran diagnostics and posterior predictive checks and did some hypothesis testing.
+
+<!-- end notes -->
+
+---
+name: TOJ_analysis_model
 
 <!-- Incremental lists do not give me what I want (due to increased font formatting and spacing), -->
 <!-- so I created new slides and duplicated the content. Not elegant, but effective.              -->
----
-name: TOJ_analysis_model
 
 <Div style="margin-top:90px" /> <!-- start below university header -->
 
@@ -583,6 +683,15 @@ model.full <- brm(num.horiz1st | trials(tot.trials) ~ SOA * cue +
               cores = 4,
               seed = 9001)
 ```
+
+
+<!-- notes -->
+
+???
+
+This is the syntax in `brms`.
+
+<!-- end notes -->
 
 ---
 name: TOJ_analysis_model_highlight1
@@ -615,6 +724,16 @@ name: TOJ_analysis_model_highlight1
               seed = 9001)
 ```
 
+<!-- notes -->
+
+???
+   
+First, you should specify the model formula. Here, the dependent variable is the number of trials in which participants responded "horizontal first" over all trials.   
+   
+*Conditions* is the name of the variable containing all condition combinations (e.g., no cue at *SOA-217*, horizontal cued at *SOA+83*, ...). It is our **population-level** (or **fixed**) effect.
+
+<!-- end notes -->
+
 ---
 name: TOJ_analysis_model_highlight2
 
@@ -645,6 +764,21 @@ model.full <- brm(num.horiz1st | trials(tot.trials) ~ SOA * cue +
               cores = 4,
               seed = 9001)
 ```
+
+<!-- notes -->
+
+???
+
+Then we specify the group-level (or **random**) effects. In this case, we allow intercepts and slopes to vary across participants for each condition combination.   
+What does it practically mean? For example:
+
+* participant 1 could overall be slower than participant 2; or
+* participant 17 could be faster at SOA 217 but slower at SOA150 compared to participant 19;
+* ... and so on.
+
+Here, `||` is used to prevent group-level correlations from being modeled.
+
+<!-- end notes -->
 
 ---
 name: TOJ_analysis_model_highlight3
@@ -677,6 +811,14 @@ model.full <- brm(num.horiz1st | trials(tot.trials) ~ SOA * cue +
               seed = 9001)
 ```
 
+<!-- notes -->
+
+???
+
+`data.TOJ` is the name of the data frame containing your data.
+
+<!-- end notes -->
+
 ---
 name: TOJ_analysis_model_highlight4
 
@@ -707,6 +849,14 @@ model.full <- brm(num.horiz1st | trials(tot.trials) ~ SOA * cue +
               cores = 4,
               seed = 9001)
 ```
+
+<!-- notes -->
+
+???
+
+Then we specify the likelihood function. The data are a bunch of 2s and 8s (the participant did/didn't respond "horizontal first"), hence the binomial distribution. The *logit* link allows us to interpret the resulting coefficients in terms of odds ratios.
+
+<!-- end notes -->
 
 ---
 name: TOJ_analysis_model_highlight5
@@ -739,6 +889,14 @@ model.full <- brm(num.horiz1st | trials(tot.trials) ~ SOA * cue +
               seed = 9001)
 ```
 
+<!-- notes -->
+
+???
+   
+`priors.full` indicates a list with highly informative priors. We ran a pilot study identical to this one, fitted this same model (with default priors), and used the posterior distributions of those parameters as priors for this model.
+
+<!-- end notes -->
+
 ---
 name: TOJ_analysis_model_highlight6
 
@@ -769,6 +927,14 @@ model.full <- brm(num.horiz1st | trials(tot.trials) ~ SOA * cue +
               cores = 4,
               seed = 9001)
 ```
+
+<!-- notes -->
+
+???
+
+We tell `brms` to extract samples from the priors... they will be useful later on.
+
+<!-- end notes -->
 
 ---
 name: TOJ_analysis_model_highlight7
@@ -801,10 +967,26 @@ model.full <- brm(num.horiz1st | trials(tot.trials) ~ SOA * cue +
 *                seed = 9001)
 ```
 
-<!-- ##################################################### NOTES ################################################################## -->
-<!-- To specify the other models, change the name of the independent variable                                                       -->
-<!-- and set the priors of the appropriate model.                                                                                   -->
-<!-- ############################################################################################################################## -->
+<!-- notes -->
+
+???
+
+The following settings refer to the No-U-Turn-Sampler (*NUTS*) in STAN:
+
+* `inits`: initial parameter values in the Markov-Chain Monte Carlo (MCMC) chains;
+* `control`: steps of the NUTS sampler;
+* `chains`: number of MCMC chains;
+* `iter`: number of iterations for each MCMC chain;
+* `warmup`: number of burn-in samples (not included in final posterior distribution);
+* `thin`: thinning rate (to decrease autocorrelation);
+* `algorithm`: type of sampling algorithm;
+* `cores`: numer of processor cores for parallel computations;
+* `seed`: seed for RNG (to ensure reproducible results).
+
+For details, see `help(brm)`.
+
+<!-- end notes -->
+
 ---
 name: TOJ_analysis_model_highlight8
 
@@ -836,12 +1018,14 @@ name: TOJ_analysis_model_highlight8
               seed = 9001)
 ```
 
-<!-- ##################################################### NOTES ################################################################## -->
-<!-- We fitted all the models and compared their out-of-sample predictive validity through leave-one-out cross-validation.          -->
-<!-- We iteratively fit each model on all observations except one, and then try to predict the one we left out.                     -->
-<!-- The results indicated that the model with the lowest information loss was the one with both main effects, but no interaction.  -->
-<!-- In other words, the effects of SOA and cue independently affect responses but do not interact with each other.                 -->
-<!-- ############################################################################################################################## -->
+<!-- notes -->
+
+???
+
+To specify the other models, change the name of the independent variable and set the priors of the appropriate model.
+
+<!-- end notes -->
+
 ---
 name: TOJ_LOO
 
@@ -868,29 +1052,27 @@ model.comparison <- LOO( # list with all models
 
 .center[
   .font130[
-  ```{r model_comparison, echo=FALSE, warning=FALSE, message=FALSE}
-        # load results model
-        readRDS(here::here("pseudoBMA.rds")) %>%
-        select(models=modnames, LOO.IC=ic) %>%
-        mutate(LOO.IC=format(LOO.IC, digits=6))
+  ```{r model_comparison, echo = FALSE, warning = FALSE, message = FALSE}
+  
+  # load results model
+  readRDS(here::here("results/pseudoBMA.rds")) %>%
+  select(models = modnames, LOO.IC = ic) %>%
+  mutate(LOO.IC = format(LOO.IC, digits = 6))
+  
   ```
   ]
 ]
 
-<!-- ##################################################### NOTES ################################################################## -->
-<!-- This is the output that brms gives you.                                                                                        -->
-<!-- For brevity, here I am only showing the output of the constant ("fixed") effects.                                              -->
-<!-- You can see mean, estimated error, and 95% credible intervals                                                                  -->
-<!-- of the posterior distributions of all the parameters of this model (the intercept is SOA0, no cue).                            -->
-<!--                                                                                                                                -->
-<!-- "Effective sample" is an estimate of the number of independent draws from the posterior distribution.                          -->
-<!-- The closer this number is to the total number of samples (in this case, 6,000), the better the estimation.                     -->
-<!-- As a rule of thumb, the ratio between the effective and total samples should not be lower than .1.                             -->
-<!--                                                                                                                                -->
-<!-- "Rhat" measures the ratio of the average variance of samples within each chain                                                 -->
-<!-- to the variance of the pooled samples between chains. If all chains converge (i.e., they are at equilibrium), Rhat = 1.        -->
-<!-- As a rule of thumb, Rhat should not be higher than 1.05.                                                                       -->
-<!-- ############################################################################################################################## -->
+<!-- notes -->
+
+???
+
+We fitted all the models and compared their out-of-sample predictive validity through leave-one-out cross-validation. We iteratively fit each model on all observations except one, and then try to predict the one we left out.   
+   
+The results indicated that the model with the lowest information loss was the one with both main effects, but no interaction. In other words, the effects of SOA and cue **independently** affect responses but do not interact with each other.
+
+<!-- end notes -->
+
 ---
 name: TOJ_analysis_output
 
@@ -908,16 +1090,28 @@ name: TOJ_analysis_output
   ]
 ]
 
-```{r model_mains, echo=FALSE, warning=FALSE, message=FALSE}
-    # load results model
-    model.mains <- readRDS(here::here("model_mains.rds"))
-    capture.output(model.mains)[36:48]
+```{r model_mains, echo = FALSE, warning = FALSE, message = FALSE}
+
+# load results model
+model.mains <- readRDS(here::here("results/model_mains.rds"))
+capture.output(model.mains)[36:48]
+
 ```
 
-<!-- ##################################################### NOTES ################################################################## -->
-<!-- You can visually explore the MCMC chains, to see whether they converged.                                                       -->
-<!-- For these representative parameters, the chains converged nicely onto the same parameter space ("fat hairy caterpillar").      -->
-<!-- ############################################################################################################################## -->
+<!-- notes -->
+
+???
+
+This is the output that `brms` gives you. For brevity, here I am only showing the output of the constant effects.   
+   
+You can see mean, estimated error, and 95% credible intervals of the posterior distributions of all the parameters of this model (the intercept is SOA0, no cue).   
+   
+"Effective sample" is an estimate of the number of independent draws from the posterior distribution. The closer this number is to the total number of samples (in this case, 6,000), the better the estimation. As a rule of thumb, the ratio between the effective and total samples should not be lower than **0.1**.   
+   
+"Rhat" measures the ratio of the average variance of samples within each chain to the variance of the pooled samples between chains. If all chains converge (i.e., they are at equilibrium), Rhat = 1. As a rule of thumb, Rhat should not be higher than **1.05**.
+
+<!-- end notes -->
+
 ---
 name: TOJ_analysis_MCMCchains
 
@@ -946,21 +1140,27 @@ name: TOJ_analysis_MCMCchains
 <Div style="margin-top:-100px" /> 
 
 .pull-right[
-```{r model_mains_MCMC, echo=FALSE, warning=FALSE, message=FALSE, fig.height=4.5, fig.width=4.5, dev='svg'}
+
+```{r model_mains_MCMC, echo = FALSE, warning = FALSE, message = FALSE, fig.height = 4.5, fig.width = 4.5, dev = 'svg'}
+
 color_scheme_set("viridis")
 mcmc_trace(as.array(model.mains),
-           pars=c("b_Intercept", "b_cuevertical.cued", "b_cuehorizontal.cued"),
-           facet_args=list(ncol=1))
+  pars = c("b_Intercept", "b_cuevertical.cued", "b_cuehorizontal.cued"),
+  facet_args = list(ncol = 1)
+)
+
 ```
+
 ]
 
-<!-- ##################################################### NOTES ################################################################## -->
-<!-- One way of verifying whether your model can adequately predict unobserved data                                                 -->
-<!-- is by running graphical posterior predictive checks.                                                                           -->
-<!-- Here the blue line is the mean of the observed data                                                                            -->
-<!-- and the yellow histograms represent the posterior distributions of these parameters.                                           -->
-<!-- We can see that observed and estimated data are quite similar.                                                                 -->
-<!-- ############################################################################################################################## -->
+<!-- notes -->
+
+???
+
+You can visually explore the MCMC chains, to see whether they converged. For these representative parameters, the chains converged nicely onto the same parameter space ("fat hairy caterpillar").
+
+<!-- end notes -->
+
 ---
 name: TOJ_analysis_PPC
 
@@ -989,17 +1189,26 @@ name: TOJ_analysis_PPC
 <Div style="margin-top:-100px" /> 
 
 .pull-right[
-```{r model_mains_PPC, echo=FALSE, warning=FALSE, message=FALSE, fig.height=4.5, fig.width=6, dev='svg'}
+
+```{r model_mains_PPC, echo = FALSE, warning = FALSE, message = FALSE, fig.height = 4.5, fig.width = 6, dev = 'svg'}
+
 color_scheme_set("viridis")
-pp_check(model.mains, nsamples=NULL, type="stat_grouped", group="cue")
+pp_check(model.mains, nsamples = NULL, type = "stat_grouped", group = "cue")
+
 ```
+
 ]
 
-<!-- ##################################################### NOTES ################################################################## -->
-<!-- This is another way of showing that the model generates data very similar to the observed data.                                -->
-<!-- This is the same graph that I showed you earlier, but I also added the data generated by the model (dotted lines).             -->
-<!-- Observed and predicted data are almost undistinguishable, suggesting that the same process may have generated them.            -->
-<!-- ############################################################################################################################## -->
+<!-- notes -->
+
+???
+
+One way of verifying whether your model can adequately predict unobserved data is by running *graphical posterior predictive checks*. Here the blue line is the mean of the observed data and the yellow histograms represent the posterior distributions of these parameters.   
+
+We can see that observed and estimated data are quite similar.
+
+<!-- end notes -->
+
 ---
 name: TOJ_analysis_predicted_observed
 
@@ -1013,76 +1222,95 @@ name: TOJ_analysis_predicted_observed
 <Div style="margin-top:-40px" />
 
 .center[
-```{r model_mains_obs_pred, echo=FALSE, warning=FALSE, message=FALSE, fig.height=4.9, fig.width=7, dev='svg'}
-summary.data.exp1.est <- data.exp1 %>%
-  mutate(num.horizfirst.est=predict(model.mains)[,1], # add estimated accuracy to original dataframe
-         prop.horizfirst.est=num.horizfirst.est/tot.trials) %>% # calculate frequency of "horizontal first" responses for estimated data
+
+```{r model_mains_obs_pred, echo = FALSE, warning = FALSE, message = FALSE, fig.height = 4.9, fig.width = 7, dev = 'svg'}
+
+summary.data.exp1.est <- 
+  data.exp1 %>%
+  mutate(
+    num.horizfirst.est = predict(model.mains)[, 1], # add estimated accuracy to original dataframe
+    prop.horizfirst.est = num.horizfirst.est / tot.trials # calculate frequency of "horizontal first" responses for estimated data
+  ) %>%
   select(participant, SOA, cue, prop.horizfirst, prop.horizfirst.est) %>% # select variables of interest
-  gather(prop.horizfirst, prop.horizfirst.est, key="datatype", value="accuracy") %>% # convert to long format
-  mutate(datatype=recode(factor(datatype), # change names of factor levels
-         "prop.horizfirst"="observed",
-           "prop.horizfirst.est"="predicted")) %>%
+  gather(prop.horizfirst, prop.horizfirst.est, key = "datatype", value = "accuracy") %>% # convert to long format
+  mutate(datatype = recode(factor(datatype), # change names of factor levels
+    "prop.horizfirst" = "observed",
+    "prop.horizfirst.est" = "predicted"
+  )) %>%
   # summarize data
   summarySEwithin(., # data
-                  measurevar="accuracy", # dependent variable
-                  withinvars=c("SOA", "cue", "datatype"), # independent variables
-                  idvar="participant") %>% # ID variable
-  mutate(SOA=recode(factor(SOA), # convert SOA to factor
-                    # add "+" to positive SOAs (for plot)
-                    "17"="+17",
-                    "83"="+83",
-                    "150"="+150",
-                    "217"="+217"),
-         # reorder factor (for plot)
-         SOA=factor(SOA, levels=c("-217", "-150", "-83", "-17", "0", "+17", "+83", "+150", "+217")),
-         condition=paste0(cue, ".", datatype)) # create variable with merged names of conditions and datapoints (for plot)
+    measurevar = "accuracy", # dependent variable
+    withinvars = c("SOA", "cue", "datatype"), # independent variables
+    idvar = "participant" # ID variable
+  ) %>%
+  mutate(
+    SOA = recode(factor(SOA), # convert SOA to factor
+      # add "+" to positive SOAs (for plot)
+      "17" = "+17",
+      "83" = "+83",
+      "150" = "+150",
+      "217" = "+217"
+    ),
+    # reorder factor (for plot)
+    SOA = factor(SOA, levels = c("-217", "-150", "-83", "-17", "0", "+17", "+83", "+150", "+217")),
+    condition = paste0(cue, ".", datatype) # create variable with merged names of conditions and datapoints (for plot)
+  )
 
 # plot observed and predicted data
-ACC.plot.obs.est <- summary.data.exp1.est %>% # summary table
-  select(cue, data.type=datatype, condition, SOA, prop.horizfirst=accuracy, ci_95=ci) %>% # select and rename variables of interest
-  ggplot(aes(x=SOA, y=prop.horizfirst, group=condition, color=cue, fill=cue)) + # basic graph
-  geom_line(aes(linetype=data.type), # separate lines per condition
-            size=1.3) + # line: thickness
-  geom_ribbon(aes(ymin=prop.horizfirst-ci_95, ymax=prop.horizfirst+ci_95), # ribbons (mean +/- 95% confidence intervals)
-              color="white", # ribbon: color of external line
-              alpha=.3) + # ribbon: transparency
-  geom_point(aes(shape=data.type), # points at each SOA 
-             fill="white", # point shape: color fill
-             size=3) + # point shape: size
-  scale_shape_manual(values=rep(c(21, 22), 2)) + # predicted -> circle; observed -> square
-  scale_linetype_manual(values=rep(c("dotted", "solid"), 3)) + # different line types per condition
-  scale_color_manual(values=c("orange", "black", "blue")) + # different line colors per conditions
-  scale_fill_manual(values=c("orange", "black", "blue")) + # different ribbon colors per conditions
+ACC.plot.obs.est <- 
+  summary.data.exp1.est %>% # summary table
+  select(cue, data.type = datatype, condition, SOA, prop.horizfirst = accuracy, ci_95 = ci) %>% # select and rename variables of interest
+  ggplot(aes(x = SOA, y = prop.horizfirst, group = condition, color = cue, fill = cue)) + # basic graph
+  geom_line(aes(linetype = data.type), # separate lines per condition
+    size = 1.3 # line: thickness
+  ) +
+  geom_ribbon(aes(ymin = prop.horizfirst - ci_95, ymax = prop.horizfirst + ci_95), # ribbons (mean +/- 95% confidence intervals)
+    color = "white", # ribbon: color of external line
+    alpha = .3 # ribbon: transparency
+  ) +
+  geom_point(aes(shape = data.type), # points at each SOA
+    fill = "white", # point shape: color fill
+    size = 3 # point shape: size
+  ) +
+  scale_shape_manual(values = rep(c(21, 22), 2)) + # predicted -> circle; observed -> square
+  scale_linetype_manual(values = rep(c("dotted", "solid"), 3)) + # different line types per condition
+  scale_color_manual(values = c("orange", "black", "blue")) + # different line colors per conditions
+  scale_fill_manual(values = c("orange", "black", "blue")) + # different ribbon colors per conditions
   scale_x_discrete("SOA", # x-axis: title
-                   limits=levels(summary.data.exp1.est$SOA)) + # x-axis: SOAs (positive are on the right)
+    limits = levels(summary.data.exp1.est$SOA) # x-axis: SOAs (positive are on the right)
+  ) +
   ylab("prop. \"horizontal first\" responses") + # y-axis: title
-  scale_y_continuous(breaks=seq(0, 1, .25)) + # x-axis: tick marks
-  geom_hline(yintercept=seq(0, 1, .25), # reference lines
-             linetype="dotted", # line: type
-             colour="#999999", # line: color
-             size=.8, # line: thickness
-             alpha=.5) + # line: transparency
-  guides(color="none", shape="none") + # legends
-  annotation_custom(text.L, xmin=2, xmax=2, ymin=-.2, ymax=-.2) + # annotation on x-axis
-  annotation_custom(text.R, xmin=8, xmax=8, ymin=-.2, ymax=-.2) + # annotation on x-axis
-  theme_pander(base_size=15, pc="white") + # custom theme
-  theme(plot.margin=unit(c(1, 1, 2, 1), "lines")) # make room for the annotations
+  scale_y_continuous(breaks = seq(0, 1, .25)) + # x-axis: tick marks
+  geom_hline(
+    yintercept = seq(0, 1, .25), # reference lines
+    linetype = "dotted", # line: type
+    colour = "#999999", # line: color
+    size = .8, # line: thickness
+    alpha = .5 # line: transparency
+  ) +
+  guides(color = "none", shape = "none") + # legends
+  annotation_custom(text.L, xmin = 2, xmax = 2, ymin = -.2, ymax = -.2) + # annotation on x-axis
+  annotation_custom(text.R, xmin = 8, xmax = 8, ymin = -.2, ymax = -.2) + # annotation on x-axis
+  theme_pander(base_size = 15, pc = "white") + # custom theme
+  theme(plot.margin = unit(c(1, 1, 2, 1), "lines")) # make room for the annotations
 
 # override clipping
 ACC.plot.obs.est <- ggplot_gtable(ggplot_build(ACC.plot.obs.est))
 ACC.plot.obs.est$layout$clip[ACC.plot.obs.est$layout$name == "panel"] <- "off"
 grid.draw(ACC.plot.obs.est)
+
 ```
 ]
 
-<!-- ##################################################### NOTES ################################################################## -->
-<!-- Now, suppose we are interested in testing whether responses in the no cue condition                                            -->
-<!-- are different from the vertical cued condition. Through the 'hypothesis' function in brms we can test whether                  -->
-<!-- the 95% credible interval of the difference between these two posterior probabilities includes 0.                              -->
-<!-- As you can see here, the two distributions are clearly different (there is no overlap),                                        -->
-<!-- so we can confidently conclude that "horizontal first" responses are much more likely in the no cue condition                  -->
-<!-- compared to the vertical cued condition.                                                                                       -->
-<!-- ############################################################################################################################## -->
+<!-- notes -->
+
+???
+
+This is another way of showing that the model generates data very similar to the observed data.   
+This is the same graph that I showed you earlier, but I also added the data generated by the model (dotted lines). Observed and predicted data are almost undistinguishable, suggesting that the same process may have generated them.
+
+<!-- end notes -->
+
 ---
 name: TOJ_analysis_hyptest_nocue_vertcued
 
@@ -1100,25 +1328,28 @@ name: TOJ_analysis_hyptest_nocue_vertcued
   ]
 ]
 
-```{r model_mains_hyptest_prep, echo=FALSE, warning=FALSE, message=FALSE}
-samples.model.mains <- as.data.frame(posterior_samples(model.mains, "b")) # posterior samples of all betas (on log scale)
+```{r model_mains_hyptest_prep, echo = FALSE, warning = FALSE, message = FALSE}
+
+samples.model.mains <- 
+  as.data.frame(posterior_samples(model.mains, "b")) # posterior samples of all betas (on log scale)
 
 temp.post <- samples.model.mains[, 1:11] # select only posterior samples
-temp.post <- temp.post+temp.post$b_Intercept # add intercept value to all posterior samples
+temp.post <- temp.post + temp.post$b_Intercept # add intercept value to all posterior samples
 # convert log odds to probability odds (see https://sebastiansauer.github.io/convert_logit2prob/)
-temp.post <- exp(temp.post)/(1+exp(temp.post))
+temp.post <- exp(temp.post) / (1 + exp(temp.post))
 
 temp.prior <- samples.model.mains[, 12:22] # select only posterior samples
-temp.prior <- temp.prior+temp.prior$prior_b_Intercept # add intercept value to all posterior samples
+temp.prior <- temp.prior + temp.prior$prior_b_Intercept # add intercept value to all posterior samples
 # convert log odds to probability odds (see https://sebastiansauer.github.io/convert_logit2prob/)
-temp.prior <- exp(temp.prior)/(1+exp(temp.prior))
+temp.prior <- exp(temp.prior) / (1 + exp(temp.prior))
 
 samples.model.mains <- cbind(temp.post, temp.prior) # bind
 
 rm(temp.post, temp.prior) # delete temporary variables
 
 # change variable names
-names(samples.model.mains) <- c("SOA0.no.cue", "SOA217.horizontal.cued", "SOA150.horizontal.cued", "SOA83.horizontal.cued", "SOA17.horizontal.cued", "SOA17.vertical.cued", "SOA83.vertical.cued", "SOA150.vertical.cued", "SOA217.vertical.cued", "vertical.cued", "horizontal.cued","prior.SOA0.no.cue", "prior.SOA217.horizontal.cued", "prior.SOA150.horizontal.cued", "prior.SOA83.horizontal.cued", "prior.SOA17.horizontal.cued", "prior.SOA17.vertical.cued", "prior.SOA83.vertical.cued", "prior.SOA150.vertical.cued", "prior.SOA217.vertical.cued", "prior.vertical.cued", "prior.horizontal.cued")
+names(samples.model.mains) <- c("SOA0.no.cue", "SOA217.horizontal.cued", "SOA150.horizontal.cued", "SOA83.horizontal.cued", "SOA17.horizontal.cued", "SOA17.vertical.cued", "SOA83.vertical.cued", "SOA150.vertical.cued", "SOA217.vertical.cued", "vertical.cued", "horizontal.cued", "prior.SOA0.no.cue", "prior.SOA217.horizontal.cued", "prior.SOA150.horizontal.cued", "prior.SOA83.horizontal.cued", "prior.SOA17.horizontal.cued", "prior.SOA17.vertical.cued", "prior.SOA83.vertical.cued", "prior.SOA150.vertical.cued", "prior.SOA217.vertical.cued", "prior.vertical.cued", "prior.horizontal.cued")
+
 ```
 
 <Div style="margin-left:-40px" />
@@ -1142,28 +1373,36 @@ names(samples.model.mains) <- c("SOA0.no.cue", "SOA217.horizontal.cued", "SOA150
 <Div style="margin-top:-100px" /> 
 
 .pull-right[
-```{r model_mains_hyptest_nocue_vertcued_graph, echo=FALSE, warning=FALSE, message=FALSE, fig.height=3.8, fig.width=4.5, dev='svg'}
+
+```{r model_mains_hyptest_nocue_vertcued_graph, echo = FALSE, warning = FALSE, message = FALSE, fig.height = 3.8, fig.width = 4.5, dev = 'svg'}
+
 gather(samples.model.mains[, c("SOA0.no.cue", "vertical.cued")], type, value) %>% # summarize values
-  mutate(type=recode(type, "SOA0.no.cue"="no.cue")) %>% # change condition names
-  ggplot(aes(value, color=type)) + # main plot
-  geom_density(aes(fill=type), size=1.2, alpha=.5) + # fill, line thickness, transparency
-  scale_color_manual(values=c("black", "orange")) + # different line colors per conditions
-  scale_fill_manual(values=c("black", "orange")) + # different density fill colors per conditions
-  scale_x_continuous(breaks=seq(0, 1, .1), limits=c(0, 1)) + # x-axis: limits
-  scale_y_continuous(breaks=seq(0, 20, 5)) + # y-axis: tick marks
-  labs(x="probability of \"horizontal first\" responses", y="density") + # title & axes labels
-  geom_vline(xintercept=seq(0, 1, .1), linetype="dotted", colour="gray", size=.8, alpha=.5) + # reference lines
-  geom_hline(yintercept=seq(0, 20, 5), linetype="dotted", colour="gray", size=.8, alpha=.5) + # reference lines
+  mutate(type = recode(type, "SOA0.no.cue" = "no.cue")) %>% # change condition names
+  ggplot(aes(value, color = type)) + # main plot
+  geom_density(aes(fill = type), size = 1.2, alpha = .5) + # fill, line thickness, transparency
+  scale_color_manual(values = c("black", "orange")) + # different line colors per conditions
+  scale_fill_manual(values = c("black", "orange")) + # different density fill colors per conditions
+  scale_x_continuous(breaks = seq(0, 1, .1), limits = c(0, 1)) + # x-axis: limits
+  scale_y_continuous(breaks = seq(0, 20, 5)) + # y-axis: tick marks
+  labs(x = "probability of \"horizontal first\" responses", y = "density") + # title & axes labels
+  geom_vline(xintercept = seq(0, 1, .1), linetype = "dotted", colour = "gray", size = .8, alpha = .5) + # reference lines
+  geom_hline(yintercept = seq(0, 20, 5), linetype = "dotted", colour = "gray", size = .8, alpha = .5) + # reference lines
   # geom_hline(yintercept=0, linetype="solid", colour="gray", size=1.2, alpha=1) + # x-axis
-  theme_pander(base_size=15, pc="white", lp=c(.8,.8)) # custom theme
+  theme_pander(base_size = 15, pc = "white", lp = c(.8, .8)) # custom theme
+
 ```
 ]
 
-<!-- ##################################################### NOTES ################################################################## -->
-<!-- In the same way, we can test whether the results of this experiment are different from the results of the pilot experiment     -->
-<!-- by simply comparing the prior and posterior distributions of our parameters of interest.                                       -->
-<!-- In this case, we can see a great overlap, indicating no difference between pilot and current experiment.                       -->
-<!-- ############################################################################################################################## -->
+<!-- notes -->
+
+???
+
+Now, suppose we are interested in testing whether responses in the no cue condition are different from the vertical cued condition. Through the `hypothesis` function in `brms` we can test whether the 95% credible interval of the difference between these two posterior probabilities includes 0.   
+   
+As you can see here, the two distributions are clearly different (there is no overlap), so we can confidently conclude that "horizontal first" responses are much more likely in the no cue condition compared to the vertical cued condition.
+
+<!-- end notes -->
+
 ---
 name: TOJ_analysis_hyptest_nocue_prior_posterior
 
@@ -1181,80 +1420,73 @@ name: TOJ_analysis_hyptest_nocue_prior_posterior
   ]
 ]
 
-```{r model_mains_hyptest_prior_vs_post_graph, echo=FALSE, warning=FALSE, message=FALSE, fig.height=3.8, fig.width=8.6, dev='svg'}
+```{r model_mains_hyptest_prior_vs_post_graph, echo = FALSE, warning = FALSE, message = FALSE, fig.height = 3.8, fig.width = 8.6, dev = 'svg'}
+
 # no cue
 plot.no.cue <-
-gather(samples.model.mains[, c("SOA0.no.cue", "prior.SOA0.no.cue")], type, value) %>% # summarize values
-  mutate(type=recode(type, "SOA0.no.cue"="posterior" , "prior.SOA0.no.cue"="prior")) %>% # change condition names
-  ggplot(aes(value, color=type)) + # main plot
-  geom_density(aes(fill=type), size=1.2, alpha=.5) + # fill, line thickness, transparency
-  scale_color_manual(values=c("black", "gray")) + # different line colors per conditions
-  scale_fill_manual(values=c("black", "gray")) + # different density fill colors per conditions
-  scale_x_continuous(breaks=seq(0, 1, .1), limits=c(0, 1)) + # x-axis: limits
-  scale_y_continuous(breaks=seq(0, 15, 5)) + # y-axis: tick marks
-  labs(title="no cue", x="prob. \"horizontal first\" resp.", y="density") + # title & axes labels
-  geom_vline(xintercept=seq(0, 1, .1), linetype="dotted", colour="gray", size=.8, alpha=.5) + # reference lines
-  geom_hline(yintercept=seq(0, 15, 5), linetype="dotted", colour="gray", size=.8, alpha=.5) + # reference lines
+  gather(samples.model.mains[, c("SOA0.no.cue", "prior.SOA0.no.cue")], type, value) %>% # summarize values
+  mutate(type = recode(type, "SOA0.no.cue" = "posterior", "prior.SOA0.no.cue" = "prior")) %>% # change condition names
+  ggplot(aes(value, color = type)) + # main plot
+  geom_density(aes(fill = type), size = 1.2, alpha = .5) + # fill, line thickness, transparency
+  scale_color_manual(values = c("black", "gray")) + # different line colors per conditions
+  scale_fill_manual(values = c("black", "gray")) + # different density fill colors per conditions
+  scale_x_continuous(breaks = seq(0, 1, .1), limits = c(0, 1)) + # x-axis: limits
+  scale_y_continuous(breaks = seq(0, 15, 5)) + # y-axis: tick marks
+  labs(title = "no cue", x = "prob. \"horizontal first\" resp.", y = "density") + # title & axes labels
+  geom_vline(xintercept = seq(0, 1, .1), linetype = "dotted", colour = "gray", size = .8, alpha = .5) + # reference lines
+  geom_hline(yintercept = seq(0, 15, 5), linetype = "dotted", colour = "gray", size = .8, alpha = .5) + # reference lines
   # geom_hline(yintercept=0, linetype="solid", colour="gray", size=1.2, alpha=1) + # x-axis
-  theme(plot.title=element_text(hjust=.5)) + # center title
-  theme_pander(base_size=13, pc="white", lp=c(.25,.8)) # custom theme
+  theme(plot.title = element_text(hjust = .5)) + # center title
+  theme_pander(base_size = 13, pc = "white", lp = c(.25, .8)) # custom theme
 
 # vertical cued
 plot.vert.cued <-
-gather(samples.model.mains[, c("vertical.cued", "prior.vertical.cued")], type, value) %>% # summarize values
-  mutate(type=recode(type, "vertical.cued"="posterior" , "prior.vertical.cued"="prior")) %>% # change condition names
-  ggplot(aes(value, color=type)) + # main plot
-  geom_density(aes(fill=type), size=1.2, alpha=.5) + # fill, line thickness, transparency
-  scale_color_manual(values=c("orange", "gray")) + # different line colors per conditions
-  scale_fill_manual(values=c("orange", "gray")) + # different density fill colors per conditions
-  scale_x_continuous(breaks=seq(0, 1, .1), limits=c(0, 1)) + # x-axis: limits
-  scale_y_continuous(breaks=seq(0, 25, 5)) + # y-axis: tick marks
-  labs(title="vertical cued", x="prob. \"horizontal first\" resp.", y="density") + # title & axes labels
-  geom_vline(xintercept=seq(0, 1, .1), linetype="dotted", colour="gray", size=.8, alpha=.5) + # reference lines
-  geom_hline(yintercept=seq(0, 25, 5), linetype="dotted", colour="gray", size=.8, alpha=.5) + # reference lines
+  gather(samples.model.mains[, c("vertical.cued", "prior.vertical.cued")], type, value) %>% # summarize values
+  mutate(type = recode(type, "vertical.cued" = "posterior", "prior.vertical.cued" = "prior")) %>% # change condition names
+  ggplot(aes(value, color = type)) + # main plot
+  geom_density(aes(fill = type), size = 1.2, alpha = .5) + # fill, line thickness, transparency
+  scale_color_manual(values = c("orange", "gray")) + # different line colors per conditions
+  scale_fill_manual(values = c("orange", "gray")) + # different density fill colors per conditions
+  scale_x_continuous(breaks = seq(0, 1, .1), limits = c(0, 1)) + # x-axis: limits
+  scale_y_continuous(breaks = seq(0, 25, 5)) + # y-axis: tick marks
+  labs(title = "vertical cued", x = "prob. \"horizontal first\" resp.", y = "density") + # title & axes labels
+  geom_vline(xintercept = seq(0, 1, .1), linetype = "dotted", colour = "gray", size = .8, alpha = .5) + # reference lines
+  geom_hline(yintercept = seq(0, 25, 5), linetype = "dotted", colour = "gray", size = .8, alpha = .5) + # reference lines
   # geom_hline(yintercept=0, linetype="solid", colour="gray", size=1.2, alpha=1) + # x-axis
-  theme(plot.title=element_text(hjust=.5)) + # center title
-  theme_pander(base_size=13, pc="white", lp=c(.7,.8)) # custom theme
+  theme(plot.title = element_text(hjust = .5)) + # center title
+  theme_pander(base_size = 13, pc = "white", lp = c(.7, .8)) # custom theme
 
 # horizontal cued
 plot.horiz.cued <-
-gather(samples.model.mains[, c("horizontal.cued", "prior.horizontal.cued")], type, value) %>% # summarize values
-  mutate(type=recode(type, "horizontal.cued"="posterior" , "prior.horizontal.cued"="prior")) %>% # change condition names
-  ggplot(aes(value, color=type)) + # main plot
-  geom_density(aes(fill=type), size=1.2, alpha=.5) + # fill, line thickness, transparency
-  scale_color_manual(values=c("blue", "gray")) + # different line colors per conditions
-  scale_fill_manual(values=c("blue", "gray")) + # different density fill colors per conditions
-  scale_x_continuous(breaks=seq(0, 1, .1), limits=c(0, 1)) + # x-axis: limits
-  scale_y_continuous(breaks=seq(0, 25, 5)) + # y-axis: tick marks
-  labs(title="horizontal cued", x="prob. \"horizontal first\" resp.", y="density") + # title & axes labels
-  geom_vline(xintercept=seq(0, 1, .1), linetype="dotted", colour="gray", size=.8, alpha=.5) + # reference lines
-  geom_hline(yintercept=seq(0, 25, 5), linetype="dotted", colour="gray", size=.8, alpha=.5) + # reference lines
+  gather(samples.model.mains[, c("horizontal.cued", "prior.horizontal.cued")], type, value) %>% # summarize values
+  mutate(type = recode(type, "horizontal.cued" = "posterior", "prior.horizontal.cued" = "prior")) %>% # change condition names
+  ggplot(aes(value, color = type)) + # main plot
+  geom_density(aes(fill = type), size = 1.2, alpha = .5) + # fill, line thickness, transparency
+  scale_color_manual(values = c("blue", "gray")) + # different line colors per conditions
+  scale_fill_manual(values = c("blue", "gray")) + # different density fill colors per conditions
+  scale_x_continuous(breaks = seq(0, 1, .1), limits = c(0, 1)) + # x-axis: limits
+  scale_y_continuous(breaks = seq(0, 25, 5)) + # y-axis: tick marks
+  labs(title = "horizontal cued", x = "prob. \"horizontal first\" resp.", y = "density") + # title & axes labels
+  geom_vline(xintercept = seq(0, 1, .1), linetype = "dotted", colour = "gray", size = .8, alpha = .5) + # reference lines
+  geom_hline(yintercept = seq(0, 25, 5), linetype = "dotted", colour = "gray", size = .8, alpha = .5) + # reference lines
   # geom_hline(yintercept=0, linetype="solid", colour="gray", size=1.2, alpha=1) + # x-axis
-  theme(plot.title=element_text(hjust=.5)) + # center title
-  theme_pander(base_size=13, pc="white", lp=c(.25,.8)) # custom theme
+  theme(plot.title = element_text(hjust = .5)) + # center title
+  theme_pander(base_size = 13, pc = "white", lp = c(.25, .8)) # custom theme
 
-multiplot(plot.no.cue, plot.vert.cued, plot.horiz.cued, cols=3)
+multiplot(plot.no.cue, plot.vert.cued, plot.horiz.cued, cols = 3)
+
 ```
 
-<!-- ##################################################### NOTES ################################################################## -->
-<!-- So, what have learned?                                                                                                         -->
-<!--                                                                                                                                -->
-<!-- We now know that SOA and cue affect performance independently.                                                                 -->
-<!-- We reached this conclusion by comparing the predictive validity of all theoretically plausible models                          -->
-<!-- via leave-one-out cross-validation procedures.                                                                                 -->
-<!--                                                                                                                                -->
-<!-- We have visually checked that the winning model can predict unobserved data pretty well.                                       -->
-<!--                                                                                                                                -->
-<!-- In line with our predictions, we have verified that "horizontal first" responses are less likely                               -->
-<!-- when the vertical lines are cued compared to when no cue is presented.                                                         -->
-<!-- This was possible by comparing the posterior distributions of these two parameters                                             -->
-<!-- and show that their 95% credible intervals do not overlap.                                                                     -->
-<!--                                                                                                                                -->
-<!-- In the same way, we were also able to show (by comparing prior and posterior distributions) that                               -->
-<!-- "horizontal first" response during the pilot and current experiment are virtually identical.                                   -->
-<!--                                                                                                                                -->
-<!-- There is so much more that can be done in brms... thank you Paul!                                                              -->
-<!-- ############################################################################################################################## -->
+<!-- notes -->
+
+???
+
+In the same way, we can test whether the results of this experiment are different from the results of the pilot experiment by simply comparing the prior and posterior distributions of our parameters of interest.   
+   
+In this case, we can see a great overlap, indicating no difference between pilot and current experiment.
+
+<!-- end notes -->
+
 ---
 name: conclusions1
 
@@ -1268,6 +1500,14 @@ name: conclusions1
 .font110[
   What we have learned:
 ]
+
+<!-- notes -->
+
+???
+
+So, what have learned?
+
+<!-- end notes -->
 
 ---
 name: conclusions2
@@ -1284,6 +1524,14 @@ name: conclusions2
   * SOA and cue influence performance **independently**
     - comparison of *theoretically plausible* multilevel models
 ]
+
+<!-- notes -->
+
+???
+
+We now know that SOA and cue affect performance independently. We reached this conclusion by comparing the predictive validity of all theoretically plausible models via leave-one-out cross-validation procedures.
+
+<!-- end notes -->
 
 ---
 name: conclusions3
@@ -1320,6 +1568,14 @@ name: conclusions4
   * **observed** and **predicted** data are very similar
 ]
 
+<!-- notes -->
+
+???
+
+We have visually checked that the winning model can predict unobserved data pretty well.
+
+<!-- end notes -->
+
 ---
 name: conclusions5
 
@@ -1339,6 +1595,14 @@ name: conclusions5
   * *"horizontal first"* responses are less likely when the *vertical* lines are cued
     - comparison of the posterior distributions of no cue and vertical cued conditions
 ]
+
+<!-- notes -->
+
+???
+
+In line with our predictions, we have verified that "horizontal first" responses are less likely when the vertical lines are cued compared to when no cue is presented. This was possible by comparing the posterior distributions of these two parameters and show that their 95% credible intervals do not overlap.
+
+<!-- end notes -->
 
 ---
 name: conclusions6
@@ -1361,6 +1625,14 @@ name: conclusions6
   * data of **pilot** and **current** experiment are very similar
     - comparison of prior and posterior distributions of cue conditions
 ]
+
+<!-- notes -->
+
+???
+
+In the same way, we were also able to show (by comparing prior and posterior distributions) that "horizontal first" response during the pilot and current experiment are virtually identical.
+
+<!-- end notes -->
 
 ---
 name: conclusions7
@@ -1385,11 +1657,14 @@ name: conclusions7
   * ... and much more! Thanks for ```brms```, @paulbuerkner!
 ]
 
-<!-- ##################################################### NOTES ################################################################## -->
-<!-- I would also like to thank you for your attention. 
-<!-- If you want to keep in touch, this is my email, website, and Twitter handle.
-<!-- You can also find these slides on this blog post on my website.
-<!-- ############################################################################################################################## -->
+<!-- notes -->
+
+???
+
+There is so much more that can be done in `brms`... thank you Paul!
+
+<!-- end notes -->
+
 ---
 name: thanks
 
@@ -1416,6 +1691,16 @@ https://asch3tti.netlify.com/post/bayesatlund2018/
   ]
 ]
 
-<!-- ################################### -->
-<!-- ############## END ################ -->
-<!-- ################################### -->
+<!-- notes -->
+
+???
+
+I would also like to thank you for your attention.   
+   
+If you want to keep in touch, this is my email, website, and Twitter handle.   
+   
+You can also find these slides on this blog post on my website.   
+
+<!-- end notes -->
+
+
