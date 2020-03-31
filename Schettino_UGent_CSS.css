@@ -65,7 +65,7 @@
 }
 
 .title-slide > h1  {
-  background: url(logos.png) no-repeat;
+  background: url(media/logos.png) no-repeat;
   background-position: top;
   position: fixed;
   top: 110px;
@@ -132,7 +132,7 @@
 /* add header */
 div.my-header {
   background-color: #FAFAFA;
-  background: url(logos.png) no-repeat;
+  background: url(media/logos.png) no-repeat;
   background-position: center;
   position: fixed;
   top: 0px;
